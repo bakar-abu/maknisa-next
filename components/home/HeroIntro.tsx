@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { mediaUrl } from "@/lib/media";
 
-const HERO_DESKTOP = "/media/immagini/hero-desktop.jpg";
-const HERO_MOBILE = "/media/immagini/hero-mobile.jpg";
+/** Homepage hero — local asset in public/images */
+const HERO_IMAGE = "/images/hero-section.png";
 
 export function HeroIntro() {
   return (
@@ -10,13 +9,25 @@ export function HeroIntro() {
       <span className="label-scopri" hidden>
         Discover
       </span>
-      <section className="sn_intro_video">
+      <section className="sn_intro_video" aria-label="Hero section">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="desktop" src={mediaUrl(HERO_DESKTOP)} alt="" />
+        <img
+          className="desktop mk-hero-section__img"
+          src={HERO_IMAGE}
+          alt="Maknisa luxury kitchen collection"
+          loading="eager"
+          fetchPriority="high"
+        />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="mobile" src={mediaUrl(HERO_MOBILE)} alt="" />
+        <img
+          className="mobile mk-hero-section__img"
+          src={HERO_IMAGE}
+          alt="Maknisa luxury kitchen collection"
+          loading="eager"
+          fetchPriority="high"
+        />
         <Link
-          href="/collections"
+          href="/ww/kitchens"
           className="sn_btn_grow _text_light"
           title="Discover the story"
         >

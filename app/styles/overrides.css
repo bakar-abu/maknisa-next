@@ -218,6 +218,18 @@ body {
   text-decoration: none;
 }
 
+/* Homepage hero — hero-section.png */
+body.home-2025 .sn_intro_video .mk-hero-section__img {
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+@media (max-width: 767px) {
+  body.home-2025 .sn_intro_video .mk-hero-section__img {
+    object-position: 55% center;
+  }
+}
+
 /* Stacked video sliders — match reference visibility */
 body.home-2025 .sn_slider_video {
   visibility: hidden;
