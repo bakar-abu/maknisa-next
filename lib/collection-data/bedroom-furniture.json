@@ -1,0 +1,129 @@
+{
+  "slug": "bedroom-furniture",
+  "type": "grid",
+  "h1": "Looking for Furniture for the sleeping area?",
+  "intro": "",
+  "title": "Bedroom Furniture: beds and walk-in wardrobes",
+  "breadcrumbLabel": "Night",
+  "tags": [
+    {
+      "id": 185,
+      "label": "modular"
+    },
+    {
+      "id": 186,
+      "label": "Modern"
+    },
+    {
+      "id": 506,
+      "label": "CONTEMPORARY"
+    },
+    {
+      "id": 523,
+      "label": "adaptable"
+    },
+    {
+      "id": 535,
+      "label": "customisable"
+    },
+    {
+      "id": 538,
+      "label": "international"
+    },
+    {
+      "id": 540,
+      "label": "accessories"
+    },
+    {
+      "id": 544,
+      "label": "chic"
+    },
+    {
+      "id": 545,
+      "label": "sophisticated"
+    },
+    {
+      "id": 553,
+      "label": "glass"
+    },
+    {
+      "id": 556,
+      "label": "fashion"
+    }
+  ],
+  "products": [
+    {
+      "id": "bedrooms-1",
+      "title": "Bedrooms",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/460b55dc-7b17-4059-bf28-dcd98a007d61/nuctwf/std/700x0/Goodnight_pag_12-13.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/70dd9b68-c008-463d-9bce-41624fcec348/nuctwf/std/700x0/Goodnight_pag_6-7.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/7d074611-0118-45cb-b231-e61e5bbd87c1/nuctwf/std/700x0/Goodnight_pag_16-17.jpg"
+      ],
+      "tagIds": [],
+      "categoryIds": [
+        190
+      ]
+    },
+    {
+      "id": "walk-in-fluida-2",
+      "title": "Walk-in Fluida",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/cefcbc41-888a-4e89-a1f7-b80621f45d7c/nuctwf/std/700x0/Walk-in-Fluida_pag_14-15.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/332a63f0-57eb-45cb-916f-6a22bc2697fd/nuctwf/std/700x0/Walk-in-Fluida_pag_34-35.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/5a1fe2de-91e0-44ce-8fc4-80a911ecaa76/nuctwf/std/700x0/Walk-in-Fluida_pag_22-23.jpg"
+      ],
+      "tagIds": [
+        540,
+        523,
+        544,
+        506,
+        535,
+        556,
+        553,
+        538,
+        185,
+        545
+      ],
+      "categoryIds": [
+        190
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": 17,
+      "label": "Kitchens",
+      "href": "/ww/kitchens"
+    },
+    {
+      "id": 12,
+      "label": "Bathrooms",
+      "href": "/ww/bathrooms"
+    },
+    {
+      "id": 13,
+      "label": "Living",
+      "href": "/ww/living"
+    },
+    {
+      "id": 190,
+      "label": "Night",
+      "href": "/ww/bedroom-furniture"
+    },
+    {
+      "id": 18,
+      "label": "Multi-functional modules",
+      "href": "/ww/multi-functional-modules"
+    }
+  ],
+  "primaryCategoryIds": [
+    190
+  ],
+  "itemsPerPage": 12,
+  "maxVisibleTags": 5
+}

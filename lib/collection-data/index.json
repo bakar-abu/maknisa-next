@@ -1,0 +1,40 @@
+{
+  "kitchens": {
+    "productCount": 12,
+    "tagCount": 57,
+    "h1": "Looking for your kitchen?"
+  },
+  "bathrooms": {
+    "productCount": 12,
+    "tagCount": 50,
+    "h1": "Looking for your bathroom?"
+  },
+  "living": {
+    "productCount": 12,
+    "tagCount": 47,
+    "h1": "Looking for your living room?"
+  },
+  "bedroom-furniture": {
+    "productCount": 2,
+    "tagCount": 11,
+    "h1": "Looking for Furniture for the sleeping area?"
+  },
+  "tables-chairs-stools": {
+    "productCount": 12,
+    "tagCount": 0,
+    "h1": "Looking for tables, chairs and stools?"
+  },
+  "multi-functional-modules": {
+    "productCount": 1,
+    "tagCount": 2,
+    "h1": "Looking for Multi-functional Systems?"
+  },
+  "marble-tiles": {
+    "productCount": 12,
+    "h1": "Looking for marble & tiles?"
+  },
+  "lighting": {
+    "productCount": 12,
+    "h1": "Looking for lighting?"
+  }
+}

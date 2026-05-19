@@ -1,0 +1,548 @@
+{
+  "slug": "living",
+  "type": "grid",
+  "h1": "Looking for your living room?",
+  "intro": "",
+  "title": "Living Rooms",
+  "breadcrumbLabel": "Living",
+  "tags": [
+    {
+      "id": 185,
+      "label": "modular"
+    },
+    {
+      "id": 186,
+      "label": "Modern"
+    },
+    {
+      "id": 291,
+      "label": "CLASSIC"
+    },
+    {
+      "id": 506,
+      "label": "CONTEMPORARY"
+    },
+    {
+      "id": 510,
+      "label": "DESIGN"
+    },
+    {
+      "id": 515,
+      "label": "COUNTRy"
+    },
+    {
+      "id": 516,
+      "label": "flat door"
+    },
+    {
+      "id": 517,
+      "label": "frame door"
+    },
+    {
+      "id": 518,
+      "label": "shaped lines"
+    },
+    {
+      "id": 519,
+      "label": "handle"
+    },
+    {
+      "id": 520,
+      "label": "heat"
+    },
+    {
+      "id": 521,
+      "label": "cosy"
+    },
+    {
+      "id": 522,
+      "label": "colour"
+    },
+    {
+      "id": 523,
+      "label": "adaptable"
+    },
+    {
+      "id": 524,
+      "label": "accessible"
+    },
+    {
+      "id": 525,
+      "label": "tradition"
+    },
+    {
+      "id": 526,
+      "label": "romantic"
+    },
+    {
+      "id": 527,
+      "label": "family"
+    },
+    {
+      "id": 528,
+      "label": "English style"
+    },
+    {
+      "id": 529,
+      "label": "slat"
+    },
+    {
+      "id": 531,
+      "label": "young"
+    },
+    {
+      "id": 532,
+      "label": "luxury"
+    },
+    {
+      "id": 533,
+      "label": "bright"
+    },
+    {
+      "id": 535,
+      "label": "customisable"
+    },
+    {
+      "id": 536,
+      "label": "decorations"
+    },
+    {
+      "id": 537,
+      "label": "charm"
+    },
+    {
+      "id": 538,
+      "label": "international"
+    },
+    {
+      "id": 539,
+      "label": "minimal"
+    },
+    {
+      "id": 540,
+      "label": "accessories"
+    },
+    {
+      "id": 542,
+      "label": "elegant"
+    },
+    {
+      "id": 543,
+      "label": "glamour"
+    },
+    {
+      "id": 544,
+      "label": "chic"
+    },
+    {
+      "id": 545,
+      "label": "sophisticated"
+    },
+    {
+      "id": 546,
+      "label": "compact"
+    },
+    {
+      "id": 547,
+      "label": "technological"
+    },
+    {
+      "id": 548,
+      "label": "smart"
+    },
+    {
+      "id": 549,
+      "label": "trendy"
+    },
+    {
+      "id": 550,
+      "label": "innovative"
+    },
+    {
+      "id": 553,
+      "label": "glass"
+    },
+    {
+      "id": 554,
+      "label": "character"
+    },
+    {
+      "id": 555,
+      "label": "open space"
+    },
+    {
+      "id": 556,
+      "label": "fashion"
+    },
+    {
+      "id": 557,
+      "label": "gold"
+    },
+    {
+      "id": 558,
+      "label": "leather"
+    },
+    {
+      "id": 559,
+      "label": "loft"
+    },
+    {
+      "id": 561,
+      "label": "casual"
+    },
+    {
+      "id": 571,
+      "label": "Sophisticated"
+    }
+  ],
+  "products": [
+    {
+      "id": "carattere-living-1",
+      "title": "Carattere Living",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/30c5d542-23b5-441a-875b-a62d34f19013/nuctwf/std/700x0/Carattere_pag_82b.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/b0ddf0a9-2565-46d1-9eed-80d3440a1dd6/nuctwf/std/700x0/Carattere_pag_80a.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/1d9b3757-dbd1-406e-b7b0-73b74b78df9e/nuctwf/std/700x0/Carattere_pag_81b.jpg"
+      ],
+      "tagIds": [
+        544,
+        506,
+        510,
+        542,
+        528,
+        517,
+        543,
+        538,
+        539,
+        185
+      ],
+      "categoryIds": [
+        13
+      ]
+    },
+    {
+      "id": "dandy-plus-living-2",
+      "title": "Dandy Plus Living",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/c44d80fd-d4bd-4d46-bf46-b5a1e2f511c5/nuctwf/std/700x0/Dandy_Plus_pag_15.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/33f2c903-d453-4830-93fb-ce59183e24db/nuctwf/std/700x0/Dandy_Plus_pag_16_17.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/70d0b36f-a2f2-4e98-852a-f76371400f52/nuctwf/std/700x0/Dandy_Plus_pag_26.jpg"
+      ],
+      "tagIds": [
+        522,
+        546,
+        506,
+        510,
+        516,
+        550,
+        539,
+        185,
+        548,
+        547,
+        549
+      ],
+      "categoryIds": [
+        13
+      ]
+    },
+    {
+      "id": "easy-living-3",
+      "title": "Easy Living",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/24e0c714-2c4b-42d1-9c36-01593fa63fef/nuctwf/std/700x0/Urban_pag_23_23.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/06d62676-e687-44a3-abc3-f2f1af1dad15/nuctwf/std/700x0/Family_pag_94_95.jpg"
+      ],
+      "tagIds": [
+        524,
+        540,
+        523,
+        533,
+        561,
+        291,
+        522,
+        506,
+        535,
+        528,
+        527,
+        516,
+        517,
+        519,
+        520,
+        185,
+        525,
+        549,
+        531
+      ],
+      "categoryIds": [
+        13
+      ]
+    },
+    {
+      "id": "essenza-living-4",
+      "title": "Essenza Living",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/8062fecc-e807-4b3f-b16e-d4a682120aed/nuctwf/std/700x0/ESSENZA_pag_22-23.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/14c0c506-6e03-43f5-9157-fb779b4dd884/nuctwf/std/700x0/ESSENZA_pag_30-31.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/a991f8cf-b58c-4472-bd85-83e294851b16/nuctwf/std/700x0/ESSENZA_pag_38-39.jpg"
+      ],
+      "tagIds": [
+        506,
+        510,
+        542,
+        516,
+        517,
+        538,
+        185,
+        555,
+        529
+      ],
+      "categoryIds": [
+        13
+      ]
+    },
+    {
+      "id": "exclusiva-living-5",
+      "title": "Exclusiva Living",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/d5574ce5-75d8-45ad-8472-b566e080f6cd/nuctwf/std/700x0/Exclusiva_pag_79b.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/65aa1327-bd56-4edc-9bce-60c4be7b138f/nuctwf/std/700x0/Exclusiva_pag_82a.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/34b6bcf0-cd2c-442c-bae6-e03da49570cc/nuctwf/std/700x0/Exclusiva_pag_83a.jpg"
+      ],
+      "tagIds": [
+        537,
+        291,
+        536,
+        542,
+        557,
+        519,
+        538,
+        558,
+        532,
+        185,
+        555,
+        571
+      ],
+      "categoryIds": [
+        13
+      ]
+    },
+    {
+      "id": "formalia-living-6",
+      "title": "Formalia Living",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/c9042a30-d327-4553-acdb-df4a96bc0b60/nuctwf/std/700x0/Formalia_pag_66_67.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/69d0692c-26c5-4635-b9cb-69fed47ae479/nuctwf/std/700x0/Formalia_pag_56_57.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/f0d2d4e7-74bb-480c-88c8-b9b68d92b2ab/nuctwf/std/700x0/Formalia_pag_64.jpg"
+      ],
+      "tagIds": [
+        561,
+        554,
+        510,
+        542,
+        556,
+        516,
+        539,
+        186,
+        185,
+        555,
+        518,
+        545
+      ],
+      "categoryIds": [
+        13
+      ]
+    },
+    {
+      "id": "jeometrica-living-7",
+      "title": "Jeometrica Living",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/f38528d2-e30e-479c-a6e6-e31206fa31c0/nuctwf/std/700x0/Jeometrica_pag_43.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/8f0f2db5-74fa-49a7-bf02-021dce48c57a/nuctwf/std/700x0/Jeometrica_pag_26.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/a3021571-b317-461c-99cf-75d33285c4e0/nuctwf/std/700x0/Jeometrica_pag_16.jpg"
+      ],
+      "tagIds": [
+        506,
+        510,
+        542,
+        516,
+        538,
+        185,
+        555,
+        529
+      ],
+      "categoryIds": [
+        13
+      ]
+    },
+    {
+      "id": "libra-living-8",
+      "title": "Libra Living",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/2013d378-e34d-489b-bd1b-b974891c9b50/nuctwf/std/700x0/Libra_pag_44-55.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/f7054535-f5ee-485a-96e8-b90aa692060d/nuctwf/std/700x0/Libra_pag_37.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/14a9f45a-bed2-4f9d-a7d9-0ec32e43dc56/nuctwf/std/700x0/Libra_pag_14-15.jpg"
+      ],
+      "tagIds": [
+        506,
+        510,
+        542,
+        516,
+        553,
+        538,
+        185,
+        555,
+        529
+      ],
+      "categoryIds": [
+        13
+      ]
+    },
+    {
+      "id": "lumina-living-9",
+      "title": "Lumina Living",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/677a2580-e7d6-4123-beb4-51f4640a151b/nuctwf/std/700x0/Lumina_pag_14-15.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/3a487ff8-5bee-4b9c-9866-1cbf30755819/nuctwf/std/700x0/Lumina_pag_36-37.jpg"
+      ],
+      "tagIds": [
+        523,
+        506,
+        510,
+        542,
+        516,
+        553,
+        185,
+        555
+      ],
+      "categoryIds": [
+        13
+      ]
+    },
+    {
+      "id": "madeleine-living-10",
+      "title": "Madeleine Living",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/95e8d383-7d2a-4cdf-b5d3-2b247774c973/nuctwf/std/700x0/Madeleine_pag_63.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/1f6b5733-6cc5-4110-8903-220bc0b65e9d/nuctwf/std/700x0/Madeleine_pag_64.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/1b85a369-80d5-4d8e-abfb-75cf7e143af4/nuctwf/std/700x0/Madeleine_pag_62.jpg"
+      ],
+      "tagIds": [
+        524,
+        523,
+        291,
+        521,
+        515,
+        517,
+        519,
+        520,
+        185,
+        526,
+        518,
+        525
+      ],
+      "categoryIds": [
+        13
+      ]
+    },
+    {
+      "id": "mira-living-11",
+      "title": "Mira Living",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/a587b0ce-69aa-4c17-9fcc-df097c03e133/nuctwf/std/700x0/MIRA_pag_30-31.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/9a6150e9-0d6d-4b50-bcbd-c8fbfdf8e867/nuctwf/std/700x0/MIRA_pag_44-45.jpg"
+      ],
+      "tagIds": [
+        506,
+        510,
+        542,
+        516,
+        538,
+        185,
+        555,
+        529
+      ],
+      "categoryIds": [
+        13
+      ]
+    },
+    {
+      "id": "moda-living-12",
+      "title": "Moda Living",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/b87ab00b-81cb-4889-a4e1-16e82e5c85c4/nuctwf/std/700x0/MODA_pag_26-27.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/ab27567e-89f2-4faf-9461-3efe1882e2fd/nuctwf/std/700x0/MODA_pag_52-53.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/aa478e10-4a14-4f01-b74f-7bdbf6fb1a1f/nuctwf/std/700x0/MODA_pag_46-47.jpg"
+      ],
+      "tagIds": [
+        506,
+        510,
+        542,
+        516,
+        517,
+        538,
+        185,
+        555,
+        529
+      ],
+      "categoryIds": [
+        13
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": 17,
+      "label": "Kitchens",
+      "href": "/ww/kitchens"
+    },
+    {
+      "id": 12,
+      "label": "Bathrooms",
+      "href": "/ww/bathrooms"
+    },
+    {
+      "id": 13,
+      "label": "Living",
+      "href": "/ww/living"
+    },
+    {
+      "id": 190,
+      "label": "Night",
+      "href": "/ww/bedroom-furniture"
+    },
+    {
+      "id": 18,
+      "label": "Multi-functional modules",
+      "href": "/ww/multi-functional-modules"
+    }
+  ],
+  "primaryCategoryIds": [
+    13
+  ],
+  "itemsPerPage": 12,
+  "maxVisibleTags": 5
+}

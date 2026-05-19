@@ -1,0 +1,70 @@
+{
+  "slug": "multi-functional-modules",
+  "type": "grid",
+  "h1": "Looking for Multi-functional Systems?",
+  "intro": "Choose practicality without sacrificing style with our multi-functional systems! Download the catalogue for all the details and subscribe to our newsletter for new home furniture ideas. You can also click on Inspire me and let Scavolini give you suggestions to match your style!",
+  "title": "Multi-function Systems",
+  "breadcrumbLabel": "Multi Functional Modules",
+  "tags": [
+    {
+      "id": 185,
+      "label": "modular"
+    },
+    {
+      "id": 186,
+      "label": "Modern"
+    }
+  ],
+  "products": [
+    {
+      "id": "boxlife-1",
+      "title": "BoxLife",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/28264699-cd13-4c8b-99a1-03de2ab6d003/nuctwf/std/700x0/BoxLife_pag_6_7.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/f9d179ee-6efb-4da3-8cd9-95447c92ea94/nuctwf/std/700x0/BoxLife_pag_90_91.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/981fb54c-2ed1-4d0f-a8a0-10dd0806f05d/nuctwf/std/700x0/BoxLife_pag_56.jpg"
+      ],
+      "tagIds": [
+        186,
+        185
+      ],
+      "categoryIds": [
+        18
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": 17,
+      "label": "Kitchens",
+      "href": "/ww/kitchens"
+    },
+    {
+      "id": 12,
+      "label": "Bathrooms",
+      "href": "/ww/bathrooms"
+    },
+    {
+      "id": 13,
+      "label": "Living",
+      "href": "/ww/living"
+    },
+    {
+      "id": 190,
+      "label": "Night",
+      "href": "/ww/bedroom-furniture"
+    },
+    {
+      "id": 18,
+      "label": "Multi-functional modules",
+      "href": "/ww/multi-functional-modules"
+    }
+  ],
+  "primaryCategoryIds": [
+    18
+  ],
+  "itemsPerPage": 12,
+  "maxVisibleTags": 5
+}

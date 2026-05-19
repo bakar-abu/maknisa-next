@@ -1,0 +1,300 @@
+/**
+ * Maknisa design overrides for Next.js components.
+ * Maps button elements to original anchor styles and fixes layout details.
+ */
+
+:root {
+  --maknisa-brand: #f99106;
+  --maknisa-red: #f99106;
+  --maknisa-text: #28292b;
+  --maknisa-bg: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--maknisa-text);
+  background-color: var(--maknisa-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Logo image in header square */
+.sn_header_logo .sn_header_logo_img {
+  display: block;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+@media only screen and (min-width: 80em) {
+  .sn_header_logo .sn_header_logo_img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Language selector — original uses <a>, we use <button> */
+.sn_header_langs button {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--maknisa-text);
+  cursor: pointer;
+}
+
+.sn_header_langs button:hover,
+.sn_header_langs button:focus-visible {
+  color: var(--maknisa-red);
+}
+
+.sn_header_langs button .sn_sprite {
+  width: 10px;
+  height: 10px;
+  margin-left: 15px;
+}
+
+@media only screen and (min-width: 80em) {
+  .sn_header_langs button .sn_sprite {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Search toggle */
+.sn_header_search button.sn_header_search_toggle {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Lang panel close button */
+.sn_langs_panel_close {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Collection listing — card tags (display only, below product) */
+.sn_kitchen_i .sn_kitchen_tags .sn_kitchen_tags_i {
+  cursor: default;
+  pointer-events: none;
+}
+
+.sn_kitchen_tags button.sn_kitchen_tags_i {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  text-transform: inherit;
+}
+
+.sn_results_paginator_link {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+}
+
+.sn_kitchens_grid_show_more {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: underline;
+  color: var(--maknisa-brand);
+}
+
+/* After-sales register banner — white X only */
+.sn_banner_register_close {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.sn_banner_register_close:hover,
+.sn_banner_register_close:focus-visible {
+  color: #fff;
+  background: transparent;
+  opacity: 0.85;
+  outline: none;
+}
+
+.sn_banner_register_close svg {
+  display: block;
+}
+
+.sn_langs_backdrop {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Search popup close */
+.search_toggle.close {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Hamburger — keep original positioning */
+.sn_header_hamburger {
+  position: relative;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+/* Footer newsletter button inherits sn_btn_grow from main CSS */
+.sn_footer_newsletter button.sn_btn_grow {
+  cursor: pointer;
+}
+
+/* Nav dropdown triggers */
+.sn_header_menu_primary ul li > span[role="button"] {
+  cursor: pointer;
+}
+
+/* SVG sprite fill for header/footer icons */
+.sn_header .sn_sprite svg,
+.sn_footer .sn_sprite svg {
+  fill: currentColor;
+}
+
+.sn_sprite._facebook,
+.sn_sprite._twitter,
+.sn_sprite._pinterest,
+.sn_sprite._instagram,
+.sn_sprite._tiktok,
+.sn_sprite._linkedin,
+.sn_sprite._youtube,
+.sn_sprite._websolute {
+  width: 24px;
+  height: 24px;
+}
+
+@media only screen and (min-width: 48em) {
+  .sn_sprite._facebook,
+  .sn_sprite._twitter,
+  .sn_sprite._pinterest,
+  .sn_sprite._instagram,
+  .sn_sprite._tiktok,
+  .sn_sprite._linkedin,
+  .sn_sprite._youtube,
+  .sn_sprite._websolute {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Affix bar CTA links */
+.sn_affix_navigation .sn_btn_grow {
+  text-decoration: none;
+}
+
+/* Stacked video sliders — match reference visibility */
+body.home-2025 .sn_slider_video {
+  visibility: hidden;
+}
+
+body.home-2025 .sn_slider_video.active {
+  visibility: visible;
+}
+
+body.home-2025 .sn_slider_video .swiperVideo .swiper-slide {
+  height: 100%;
+}
+
+/* Freeze thumb progress bar while autoplay is paused */
+body.home-2025 .sn_slider_video.is-autoplay-paused
+  .swiperThumb
+  .swiper-wrapper
+  .swiper-slide.swiper-slide-thumb-active::before {
+  transition: none !important;
+}
+
+/* Skip links visible on focus — from main bundle, reinforce */
+.skip-link:focus {
+  z-index: 10001;
+}
+
+/* Magazine listing — match reference layout */
+.sn_intro_text .sn_breadcrumbs {
+  color: #8c8c8c;
+}
+
+.sn_intro_text .sn_breadcrumbs li:last-child {
+  color: #8c8c8c;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.sn_intro_text .h1 {
+  text-align: left;
+}
+
+.sn_grid_magazine .sn_paragraph_xl {
+  max-width: 66.666%;
+}
+
+@media only screen and (max-width: 52.49em) {
+  .sn_grid_magazine .sn_paragraph_xl {
+    max-width: 100%;
+  }
+}
+
+/* Company pages */
+.sn_accordion_toggle {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.sn_accordion_grid_toggle {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.sn_intro_anchors_bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 420px;
+}
+
+.sn_store_locator_map .sn_store_locator_map_stores {
+  max-width: 720px;
+  margin: 80px auto 120px;
+  padding: 0 20px;
+}

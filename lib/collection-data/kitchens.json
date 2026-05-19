@@ -1,0 +1,604 @@
+{
+  "slug": "kitchens",
+  "type": "grid",
+  "h1": "Looking for your kitchen?",
+  "intro": "Furnish your home with a Scavolini kitchen: choose the style, combine it with the different materials, colours and accessories available, and download the catalogues of the models that stood out to you. And if inspiration still hasn’t struck you, subscribe to our newsletter for a host of furnishing proposals, or click on Inspire me.",
+  "title": "Kitchens",
+  "breadcrumbLabel": "Kitchens",
+  "tags": [
+    {
+      "id": 185,
+      "label": "modular"
+    },
+    {
+      "id": 186,
+      "label": "Modern"
+    },
+    {
+      "id": 291,
+      "label": "CLASSIC"
+    },
+    {
+      "id": 498,
+      "label": "shabby chic"
+    },
+    {
+      "id": 499,
+      "label": "INDUSTRIAL"
+    },
+    {
+      "id": 506,
+      "label": "CONTEMPORARY"
+    },
+    {
+      "id": 509,
+      "label": "VINTAGE"
+    },
+    {
+      "id": 510,
+      "label": "DESIGN"
+    },
+    {
+      "id": 514,
+      "label": "STEEL"
+    },
+    {
+      "id": 515,
+      "label": "COUNTRy"
+    },
+    {
+      "id": 516,
+      "label": "flat door"
+    },
+    {
+      "id": 517,
+      "label": "frame door"
+    },
+    {
+      "id": 518,
+      "label": "shaped lines"
+    },
+    {
+      "id": 519,
+      "label": "handle"
+    },
+    {
+      "id": 520,
+      "label": "heat"
+    },
+    {
+      "id": 521,
+      "label": "cosy"
+    },
+    {
+      "id": 522,
+      "label": "colour"
+    },
+    {
+      "id": 523,
+      "label": "adaptable"
+    },
+    {
+      "id": 524,
+      "label": "accessible"
+    },
+    {
+      "id": 525,
+      "label": "tradition"
+    },
+    {
+      "id": 526,
+      "label": "romantic"
+    },
+    {
+      "id": 527,
+      "label": "family"
+    },
+    {
+      "id": 528,
+      "label": "English style"
+    },
+    {
+      "id": 529,
+      "label": "slat"
+    },
+    {
+      "id": 530,
+      "label": "sociable"
+    },
+    {
+      "id": 531,
+      "label": "young"
+    },
+    {
+      "id": 532,
+      "label": "luxury"
+    },
+    {
+      "id": 533,
+      "label": "bright"
+    },
+    {
+      "id": 534,
+      "label": "single"
+    },
+    {
+      "id": 535,
+      "label": "customisable"
+    },
+    {
+      "id": 536,
+      "label": "decorations"
+    },
+    {
+      "id": 537,
+      "label": "charm"
+    },
+    {
+      "id": 538,
+      "label": "international"
+    },
+    {
+      "id": 539,
+      "label": "minimal"
+    },
+    {
+      "id": 540,
+      "label": "accessories"
+    },
+    {
+      "id": 542,
+      "label": "elegant"
+    },
+    {
+      "id": 543,
+      "label": "glamour"
+    },
+    {
+      "id": 544,
+      "label": "chic"
+    },
+    {
+      "id": 545,
+      "label": "sophisticated"
+    },
+    {
+      "id": 546,
+      "label": "compact"
+    },
+    {
+      "id": 547,
+      "label": "technological"
+    },
+    {
+      "id": 548,
+      "label": "smart"
+    },
+    {
+      "id": 549,
+      "label": "trendy"
+    },
+    {
+      "id": 550,
+      "label": "innovative"
+    },
+    {
+      "id": 551,
+      "label": "brass"
+    },
+    {
+      "id": 552,
+      "label": "bronze"
+    },
+    {
+      "id": 553,
+      "label": "glass"
+    },
+    {
+      "id": 554,
+      "label": "character"
+    },
+    {
+      "id": 555,
+      "label": "open space"
+    },
+    {
+      "id": 556,
+      "label": "fashion"
+    },
+    {
+      "id": 557,
+      "label": "gold"
+    },
+    {
+      "id": 558,
+      "label": "leather"
+    },
+    {
+      "id": 559,
+      "label": "loft"
+    },
+    {
+      "id": 560,
+      "label": "natural"
+    },
+    {
+      "id": 561,
+      "label": "casual"
+    },
+    {
+      "id": 566,
+      "label": "professional"
+    },
+    {
+      "id": 571,
+      "label": "Sophisticated"
+    }
+  ],
+  "products": [
+    {
+      "id": "baltimora-1",
+      "title": "Baltimora",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/13c1d753-e210-48e3-877c-16508546cc51/nuctwf/std/700x0/Baltimora_pag_44_45.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/afd1ebdd-399b-440e-9256-b06487eae498/nuctwf/std/700x0/Baltimora_pag_56.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/a2b0a779-11fd-44e9-93d0-d31ad1468926/nuctwf/std/700x0/Baltimora_pag_32_33.jpg"
+      ],
+      "tagIds": [
+        537,
+        291,
+        515,
+        536,
+        517,
+        519,
+        520,
+        538,
+        532,
+        526,
+        518,
+        525
+      ],
+      "categoryIds": [
+        17
+      ]
+    },
+    {
+      "id": "boxi-2",
+      "title": "Boxi",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/aa46a44e-59fb-4c48-b95c-b4667a629993/nuctwf/std/700x0/Boxi_pag_102_103.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/cbdf0b38-ddaf-4c57-a947-54b126e97520/nuctwf/std/700x0/Boxi_pag_108_109.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/28d62186-2eb0-4404-bc66-210076fb5185/nuctwf/std/700x0/BoxLife_pag_68_69.jpg"
+      ],
+      "tagIds": [
+        540,
+        535,
+        510,
+        527,
+        516,
+        539,
+        186,
+        185,
+        530,
+        531
+      ],
+      "categoryIds": [
+        17
+      ]
+    },
+    {
+      "id": "carattere-3",
+      "title": "Carattere",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/81ac4694-d2b9-4777-8352-948555023c47/nuctwf/std/700x0/Carattere_Restyling_pag_14_15.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/2a18272f-7ce3-44a7-a2ee-91d8c985a430/nuctwf/std/700x0/Carattere_pag_66_67.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/f46e9f90-d9a5-4be8-b875-2fd2269ce654/nuctwf/std/700x0/Carattere_Restyling_pag_6_7.jpg"
+      ],
+      "tagIds": [
+        544,
+        506,
+        510,
+        542,
+        528,
+        517,
+        543,
+        538,
+        539,
+        185,
+        545
+      ],
+      "categoryIds": [
+        17
+      ]
+    },
+    {
+      "id": "colony-4",
+      "title": "Colony",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/f8acf8d6-1d14-4a73-85df-98b2da68b200/nuctwf/std/700x0/Colony_I_copertina.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/1677e497-fa0f-4e64-bc1a-c29a1736030d/nuctwf/std/700x0/Colony_pag_46_47.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/9861e4c6-5eb7-447c-b99c-f643a47415a3/nuctwf/std/700x0/Colony_pag_74_75.jpg"
+      ],
+      "tagIds": [
+        524,
+        523,
+        506,
+        515,
+        528,
+        527,
+        519,
+        520,
+        185,
+        526,
+        529,
+        530
+      ],
+      "categoryIds": [
+        17
+      ]
+    },
+    {
+      "id": "dandy-plus-5",
+      "title": "Dandy Plus",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/74710193-dfa1-4287-883e-e5bede6b04a3/nuctwf/std/700x0/Dandy_Plus_pag_10_11.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/33f2c903-d453-4830-93fb-ce59183e24db/nuctwf/std/700x0/Dandy_Plus_pag_16_17.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/893d1336-5ee6-4806-978e-bac13577a7ac/nuctwf/std/700x0/Dandy_Plus_pag_22_23.jpg"
+      ],
+      "tagIds": [
+        522,
+        546,
+        506,
+        510,
+        516,
+        550,
+        539,
+        185,
+        548,
+        547,
+        549,
+        531
+      ],
+      "categoryIds": [
+        17
+      ]
+    },
+    {
+      "id": "delinea-6",
+      "title": "DeLinea",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/1a60696f-09c6-4fe5-b810-ef31c03d97ab/nuctwf/std/700x0/Delinea_pag_14_15.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/237677f2-1bd0-4791-800f-5146fb73cde4/nuctwf/std/700x0/Delinea_pag_8_9.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/0418412e-2843-45d0-b4d1-a58684a3dc20/nuctwf/std/700x0/Delinea_pag_24_25.jpg"
+      ],
+      "tagIds": [
+        551,
+        552,
+        506,
+        510,
+        542,
+        516,
+        543,
+        538,
+        539,
+        185,
+        514
+      ],
+      "categoryIds": [
+        17
+      ]
+    },
+    {
+      "id": "diesel-get-together-7",
+      "title": "Diesel Get Together",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/5464967b-51e4-476a-bc12-799dd2be2e2f/nuctwf/std/700x0/Diesel Get Together_pag_10_11.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/9e15229a-e112-4fb6-baef-1865bea9c5ae/nuctwf/std/700x0/Diesel Get Together_pag_24_25.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/ea79b3ae-7f05-4c68-b057-34b20d5a2e2b/nuctwf/std/700x0/Diesel Get Together_pag_48_49.jpg"
+      ],
+      "tagIds": [
+        554,
+        522,
+        510,
+        556,
+        516,
+        553,
+        519,
+        499,
+        538,
+        559,
+        185,
+        555,
+        514
+      ],
+      "categoryIds": [
+        17
+      ]
+    },
+    {
+      "id": "diesel-open-workshop-8",
+      "title": "Diesel Open Workshop",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/86c15588-e42b-4ee8-b8b4-9cdca87f20be/nuctwf/std/700x0/Diesel Open Workshop_pag_18_19.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/9fef4454-3948-4049-acd6-e5d58c541105/nuctwf/std/700x0/Diesel Open Workshop_pag_38_39.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/c024d267-18ff-4641-92fd-30fd4878af4f/nuctwf/std/700x0/Diesel Open Workshop_pag_28_29.jpg"
+      ],
+      "tagIds": [
+        506,
+        510,
+        556,
+        516,
+        553,
+        519,
+        499,
+        538,
+        559,
+        532,
+        555,
+        514,
+        509
+      ],
+      "categoryIds": [
+        17
+      ]
+    },
+    {
+      "id": "diesel-social-kitchen-9",
+      "title": "Diesel Social Kitchen",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/0968048e-c3bb-4c12-9e64-de91d98f6a48/nuctwf/std/700x0/Diesel Social Kitchen_pag_14_15.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/3c008258-7a36-41f5-815a-0e1dcd113414/nuctwf/std/700x0/Diesel Social Kitchen_pag_22_23.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/54d2a2f7-6b9a-4e29-95b3-41a9e0a3f90c/nuctwf/std/700x0/Diesel Social Kitchen_pag_34_35.jpg"
+      ],
+      "tagIds": [
+        522,
+        510,
+        556,
+        516,
+        519,
+        499,
+        538,
+        559,
+        185,
+        555,
+        514,
+        509
+      ],
+      "categoryIds": [
+        17
+      ]
+    },
+    {
+      "id": "essenza-10",
+      "title": "Essenza",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/a69d436c-1f24-44d4-833f-cc1151aa8d4b/nuctwf/std/700x0/ESSENZA_pag_10-11.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/425f3cca-f67e-4c6b-b6a8-7f75adeb88ca/nuctwf/std/700x0/ESSENZA_pag_26-27.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/3e4fdb3c-a838-4456-aaa8-6d1413c08ac2/nuctwf/std/700x0/ESSENZA_pag_18-19.jpg"
+      ],
+      "tagIds": [
+        506,
+        535,
+        510,
+        542,
+        516,
+        520,
+        538,
+        539,
+        185,
+        560,
+        555
+      ],
+      "categoryIds": [
+        17
+      ]
+    },
+    {
+      "id": "exclusiva-11",
+      "title": "Exclusiva",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/6959bbc7-6d9c-4b42-b5c1-4539488bec4d/nuctwf/std/700x0/Exclusiva_pag_10_11.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/ac2f3f07-3e44-43ee-a94a-097cfab30864/nuctwf/std/700x0/Exclusiva_pag_54_55.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/dff6e513-ee78-4e0f-826e-868978ec7a8b/nuctwf/std/700x0/Exclusiva_pag_46_47.jpg"
+      ],
+      "tagIds": [
+        537,
+        291,
+        536,
+        542,
+        557,
+        519,
+        538,
+        558,
+        532,
+        555,
+        545,
+        571
+      ],
+      "categoryIds": [
+        17
+      ]
+    },
+    {
+      "id": "family-12",
+      "title": "Family",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/c0924510-d478-430e-893a-11dfdb848f30/nuctwf/std/700x0/Family_pag_98_99.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/59ae5934-5e7c-4639-abab-b9faa63d352a/nuctwf/std/700x0/Family_pag_106_107.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/ef4e542e-a580-4e2f-9e88-590d7147619c/nuctwf/std/700x0/Family_pag_82_83.jpg"
+      ],
+      "tagIds": [
+        524,
+        523,
+        291,
+        527,
+        519,
+        520,
+        185,
+        498,
+        530,
+        525,
+        509
+      ],
+      "categoryIds": [
+        17
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": 17,
+      "label": "Kitchens",
+      "href": "/ww/kitchens"
+    },
+    {
+      "id": 12,
+      "label": "Bathrooms",
+      "href": "/ww/bathrooms"
+    },
+    {
+      "id": 13,
+      "label": "Living",
+      "href": "/ww/living"
+    },
+    {
+      "id": 190,
+      "label": "Night",
+      "href": "/ww/bedroom-furniture"
+    },
+    {
+      "id": 18,
+      "label": "Multi-functional modules",
+      "href": "/ww/multi-functional-modules"
+    }
+  ],
+  "primaryCategoryIds": [
+    17
+  ],
+  "itemsPerPage": 12,
+  "maxVisibleTags": 5
+}

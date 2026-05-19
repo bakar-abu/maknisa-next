@@ -1,0 +1,195 @@
+{
+  "categories": [
+    {
+      "href": "/ww/magazine",
+      "title": "All articles",
+      "label": "All articles"
+    },
+    {
+      "href": "/ww/magazine/design",
+      "title": "Design",
+      "label": "Design (90)"
+    },
+    {
+      "href": "/ww/magazine/design-and-style",
+      "title": "Design &amp; Style",
+      "label": "Design &amp; Style (102)"
+    },
+    {
+      "href": "/ww/magazine/furnishings",
+      "title": "Furnishings",
+      "label": "Furnishings (112)"
+    },
+    {
+      "href": "/ww/magazine/furnishing-advice",
+      "title": "Furnishing advice",
+      "label": "Furnishing advice (176)"
+    },
+    {
+      "href": "/ww/magazine/colours-and-materials",
+      "title": "Colours and materials",
+      "label": "Colours and materials (85)"
+    },
+    {
+      "href": "/ww/magazine/living-at-home",
+      "title": "Living at home",
+      "label": "Living at home (55)"
+    },
+    {
+      "href": "/ww/magazine/designers",
+      "title": "Designers",
+      "label": "Designers (15)"
+    },
+    {
+      "href": "/ww/magazine/green",
+      "title": "Green",
+      "label": "Green (10)"
+    }
+  ],
+  "articles": [
+    {
+      "id": "20679",
+      "slug": "magazine/furnishing-a-small-and-cosy-bathroom-the-complete-guide",
+      "title": "Furnishing a small and cosy bathroom: the complete guide",
+      "excerpt": "Small bathroom ideas and photos",
+      "href": "/ww/magazine/furnishing-a-small-and-cosy-bathroom-the-complete-guide",
+      "category": {
+        "label": "Furnishing advice"
+      },
+      "image": "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/97fe5c33-483e-43a8-bdf5-b2ca510d20cc/nuctwf/std/800x0/LIDO_pag_20.jpg",
+      "large": true
+    },
+    {
+      "id": "20665",
+      "slug": "magazine/porcelain-stoneware-kitchen-worktops-pros-and-cons",
+      "title": "Porcelain stoneware kitchen worktops: pros and cons",
+      "excerpt": "What should you look for when choosing a porcelain stoneware kitchen worktop?",
+      "href": "/ww/magazine/porcelain-stoneware-kitchen-worktops-pros-and-cons",
+      "category": {
+        "label": "Colours and materials"
+      },
+      "image": "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/097f5a8d-2156-4bbc-a096-bf22d16b34dc/nuctwf/std/800x0/ESSENZA_pag_12-13.jpg",
+      "large": false
+    },
+    {
+      "id": "20514",
+      "slug": "magazine/dove-grey-kitchens",
+      "title": "Dove grey kitchens",
+      "excerpt": "Ideas and combinations for a dove grey kitchen",
+      "href": "/ww/magazine/dove-grey-kitchens",
+      "category": {
+        "label": "Colours and materials"
+      },
+      "image": "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/4469a2f4-38e0-4bfa-aa72-d253690992d0/nuctwf/std/800x0/Libra_pag_10-11.jpg",
+      "large": false
+    },
+    {
+      "id": "20493",
+      "slug": "magazine/furnishing-a-small-home",
+      "title": "Furnishing a small home",
+      "excerpt": "The ultimate guide to optimising every centimetre at home",
+      "href": "/ww/magazine/furnishing-a-small-home",
+      "category": {
+        "label": "Furnishing advice"
+      },
+      "image": "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/359cc534-db83-4a42-9224-648735a56c75/nuctwf/std/800x0/BoxLife_pag_28_29.jpg",
+      "large": false
+    },
+    {
+      "id": "20385",
+      "slug": "magazine/towel-rail-accessories-for-the-bathroom",
+      "title": "Towel rail accessories for the bathroom",
+      "excerpt": "Discover our selection of bathroom towel rails",
+      "href": "/ww/magazine/towel-rail-accessories-for-the-bathroom",
+      "category": {
+        "label": "Furnishing advice"
+      },
+      "image": "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/5f1f10e6-5430-4919-8caa-36a8302da7ef/nuctwf/std/800x0/Tratto_pag_22_23.jpg",
+      "large": false
+    },
+    {
+      "id": "20373",
+      "slug": "magazine/round-square-or-oval-table",
+      "title": "Round, square or oval table?",
+      "excerpt": "How to choose the right table shape",
+      "href": "/ww/magazine/round-square-or-oval-table",
+      "category": {
+        "label": "Design &amp; Style"
+      },
+      "image": "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/6bdbed0c-4ffd-4d72-aac5-65e0c1015a9d/nuctwf/std/800x0/TAVOLO_PARIS_pag_51.jpg",
+      "large": false
+    },
+    {
+      "id": "20363",
+      "slug": "magazine/how-to-choose-the-right-colour-for-your-bedroom",
+      "title": "How to choose the right colour for your bedroom",
+      "excerpt": "Here are 3 colours for your slumber quarters",
+      "href": "/ww/magazine/how-to-choose-the-right-colour-for-your-bedroom",
+      "category": {
+        "label": "Colours and materials"
+      },
+      "image": "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/ed497534-a6a4-46c4-9fec-4e5ea27fee1b/nuctwf/std/800x0/Goodnight_copertina.jpg",
+      "large": true
+    },
+    {
+      "id": "20348",
+      "slug": "magazine/velvet-chairs-timeless-glamour-in-modern-interiors",
+      "title": "Velvet chairs: timeless glamour in modern interiors",
+      "excerpt": "Explore our collection of velvet chairs",
+      "href": "/ww/magazine/velvet-chairs-timeless-glamour-in-modern-interiors",
+      "category": {
+        "label": "Furnishing advice"
+      },
+      "image": "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/29e39bd8-a3c2-44c7-a8ce-116402997f23/nuctwf/std/800x0/SEDIA_EGG_pag_27.jpg",
+      "large": false
+    },
+    {
+      "id": "20335",
+      "slug": "magazine/the-new-face-of-the-motus-kitchen",
+      "title": "The new face of the Motus kitchen",
+      "excerpt": "Discover what’s new in the Motus kitchen collection!",
+      "href": "/ww/magazine/the-new-face-of-the-motus-kitchen",
+      "category": {
+        "label": "Design &amp; Style"
+      },
+      "image": "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/a55b9b6a-ee73-4456-952f-f046dcfa1e73/nuctwf/std/800x0/MOTUS_pag_8.jpg",
+      "large": false
+    },
+    {
+      "id": "20326",
+      "slug": "magazine/the-solaris-back-illuminated-kitchen-wall-panel",
+      "title": "The Solaris Back illuminated kitchen wall panel",
+      "excerpt": "What can you put behind your hob instead of tiles? The answer is Solaris Back",
+      "href": "/ww/magazine/the-solaris-back-illuminated-kitchen-wall-panel",
+      "category": {
+        "label": "Design"
+      },
+      "image": "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/14c0c506-6e03-43f5-9157-fb779b4dd884/nuctwf/std/800x0/ESSENZA_pag_30-31.jpg",
+      "large": false
+    },
+    {
+      "id": "20281",
+      "slug": "magazine/5-tips-for-furnishing-a-modern-kitchen",
+      "title": "5 tips for furnishing a modern kitchen",
+      "excerpt": "How to design a modern kitchen",
+      "href": "/ww/magazine/5-tips-for-furnishing-a-modern-kitchen",
+      "category": {
+        "label": "Furnishing advice"
+      },
+      "image": "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/315a079b-633d-49fb-bd51-981c08263459/nuctwf/std/800x0/Libra_pag_30.jpg",
+      "large": false
+    },
+    {
+      "id": "20271",
+      "slug": "magazine/slat-bathroom-furniture",
+      "title": "Slat bathroom furniture",
+      "excerpt": "A selection of bathroom cabinets with slat doors",
+      "href": "/ww/magazine/slat-bathroom-furniture",
+      "category": {
+        "label": "Furnishings"
+      },
+      "image": "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/c37e2354-48ab-4f83-911d-54a00c131fd3/nuctwf/std/800x0/AQUO_pag_13_A.jpg",
+      "large": false
+    }
+  ]
+}

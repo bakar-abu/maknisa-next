@@ -1,0 +1,558 @@
+{
+  "slug": "bathrooms",
+  "type": "grid",
+  "h1": "Looking for your bathroom?",
+  "intro": "Remodel your home with a Scavolini bathroom: explore unique styles, a variety of materials and colors as well as functional accessories. Browse the catalogs, download those for the models you liked the most, and subscribe to our newsletter to stay up-to-date with all our news. But if you haven’t found the right idea yet, click on Inspire me!",
+  "title": "Bathrooms",
+  "breadcrumbLabel": "Bathrooms",
+  "tags": [
+    {
+      "id": 185,
+      "label": "modular"
+    },
+    {
+      "id": 186,
+      "label": "Modern"
+    },
+    {
+      "id": 291,
+      "label": "CLASSIC"
+    },
+    {
+      "id": 499,
+      "label": "INDUSTRIAL"
+    },
+    {
+      "id": 506,
+      "label": "CONTEMPORARY"
+    },
+    {
+      "id": 509,
+      "label": "VINTAGE"
+    },
+    {
+      "id": 510,
+      "label": "DESIGN"
+    },
+    {
+      "id": 514,
+      "label": "STEEL"
+    },
+    {
+      "id": 515,
+      "label": "COUNTRy"
+    },
+    {
+      "id": 516,
+      "label": "flat door"
+    },
+    {
+      "id": 517,
+      "label": "frame door"
+    },
+    {
+      "id": 518,
+      "label": "shaped lines"
+    },
+    {
+      "id": 519,
+      "label": "handle"
+    },
+    {
+      "id": 522,
+      "label": "colour"
+    },
+    {
+      "id": 523,
+      "label": "adaptable"
+    },
+    {
+      "id": 525,
+      "label": "tradition"
+    },
+    {
+      "id": 526,
+      "label": "romantic"
+    },
+    {
+      "id": 529,
+      "label": "slat"
+    },
+    {
+      "id": 531,
+      "label": "young"
+    },
+    {
+      "id": 532,
+      "label": "luxury"
+    },
+    {
+      "id": 535,
+      "label": "customisable"
+    },
+    {
+      "id": 536,
+      "label": "decorations"
+    },
+    {
+      "id": 537,
+      "label": "charm"
+    },
+    {
+      "id": 538,
+      "label": "international"
+    },
+    {
+      "id": 539,
+      "label": "minimal"
+    },
+    {
+      "id": 540,
+      "label": "accessories"
+    },
+    {
+      "id": 542,
+      "label": "elegant"
+    },
+    {
+      "id": 545,
+      "label": "sophisticated"
+    },
+    {
+      "id": 546,
+      "label": "compact"
+    },
+    {
+      "id": 547,
+      "label": "technological"
+    },
+    {
+      "id": 548,
+      "label": "smart"
+    },
+    {
+      "id": 549,
+      "label": "trendy"
+    },
+    {
+      "id": 550,
+      "label": "innovative"
+    },
+    {
+      "id": 551,
+      "label": "brass"
+    },
+    {
+      "id": 552,
+      "label": "bronze"
+    },
+    {
+      "id": 553,
+      "label": "glass"
+    },
+    {
+      "id": 554,
+      "label": "character"
+    },
+    {
+      "id": 556,
+      "label": "fashion"
+    },
+    {
+      "id": 557,
+      "label": "gold"
+    },
+    {
+      "id": 558,
+      "label": "leather"
+    },
+    {
+      "id": 559,
+      "label": "loft"
+    },
+    {
+      "id": 561,
+      "label": "casual"
+    },
+    {
+      "id": 563,
+      "label": "well-being"
+    },
+    {
+      "id": 564,
+      "label": "floor-standing"
+    },
+    {
+      "id": 565,
+      "label": "equipped system"
+    },
+    {
+      "id": 567,
+      "label": "built-in handle"
+    },
+    {
+      "id": 568,
+      "label": "bright"
+    },
+    {
+      "id": 569,
+      "label": "wall-mounted"
+    },
+    {
+      "id": 570,
+      "label": "fitness"
+    },
+    {
+      "id": 571,
+      "label": "Sophisticated"
+    }
+  ],
+  "products": [
+    {
+      "id": "aquo-1",
+      "title": "Aquo",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/8453f0fd-ee54-4407-afe7-ee8b6ad9f17c/nuctwf/std/700x0/AQUO_pag_10_11.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/46c2f766-782f-4e09-813f-258db2d22dea/nuctwf/std/700x0/AQUO_pag_18_19.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/e3654440-ed2c-429e-8704-c11a33f8ef80/nuctwf/std/700x0/AQUO_pag_34_35.jpg"
+      ],
+      "tagIds": [
+        540,
+        523,
+        510,
+        565,
+        556,
+        516,
+        519,
+        539,
+        186,
+        529,
+        569,
+        563
+      ],
+      "categoryIds": [
+        12
+      ]
+    },
+    {
+      "id": "baltimora-2",
+      "title": "Baltimora",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/0ab3b835-e1d6-4fdb-9c83-e72118f22f21/nuctwf/std/700x0/Baltimora_Bath_pag_10_11.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/273a7721-1949-4cf0-ac1c-4d391b51a70d/nuctwf/std/700x0/Baltimora_Bath_pag_16_17.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/7f50d3b1-8498-4eef-9287-1655fa59b04e/nuctwf/std/700x0/Baltimora_Bath_pag_38_39.jpg"
+      ],
+      "tagIds": [
+        537,
+        291,
+        515,
+        536,
+        564,
+        517,
+        519,
+        538,
+        532,
+        526,
+        518,
+        525
+      ],
+      "categoryIds": [
+        12
+      ]
+    },
+    {
+      "id": "dandy-plus-3",
+      "title": "Dandy Plus",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/b2d28546-3845-4485-adbc-0b98336dfec2/nuctwf/std/700x0/Dandy_Plus_Bath_pag_26_27.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/3d1b6141-c5a3-44f1-a8c6-be94905fc8a4/nuctwf/std/700x0/Dandy_Plus_Bath_pag_10_11.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/d66ed136-068f-4d83-8e84-1585317b7d9e/nuctwf/std/700x0/Dandy_Plus_Bath_pag_18_19.jpg"
+      ],
+      "tagIds": [
+        522,
+        546,
+        506,
+        510,
+        516,
+        550,
+        539,
+        548,
+        547,
+        549,
+        531
+      ],
+      "categoryIds": [
+        12
+      ]
+    },
+    {
+      "id": "diesel-open-workshop-4",
+      "title": "Diesel Open Workshop",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/f14ad265-078a-4699-85e8-5b1f06c26976/nuctwf/std/700x0/Diesel Open Workshop_BATH_pag_26_27.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/cd0567d3-1ba2-4ed2-a818-6af77e8d121c/nuctwf/std/700x0/Diesel Open Workshop_BATH_pag_18_19.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/c03b79cf-5445-4593-aba3-43bb5f2ee82d/nuctwf/std/700x0/Diesel Open Workshop_BATH_pag_50_51.jpg"
+      ],
+      "tagIds": [
+        523,
+        568,
+        510,
+        556,
+        516,
+        553,
+        519,
+        499,
+        538,
+        532,
+        514,
+        509
+      ],
+      "categoryIds": [
+        12
+      ]
+    },
+    {
+      "id": "formalia-5",
+      "title": "Formalia",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/b4e35564-14e7-4765-8bb3-d196dad98094/nuctwf/std/700x0/Formalia Bath_pag_42_43.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/3bf6d5dc-a5b0-423a-bd10-47fd047d1991/nuctwf/std/700x0/Formalia Bath_pag_20_21.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/01155496-fc08-4f69-9fae-8c61e6ec7380/nuctwf/std/700x0/Formalia Bath_pag_12_13.jpg"
+      ],
+      "tagIds": [
+        561,
+        554,
+        510,
+        542,
+        556,
+        539,
+        186,
+        518,
+        545,
+        569
+      ],
+      "categoryIds": [
+        12
+      ]
+    },
+    {
+      "id": "gym-space-6",
+      "title": "Gym Space",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/7f22100c-790f-486a-97a0-193b8e64c73e/nuctwf/std/700x0/Gym Space_pag_98_99.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/bbc7c0fc-d855-42c6-977e-4fdedb3ea212/nuctwf/std/700x0/Gym Space_pag_130.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/30d65dcc-bfb2-48cd-9528-f3ef1e06de50/nuctwf/std/700x0/Gym Space_pag_124_125.jpg"
+      ],
+      "tagIds": [
+        540,
+        523,
+        506,
+        535,
+        570,
+        185,
+        549,
+        563,
+        531
+      ],
+      "categoryIds": [
+        12
+      ]
+    },
+    {
+      "id": "idro-7",
+      "title": "Idro",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/1e7db12d-cb2e-4159-96b0-8c53cc6701e1/nuctwf/std/700x0/Idro_pag_12_13.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/c0d94e0d-5cda-494b-aaa4-684032c2b90c/nuctwf/std/700x0/Idro_pag_20_21.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/2ba0eb26-cd9c-4eb3-8f6b-5977066d1fc4/nuctwf/std/700x0/Idro_pag_28_29.jpg"
+      ],
+      "tagIds": [
+        567,
+        522,
+        535,
+        565,
+        516,
+        186,
+        569,
+        563
+      ],
+      "categoryIds": [
+        12
+      ]
+    },
+    {
+      "id": "juno-8",
+      "title": "Juno",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/65a80792-f126-4b4d-a6dc-887c78769802/nuctwf/std/700x0/Juno_pag_54_55.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/1fc8ea9a-9f7f-4b64-b528-515fce3b3009/nuctwf/std/700x0/Juno_pag_62_63.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/c1521575-1f35-4bb4-b2e6-e5c2d2e9e26a/nuctwf/std/700x0/Juno_pag_87.jpg"
+      ],
+      "tagIds": [
+        540,
+        523,
+        551,
+        552,
+        522,
+        510,
+        556,
+        516,
+        539,
+        186,
+        563
+      ],
+      "categoryIds": [
+        12
+      ]
+    },
+    {
+      "id": "lagu-9",
+      "title": "Lagu",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/dbdeb2ed-6a8b-4e6f-b394-ceb08a33e338/nuctwf/std/700x0/Lagu_pag_44_45.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/6ea3ea26-1a9d-423d-89e9-99780134717e/nuctwf/std/700x0/Lagu_pag_50_51.jpg"
+      ],
+      "tagIds": [
+        567,
+        535,
+        565,
+        516,
+        186,
+        569,
+        563
+      ],
+      "categoryIds": [
+        12
+      ]
+    },
+    {
+      "id": "laundry-space-10",
+      "title": "Laundry Space",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/c16597c6-06d2-4d45-a600-0c38aa28b72e/nuctwf/std/700x0/LAUNDRY-SPACE_PAG_34-35.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/800e2f9a-539f-4630-9059-44b79be5fc23/nuctwf/std/700x0/LAUNDRY-SPACE_PAG_18-19.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/29c62242-79a7-4ee2-8a41-b3eac9b30ea8/nuctwf/std/700x0/LAUNDRY-SPACE_PAG_58-59.jpg"
+      ],
+      "tagIds": [
+        540,
+        523,
+        535,
+        565,
+        556,
+        550,
+        186,
+        185,
+        547
+      ],
+      "categoryIds": [
+        12
+      ]
+    },
+    {
+      "id": "lido-11",
+      "title": "Lido",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/e9ac6dc3-7762-4c8d-9f86-1a2bc72c5049/nuctwf/std/700x0/LIDO_pag_18-19.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/5de5603c-20f4-483d-8bd3-e58eff51f3b1/nuctwf/std/700x0/LIDO_pag_42-43.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/8f351b5a-e1f7-444f-b49d-e38d10b99bef/nuctwf/std/700x0/LIDO_pag_48-49.jpg"
+      ],
+      "tagIds": [
+        540,
+        523,
+        551,
+        552,
+        522,
+        510,
+        556,
+        516,
+        539,
+        186,
+        569,
+        563
+      ],
+      "categoryIds": [
+        12
+      ]
+    },
+    {
+      "id": "magnifica-12",
+      "title": "Magnifica",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/739f9852-d1ff-43c9-a86b-382b6c4fd467/nuctwf/std/700x0/Magnifica_pag_66_67.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/a99e5576-f378-420a-9b65-d2c53c219deb/nuctwf/std/700x0/Magnifica_pag_110_111.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/cca56948-6ece-4de5-91db-d6f794bce170/nuctwf/std/700x0/Magnifica_pag_42_43.jpg"
+      ],
+      "tagIds": [
+        537,
+        291,
+        536,
+        542,
+        516,
+        557,
+        538,
+        558,
+        532,
+        571
+      ],
+      "categoryIds": [
+        12
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": 17,
+      "label": "Kitchens",
+      "href": "/ww/kitchens"
+    },
+    {
+      "id": 12,
+      "label": "Bathrooms",
+      "href": "/ww/bathrooms"
+    },
+    {
+      "id": 13,
+      "label": "Living",
+      "href": "/ww/living"
+    },
+    {
+      "id": 190,
+      "label": "Night",
+      "href": "/ww/bedroom-furniture"
+    },
+    {
+      "id": 18,
+      "label": "Multi-functional modules",
+      "href": "/ww/multi-functional-modules"
+    }
+  ],
+  "primaryCategoryIds": [
+    12
+  ],
+  "itemsPerPage": 12,
+  "maxVisibleTags": 5
+}

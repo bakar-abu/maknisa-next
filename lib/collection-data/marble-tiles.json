@@ -1,0 +1,246 @@
+{
+  "slug": "marble-tiles",
+  "type": "grid",
+  "title": "Marble & Tiles | Maknisa",
+  "h1": "Looking for marble & tiles?",
+  "intro": "Explore premium marble, porcelain, and floor tiles for kitchens, bathrooms, and living spaces — curated by Maknisa for Pakistani homes.",
+  "breadcrumbLabel": "Marble & Tiles",
+  "tags": [
+    {
+      "id": 9001,
+      "label": "Marble"
+    },
+    {
+      "id": 9002,
+      "label": "Porcelain"
+    },
+    {
+      "id": 9003,
+      "label": "Floor"
+    },
+    {
+      "id": 9004,
+      "label": "Wall"
+    },
+    {
+      "id": 9005,
+      "label": "Kitchen"
+    },
+    {
+      "id": 9006,
+      "label": "Bathroom"
+    }
+  ],
+  "products": [
+    {
+      "id": "tile-1",
+      "title": "Tile Collection 1",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/13c1d753-e210-48e3-877c-16508546cc51/nuctwf/std/700x0/Baltimora_pag_44_45.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/afd1ebdd-399b-440e-9256-b06487eae498/nuctwf/std/700x0/Baltimora_pag_56.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/a2b0a779-11fd-44e9-93d0-d31ad1468926/nuctwf/std/700x0/Baltimora_pag_32_33.jpg"
+      ],
+      "tagIds": [
+        9001
+      ],
+      "categoryIds": [
+        901
+      ]
+    },
+    {
+      "id": "tile-2",
+      "title": "Tile Collection 2",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/aa46a44e-59fb-4c48-b95c-b4667a629993/nuctwf/std/700x0/Boxi_pag_102_103.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/cbdf0b38-ddaf-4c57-a947-54b126e97520/nuctwf/std/700x0/Boxi_pag_108_109.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/28d62186-2eb0-4404-bc66-210076fb5185/nuctwf/std/700x0/BoxLife_pag_68_69.jpg"
+      ],
+      "tagIds": [
+        9002
+      ],
+      "categoryIds": [
+        901
+      ]
+    },
+    {
+      "id": "tile-3",
+      "title": "Tile Collection 3",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/81ac4694-d2b9-4777-8352-948555023c47/nuctwf/std/700x0/Carattere_Restyling_pag_14_15.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/2a18272f-7ce3-44a7-a2ee-91d8c985a430/nuctwf/std/700x0/Carattere_pag_66_67.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/f46e9f90-d9a5-4be8-b875-2fd2269ce654/nuctwf/std/700x0/Carattere_Restyling_pag_6_7.jpg"
+      ],
+      "tagIds": [
+        9003
+      ],
+      "categoryIds": [
+        901
+      ]
+    },
+    {
+      "id": "tile-4",
+      "title": "Tile Collection 4",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/f8acf8d6-1d14-4a73-85df-98b2da68b200/nuctwf/std/700x0/Colony_I_copertina.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/1677e497-fa0f-4e64-bc1a-c29a1736030d/nuctwf/std/700x0/Colony_pag_46_47.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/9861e4c6-5eb7-447c-b99c-f643a47415a3/nuctwf/std/700x0/Colony_pag_74_75.jpg"
+      ],
+      "tagIds": [
+        9004
+      ],
+      "categoryIds": [
+        901
+      ]
+    },
+    {
+      "id": "tile-5",
+      "title": "Tile Collection 5",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/74710193-dfa1-4287-883e-e5bede6b04a3/nuctwf/std/700x0/Dandy_Plus_pag_10_11.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/33f2c903-d453-4830-93fb-ce59183e24db/nuctwf/std/700x0/Dandy_Plus_pag_16_17.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/893d1336-5ee6-4806-978e-bac13577a7ac/nuctwf/std/700x0/Dandy_Plus_pag_22_23.jpg"
+      ],
+      "tagIds": [
+        9005
+      ],
+      "categoryIds": [
+        901
+      ]
+    },
+    {
+      "id": "tile-6",
+      "title": "Tile Collection 6",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/1a60696f-09c6-4fe5-b810-ef31c03d97ab/nuctwf/std/700x0/Delinea_pag_14_15.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/237677f2-1bd0-4791-800f-5146fb73cde4/nuctwf/std/700x0/Delinea_pag_8_9.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/0418412e-2843-45d0-b4d1-a58684a3dc20/nuctwf/std/700x0/Delinea_pag_24_25.jpg"
+      ],
+      "tagIds": [
+        9006
+      ],
+      "categoryIds": [
+        901
+      ]
+    },
+    {
+      "id": "tile-7",
+      "title": "Tile Collection 7",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/5464967b-51e4-476a-bc12-799dd2be2e2f/nuctwf/std/700x0/Diesel Get Together_pag_10_11.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/9e15229a-e112-4fb6-baef-1865bea9c5ae/nuctwf/std/700x0/Diesel Get Together_pag_24_25.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/ea79b3ae-7f05-4c68-b057-34b20d5a2e2b/nuctwf/std/700x0/Diesel Get Together_pag_48_49.jpg"
+      ],
+      "tagIds": [
+        9001
+      ],
+      "categoryIds": [
+        901
+      ]
+    },
+    {
+      "id": "tile-8",
+      "title": "Tile Collection 8",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/86c15588-e42b-4ee8-b8b4-9cdca87f20be/nuctwf/std/700x0/Diesel Open Workshop_pag_18_19.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/9fef4454-3948-4049-acd6-e5d58c541105/nuctwf/std/700x0/Diesel Open Workshop_pag_38_39.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/c024d267-18ff-4641-92fd-30fd4878af4f/nuctwf/std/700x0/Diesel Open Workshop_pag_28_29.jpg"
+      ],
+      "tagIds": [
+        9002
+      ],
+      "categoryIds": [
+        901
+      ]
+    },
+    {
+      "id": "tile-9",
+      "title": "Tile Collection 9",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/0968048e-c3bb-4c12-9e64-de91d98f6a48/nuctwf/std/700x0/Diesel Social Kitchen_pag_14_15.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/3c008258-7a36-41f5-815a-0e1dcd113414/nuctwf/std/700x0/Diesel Social Kitchen_pag_22_23.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/54d2a2f7-6b9a-4e29-95b3-41a9e0a3f90c/nuctwf/std/700x0/Diesel Social Kitchen_pag_34_35.jpg"
+      ],
+      "tagIds": [
+        9003
+      ],
+      "categoryIds": [
+        901
+      ]
+    },
+    {
+      "id": "tile-10",
+      "title": "Tile Collection 10",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/a69d436c-1f24-44d4-833f-cc1151aa8d4b/nuctwf/std/700x0/ESSENZA_pag_10-11.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/425f3cca-f67e-4c6b-b6a8-7f75adeb88ca/nuctwf/std/700x0/ESSENZA_pag_26-27.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/3e4fdb3c-a838-4456-aaa8-6d1413c08ac2/nuctwf/std/700x0/ESSENZA_pag_18-19.jpg"
+      ],
+      "tagIds": [
+        9004
+      ],
+      "categoryIds": [
+        901
+      ]
+    },
+    {
+      "id": "tile-11",
+      "title": "Tile Collection 11",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/6959bbc7-6d9c-4b42-b5c1-4539488bec4d/nuctwf/std/700x0/Exclusiva_pag_10_11.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/ac2f3f07-3e44-43ee-a94a-097cfab30864/nuctwf/std/700x0/Exclusiva_pag_54_55.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/dff6e513-ee78-4e0f-826e-868978ec7a8b/nuctwf/std/700x0/Exclusiva_pag_46_47.jpg"
+      ],
+      "tagIds": [
+        9005
+      ],
+      "categoryIds": [
+        901
+      ]
+    },
+    {
+      "id": "tile-12",
+      "title": "Tile Collection 12",
+      "href": "#",
+      "onlineShop": false,
+      "images": [
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/c0924510-d478-430e-893a-11dfdb848f30/nuctwf/std/700x0/Family_pag_98_99.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/59ae5934-5e7c-4639-abab-b9faa63d352a/nuctwf/std/700x0/Family_pag_106_107.jpg",
+        "https://scavolini-cdn.thron.com/delivery/public/image/scavolini/ef4e542e-a580-4e2f-9e88-590d7147619c/nuctwf/std/700x0/Family_pag_82_83.jpg"
+      ],
+      "tagIds": [
+        9006
+      ],
+      "categoryIds": [
+        901
+      ]
+    }
+  ],
+  "categories": [],
+  "primaryCategoryIds": [
+    901
+  ],
+  "itemsPerPage": 12,
+  "maxVisibleTags": 6
+}
