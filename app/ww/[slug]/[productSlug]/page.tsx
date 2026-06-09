@@ -8,7 +8,7 @@ import {
 } from "@/lib/product-detail";
 import { site } from "@/lib/site";
 
-import "@/app/styles/product-detail.css";
+import "@/app/styles/molteni-product.css";
 
 type PageProps = {
   params: Promise<{ slug: string; productSlug: string }>;

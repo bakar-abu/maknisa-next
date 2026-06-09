@@ -1,5 +1,6 @@
 import type { CollectionProduct } from "./collection-types";
 import { GRID_COLLECTION_SLUGS, type GridCollectionSlug } from "./collections";
+import { enrichCollectionProducts } from "./product-routes";
 
 let cache: CollectionProduct[] | null = null;
 
@@ -8,7 +9,8 @@ export async function getAllCollectionProducts(): Promise<CollectionProduct[]> {
   const lists = await Promise.all(
     GRID_COLLECTION_SLUGS.map(async (slug) => {
       const mod = await import(`./collection-data/${slug}.json`);
-      return (mod.default as { products: CollectionProduct[] }).products;
+      const products = (mod.default as { products: CollectionProduct[] }).products;
+      return enrichCollectionProducts(slug, products);
     }),
   );
   cache = lists.flat();

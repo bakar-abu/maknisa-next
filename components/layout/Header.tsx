@@ -8,6 +8,7 @@ import { useBodyClass } from "@/hooks/useBodyClass";
 import {
   collectionsMenu,
   companyMenu,
+  productsLink,
   serviceLinks,
 } from "@/lib/navigation";
 import { site } from "@/lib/site";
@@ -67,6 +68,11 @@ export function Header() {
                     <div className="sn_header_menu_primary">
                       <ul>
                         <NavDropdown group={collectionsMenu} />
+                        <li>
+                          <Link href={productsLink.href} title={productsLink.title}>
+                            {productsLink.label}
+                          </Link>
+                        </li>
                         <NavDropdown group={companyMenu} />
                         <li>
                           <Link

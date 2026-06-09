@@ -19,6 +19,7 @@ const RESERVED = new Set([
   "inspire-me",
   "marble-tiles",
   "lighting",
+  "products",
   "company",
   "find-a-dealer",
   "after-sales-services",

@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "www.scavolini.com",
         pathname: "/media/**",
       },
+      {
+        protocol: "https",
+        hostname: "scavolini-cdn.thron.com",
+        pathname: "/**",
+      },
     ],
   },
 };

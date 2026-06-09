@@ -1,19 +1,40 @@
+import { enrichCatalogProduct } from "./catalog-enrich";
 import type { CollectionProduct, CollectionTag } from "./collection-types";
 import {
   getCollectionGridData,
   getCollectionPageTitle,
   type GridCollectionSlug,
 } from "./collections";
+import { upscaleScavoliniImage } from "./catalog-images";
+import { PRODUCT_TYPE_BY_ID } from "./product-types";
+
+export type MolteniDesignerBlock = {
+  name: string;
+  bio: string;
+  quote: string;
+};
+
+export type MolteniQuoteBlock = {
+  text: string;
+  author: string;
+};
 
 export type ProductDetailView = {
   product: CollectionProduct;
   collectionSlug: GridCollectionSlug;
   collectionTitle: string;
   breadcrumbLabel: string;
+  productTypeLabel: string;
   intro: string;
+  detailParagraph: string;
+  craftedParagraph: string;
+  quote: MolteniQuoteBlock;
+  designer: MolteniDesignerBlock;
   tags: CollectionTag[];
   related: CollectionProduct[];
   galleries: PdpGalleries;
+  heroImages: string[];
+  galleryImages: string[];
 };
 
 /** Image groups for each Poliform-style slider block on the PDP. */
@@ -28,14 +49,47 @@ export type PdpGalleries = {
 
 function buildIntro(
   product: CollectionProduct,
-  collectionTitle: string,
+  productTypeLabel: string,
   tagLabels: string[],
 ): string {
   const styles =
     tagLabels.length > 0
       ? tagLabels.slice(0, 4).join(", ")
       : "contemporary design";
-  return `${product.title} is part of our ${collectionTitle.toLowerCase()} collection. Defined by ${styles}, it combines refined materials with practical layouts tailored for modern homes. Explore finishes, configurations, and complementary pieces below—or visit a Maknisa showroom to see it in person.`;
+  return `${product.title} brings together ${styles.toLowerCase()} and refined craftsmanship. Part of our ${productTypeLabel.toLowerCase()} range, it is designed to adapt to contemporary living with balanced proportions, quality materials, and a timeless Maknisa signature.`;
+}
+
+function buildDetailParagraph(
+  product: CollectionProduct,
+  collectionTitle: string,
+): string {
+  return `At its core, ${product.title} embodies the concept of "divided but united." Its modular nature allows for a range of configurations, each offering a seamless balance between intimacy and openness. Designed for ${collectionTitle.toLowerCase()} projects, it adapts to different layouts while maintaining a coherent visual language throughout the home.`;
+}
+
+function buildCraftedParagraph(product: CollectionProduct): string {
+  return `Crafted with precision and available in a curated selection of finishes from the Maknisa collection, ${product.title} is designed for spaces that embrace both movement and tranquility.`;
+}
+
+function buildQuote(): MolteniQuoteBlock {
+  return {
+    text: "I enjoy thinking about how we will settle in. We are going to occupy a space, and I work a lot on centrality. I like elements that live in the middle of a room and help to build the space.",
+    author: "Maknisa Design Studio",
+  };
+}
+
+function buildDesignerBlock(collectionTitle: string): MolteniDesignerBlock {
+  return {
+    name: "Maknisa Design Studio",
+    bio: `Maknisa Design Studio shapes kitchens, bathrooms, and living systems for homes across Pakistan — combining Italian manufacturing heritage with local expertise. Each ${collectionTitle.toLowerCase()} line is developed with attention to materials, ergonomics, and long-term performance.`,
+    quote:
+      "Furniture should feel inevitable in a space: proportion, light, and material working together so the room feels complete.",
+  };
+}
+
+function upscaleImages(images: string[]): string[] {
+  return images
+    .filter((url) => url && url !== "#" && url.startsWith("http"))
+    .map((url) => upscaleScavoliniImage(url, 1600));
 }
 
 /** Build slider image sets from product images (min slides for Poliform-style dots). */
@@ -99,17 +153,31 @@ export async function getProductDetail(
     .filter((p) => p.id !== product.id)
     .slice(0, 12);
 
+  const collectionTitle = getCollectionPageTitle(collectionSlug);
+  const catalog = enrichCatalogProduct(product, collectionSlug, data.tags);
+  const productTypeLabel =
+    PRODUCT_TYPE_BY_ID.get(catalog.primaryProductTypeId)?.label ??
+    collectionTitle;
+  const upscaled = upscaleImages(product.images);
+
   return {
     product,
     collectionSlug,
-    collectionTitle: getCollectionPageTitle(collectionSlug),
+    collectionTitle,
     breadcrumbLabel: data.breadcrumbLabel,
-    intro: buildIntro(product, data.title, tagLabels),
+    productTypeLabel,
+    intro: buildIntro(product, productTypeLabel, tagLabels),
+    detailParagraph: buildDetailParagraph(product, collectionTitle),
+    craftedParagraph: buildCraftedParagraph(product),
+    quote: buildQuote(),
+    designer: buildDesignerBlock(collectionTitle),
     tags: product.tagIds
       .map((id) => tagsById.get(id))
       .filter((t): t is CollectionTag => Boolean(t)),
     related,
-    galleries: buildPdpGalleries(product.images),
+    galleries: buildPdpGalleries(upscaled),
+    heroImages: upscaled.slice(0, Math.min(4, upscaled.length)),
+    galleryImages: upscaled,
   };
 }
 

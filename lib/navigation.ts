@@ -45,6 +45,12 @@ export const collectionsMenu: NavGroup = {
   ],
 };
 
+export const productsLink: NavLink = {
+  label: "Products",
+  href: "/ww/products",
+  title: "Products | Maknisa",
+};
+
 export const companyMenu: NavGroup = {
   label: "Company",
   links: [
