@@ -1,0 +1,212 @@
+.mk-appointment-page {
+  --mk-appointment-brand: var(--maknisa-brand, #f99106);
+  padding: 1.5rem 0 3.5rem;
+  background: #fff;
+}
+
+.mk-appointment-page__container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 992px) {
+  .mk-appointment-page__container {
+    padding: 0 2rem;
+  }
+}
+
+.mk-appointment-page__header {
+  margin-bottom: 2rem;
+}
+
+.mk-appointment-page .sn_breadcrumbs {
+  margin-bottom: 0.75rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mk-appointment-page__title {
+  margin: 0 0 0.75rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: #1a1a1a;
+}
+
+.mk-appointment-page__intro {
+  margin: 0;
+  max-width: 40rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #6b6d70;
+}
+
+.mk-appointment-page__layout {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 992px) {
+  .mk-appointment-page__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    gap: 2.5rem;
+    align-items: start;
+  }
+}
+
+.mk-appointment-page__aside {
+  padding: 1.5rem;
+  border: 1px solid #e2e0dc;
+  border-radius: 4px;
+  background: #faf9f7;
+}
+
+.mk-appointment-page__aside-title {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1a1a1a;
+}
+
+.mk-appointment-page__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: #4a4a4a;
+}
+
+.mk-appointment-page__list li + li {
+  margin-top: 0.65rem;
+}
+
+.mk-appointment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #e2e0dc;
+  border-radius: 4px;
+  background: #fff;
+}
+
+@media (min-width: 768px) {
+  .mk-appointment-form {
+    padding: 2rem;
+  }
+}
+
+.mk-appointment-form__row {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .mk-appointment-form__row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.mk-appointment-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.mk-appointment-form__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6b6d70;
+}
+
+.mk-appointment-form__field input,
+.mk-appointment-form__field select,
+.mk-appointment-form__field textarea {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #d4d4d4;
+  border-radius: 6px;
+  background: #fff;
+  font: inherit;
+  font-size: 0.9375rem;
+  color: #1a1a1a;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mk-appointment-form__field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.mk-appointment-form__field input:focus,
+.mk-appointment-form__field select:focus,
+.mk-appointment-form__field textarea:focus {
+  border-color: var(--mk-appointment-brand);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(249, 145, 6, 0.15);
+}
+
+.mk-appointment-form__error {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #c0392b;
+}
+
+.mk-appointment-form__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  margin-top: 0.25rem;
+  padding: 0 1.75rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--mk-appointment-brand);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.mk-appointment-form__submit:hover:not(:disabled) {
+  background: #e08305;
+}
+
+.mk-appointment-form__submit:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.mk-appointment-form__success {
+  padding: 2rem 1.5rem;
+  border: 1px solid #e2e0dc;
+  border-radius: 4px;
+  background: #faf9f7;
+  text-align: center;
+}
+
+.mk-appointment-form__success-title {
+  margin: 0 0 0.75rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-weight: 400;
+  color: #1a1a1a;
+}
+
+.mk-appointment-form__success-text {
+  margin: 0 0 1.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #6b6d70;
+}

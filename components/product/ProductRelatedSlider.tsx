@@ -23,7 +23,11 @@ export function ProductRelatedSlider({
   const uid = useId();
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
-  const { dotsRef, dotsClassName, onBeforeInit, onInit } = usePdpSwiperPagination();
+  const { dotsRef, dotsClassName, onBeforeInit, onInit, onSlideChange, showDots } =
+    usePdpSwiperPagination({
+      slideCount: products.length,
+      loop: products.length > 4,
+    });
 
   if (products.length === 0) return null;
 
@@ -78,6 +82,7 @@ export function ProductRelatedSlider({
                   swiper.navigation.init();
                   swiper.navigation.update();
                 }}
+                onSlideChange={onSlideChange}
               >
                 {products.map((product) => (
                   <SwiperSlide key={`${uid}-${product.id}`}>
@@ -100,7 +105,7 @@ export function ProductRelatedSlider({
             </div>
           </div>
 
-          {products.length > 1 ? (
+          {showDots ? (
             <div
               ref={dotsRef}
               className={`mk-pdp__slider-dots ${dotsClassName}`}

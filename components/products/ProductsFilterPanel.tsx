@@ -43,6 +43,7 @@ export function ProductsFilterPanel({
     () => ({
       roomSlugs: filters.roomSlugs,
       tagIds: filters.tagIds,
+      drawerFilters: filters.drawerFilters,
       priceMin: filters.priceMin,
       priceMax: filters.priceMax,
       onlineOnly: filters.onlineOnly,
@@ -90,6 +91,7 @@ export function ProductsFilterPanel({
       productTypeIds: [],
       roomSlugs: [],
       tagIds: [],
+      drawerFilters: {},
       priceMin: data.priceRange.min,
       priceMax: data.priceRange.max,
       onlineOnly: false,

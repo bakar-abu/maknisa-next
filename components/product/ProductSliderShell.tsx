@@ -8,6 +8,7 @@ type ProductSliderShellProps = {
   dotsClassName: string;
   ariaLabel: string;
   compact?: boolean;
+  showDots?: boolean;
 };
 
 export function ProductSliderShell({
@@ -16,21 +17,24 @@ export function ProductSliderShell({
   dotsClassName,
   ariaLabel,
   compact = false,
+  showDots = true,
 }: ProductSliderShellProps) {
   return (
     <div
       className={`mk-pdp__slider${compact ? " mk-pdp__slider--compact" : ""}`}
     >
       <div className="mk-pdp__slider-media">{children}</div>
-      <div
-        ref={dotsRef}
-        className={`mk-pdp__slider-dots ${dotsClassName}`}
-        role="tablist"
-        aria-label={ariaLabel}
-        onClick={(e) => e.stopPropagation()}
-        onMouseDown={(e) => e.stopPropagation()}
-        onTouchStart={(e) => e.stopPropagation()}
-      />
+      {showDots ? (
+        <div
+          ref={dotsRef}
+          className={`mk-pdp__slider-dots ${dotsClassName}`}
+          role="tablist"
+          aria-label={ariaLabel}
+          onClick={(e) => e.stopPropagation()}
+          onMouseDown={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
+        />
+      ) : null}
     </div>
   );
 }

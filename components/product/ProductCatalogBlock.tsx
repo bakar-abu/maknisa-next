@@ -16,7 +16,7 @@ export function ProductCatalogBlock({
   return (
     <div className="mk-pdp__catalog">
       <div className="mk-pdp__catalog-copy">
-        <h2>The catalog</h2>
+        <h2>The Catalog</h2>
         <p>
           The monographic volume dedicated to {productTitle}, part of our{" "}
           {collectionTitle.toLowerCase()} collection.

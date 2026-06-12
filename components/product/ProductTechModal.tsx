@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
+import { BOOK_APPOINTMENT_HREF } from "@/lib/appointment";
+import { customizeOrderHref } from "@/lib/customize-order";
 import type { CollectionTag } from "@/lib/collection-types";
 import { site } from "@/lib/site";
 
@@ -19,6 +21,7 @@ type ProductTechModalProps = {
   productTitle: string;
   collectionTitle: string;
   tags: CollectionTag[];
+  customizeHref?: string;
   onClose: () => void;
   onTabChange: (tab: TechModalTab) => void;
 };
@@ -57,6 +60,7 @@ export function ProductTechModal({
   productTitle,
   collectionTitle,
   tags,
+  customizeHref = customizeOrderHref(),
   onClose,
   onTabChange,
 }: ProductTechModalProps) {
@@ -275,8 +279,11 @@ export function ProductTechModal({
               home: layouts, finishes, handles, and complementary pieces.
             </p>
             <div className="mk-pdp-modal__cta-row">
-              <Link href="/ww/find-a-dealer" className="mk-pdp__btn">
-                Find a showroom
+              <Link href={customizeHref} className="mk-pdp__btn">
+                Customize your order
+              </Link>
+              <Link href={BOOK_APPOINTMENT_HREF} className="mk-pdp__btn mk-pdp__btn--outline">
+                Book an appointment
               </Link>
               <a
                 href={`tel:${site.phoneTel}`}

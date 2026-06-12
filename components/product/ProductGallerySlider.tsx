@@ -1,7 +1,6 @@
 "use client";
 
 import { useId } from "react";
-import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ProductSliderShell } from "@/components/product/ProductSliderShell";
 import { usePdpSwiperPagination } from "@/components/product/usePdpSwiperPagination";
@@ -21,27 +20,36 @@ export function ProductGallerySlider({
   showInfo = true,
 }: ProductGallerySliderProps) {
   const uid = useId();
-  const { dotsRef, dotsClassName, onBeforeInit, onInit } = usePdpSwiperPagination();
+  const {
+    dotsRef,
+    dotsClassName,
+    modules,
+    showDots,
+    loop,
+    onBeforeInit,
+    onInit,
+    onSlideChange,
+  } = usePdpSwiperPagination({ slideCount: images.length });
 
   if (images.length === 0) return null;
-
-  const loop = images.length > 1;
 
   return (
     <ProductSliderShell
       dotsRef={dotsRef}
       dotsClassName={dotsClassName}
       ariaLabel="Gallery slides"
+      showDots={showDots}
     >
       <Swiper
         className="mk-pdp__gallery swiper"
-        modules={[Pagination]}
+        modules={modules}
         slidesPerView={1}
         spaceBetween={0}
         loop={loop}
         speed={600}
         onBeforeInit={onBeforeInit}
         onInit={onInit}
+        onSlideChange={onSlideChange}
       >
         {images.map((src, index) => (
           <SwiperSlide key={`${uid}-gal-${index}`}>

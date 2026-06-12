@@ -1,7 +1,6 @@
 "use client";
 
 import { useId } from "react";
-import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ProductSliderShell } from "@/components/product/ProductSliderShell";
 import { usePdpSwiperPagination } from "@/components/product/usePdpSwiperPagination";
@@ -16,27 +15,42 @@ type ProductGalleryDuoProps = {
 
 export function ProductGalleryDuo({ slides, title }: ProductGalleryDuoProps) {
   const uid = useId();
-  const { dotsRef, dotsClassName, onBeforeInit, onInit } = usePdpSwiperPagination();
+  const {
+    dotsRef,
+    dotsClassName,
+    modules,
+    showDots,
+    loop,
+    onBeforeInit,
+    onInit,
+    onSlideChange,
+    autoplay,
+  } = usePdpSwiperPagination({
+    slideCount: slides.length,
+    autoplay: true,
+    autoplayDelay: 3000,
+  });
 
   if (slides.length === 0) return null;
-
-  const loop = slides.length > 1;
 
   return (
     <ProductSliderShell
       dotsRef={dotsRef}
       dotsClassName={dotsClassName}
       ariaLabel="Detail gallery slides"
+      showDots={showDots}
     >
       <Swiper
         className="mk-pdp__duo-swiper swiper"
-        modules={[Pagination]}
+        modules={modules}
         slidesPerView={1}
         spaceBetween={0}
         loop={loop}
         speed={600}
+        autoplay={autoplay}
         onBeforeInit={onBeforeInit}
         onInit={onInit}
+        onSlideChange={onSlideChange}
       >
         {slides.map(([left, right], slideIndex) => (
           <SwiperSlide key={`${uid}-duo-${slideIndex}`}>

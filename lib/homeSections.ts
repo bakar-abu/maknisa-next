@@ -1,3 +1,5 @@
+import { BOOK_APPOINTMENT_HREF } from "./routes";
+
 export type GrowCta = {
   href: string;
   label: string;
@@ -74,7 +76,7 @@ export const launchBoxes: LaunchBox[] = [
     abstractHtml:
       "<p>Extend the Maknisa living experience outdoors: our Formalia kitchen adapts to multiple needs and settings.</p>",
     cta: {
-      href: "/ww/kitchens/kitchen-cabinet-formalia",
+      href: "/ww/services/kitchens/kitchen-cabinet-formalia",
       label: "Explore Formalia",
       className: "sn_btn_grow _small mt-20 mt-md-40",
     },
@@ -162,7 +164,7 @@ export const actionsSiteItems: ActionSiteItem[] = [
     icon: "/media/immagini/13173_t_8880_t_CalendarCheck_1.svg",
     title: "Book an appointment",
     text: "Book your customised appointment with your nearest dealer today and start designing your dream kitchen.",
-    href: "/ww/find-a-dealer",
+    href: BOOK_APPOINTMENT_HREF,
     linkLabel: "Book an appointment",
   },
   {

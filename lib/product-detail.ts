@@ -7,6 +7,15 @@ import {
 } from "./collections";
 import { upscaleScavoliniImage } from "./catalog-images";
 import { PRODUCT_TYPE_BY_ID } from "./product-types";
+import {
+  enrichServiceCollectionProducts,
+  isServicePdpCollectionSlug,
+} from "./product-routes";
+import {
+  getServiceCollectionPages,
+  resolveServiceCollectionRoute,
+  serviceRouteSlug,
+} from "./services";
 
 export type MolteniDesignerBlock = {
   name: string;
@@ -22,6 +31,9 @@ export type MolteniQuoteBlock = {
 export type ProductDetailView = {
   product: CollectionProduct;
   collectionSlug: GridCollectionSlug;
+  /** Set when the PDP is served under `/ww/services/{slug}/…`. */
+  servicePageSlug?: string;
+  serviceListHref?: string;
   collectionTitle: string;
   breadcrumbLabel: string;
   productTypeLabel: string;
@@ -188,9 +200,50 @@ export async function getAllProductStaticParams(): Promise<
   const params: { slug: string; productSlug: string }[] = [];
 
   for (const slug of GRID_COLLECTION_SLUGS) {
+    if (isServicePdpCollectionSlug(slug)) continue;
     const data = await getCollectionGridData(slug);
     for (const product of data.products) {
       params.push({ slug, productSlug: product.id });
+    }
+  }
+
+  return params;
+}
+
+export async function getServiceProductDetail(
+  serviceUrlSlug: string,
+  productId: string,
+): Promise<ProductDetailView | null> {
+  const service = resolveServiceCollectionRoute(serviceUrlSlug);
+  if (!service) return null;
+
+  const detail = await getProductDetail(service.dataSlug, productId);
+  if (!detail) return null;
+
+  const [product] = enrichServiceCollectionProducts(service.slug, [detail.product]);
+  const related = enrichServiceCollectionProducts(service.slug, detail.related);
+
+  return {
+    ...detail,
+    servicePageSlug: serviceRouteSlug(service.slug),
+    serviceListHref: `/services/${service.slug}`,
+    collectionTitle: service.overrides?.title ?? detail.collectionTitle,
+    breadcrumbLabel: service.overrides?.breadcrumbLabel ?? detail.breadcrumbLabel,
+    product,
+    related,
+  };
+}
+
+export async function getAllServiceProductStaticParams(): Promise<
+  { slug: string; productSlug: string }[]
+> {
+  const params: { slug: string; productSlug: string }[] = [];
+
+  for (const service of getServiceCollectionPages()) {
+    const data = await getCollectionGridData(service.dataSlug);
+    const routeSlug = serviceRouteSlug(service.slug);
+    for (const product of data.products) {
+      params.push({ slug: routeSlug, productSlug: product.id });
     }
   }
 

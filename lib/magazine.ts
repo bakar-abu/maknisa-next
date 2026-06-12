@@ -1,6 +1,8 @@
 import raw from "./magazine-data.json";
 import { magazineSection } from "./homeSections";
 
+export const MAGAZINE_HREF = "/ww/magazine";
+
 export type MagazineCategory = {
   href: string;
   title: string;
@@ -107,7 +109,7 @@ export function getMagazineArticleBySlug(slug: string): MagazineArticleDetail | 
     heroImage: detail?.heroImage ?? article.image,
     breadcrumbs: [
       { label: "Home", href: "/" },
-      { label: "Magazine", href: "/ww/magazine" },
+      { label: "Magazine", href: MAGAZINE_HREF },
       ...(article.category.label
         ? [{ label: article.category.label, href: categoryHref }]
         : []),

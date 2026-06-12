@@ -48,10 +48,13 @@ export type CatalogSort =
   | "price-asc"
   | "price-desc";
 
+export type DrawerFiltersState = Record<string, string[]>;
+
 export type CatalogFilters = {
   productTypeIds: number[];
   roomSlugs: GridCollectionSlug[];
   tagIds: number[];
+  drawerFilters: DrawerFiltersState;
   priceMin: number;
   priceMax: number;
   onlineOnly: boolean;
@@ -59,7 +62,7 @@ export type CatalogFilters = {
   page: number;
 };
 
-export const ITEMS_PER_PAGE = 12;
+export const ITEMS_PER_PAGE = 24;
 
 export const PRICE_TIER_BOUNDS: Record<
   PriceTier,

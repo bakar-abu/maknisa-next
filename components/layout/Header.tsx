@@ -5,11 +5,11 @@ import Link from "next/link";
 import { useCallback, useState } from "react";
 import { Icon } from "@/components/icons/Icon";
 import { useBodyClass } from "@/hooks/useBodyClass";
+import { CATALOGUE_HREF } from "@/lib/catalogue";
 import {
-  collectionsMenu,
   companyMenu,
-  productsLink,
   serviceLinks,
+  servicesMenu,
 } from "@/lib/navigation";
 import { site } from "@/lib/site";
 import { HeaderSearch } from "./HeaderSearch";
@@ -67,19 +67,14 @@ export function Header() {
                   <div className="col-12 col-lg-auto d-lg-flex align-items-center">
                     <div className="sn_header_menu_primary">
                       <ul>
-                        <NavDropdown group={collectionsMenu} />
-                        <li>
-                          <Link href={productsLink.href} title={productsLink.title}>
-                            {productsLink.label}
-                          </Link>
-                        </li>
+                        <NavDropdown group={servicesMenu} />
                         <NavDropdown group={companyMenu} />
                         <li>
                           <Link
-                            href="/ww/magazine"
-                            title="Interior design magazine: Kitchens Bathrooms Living | Maknisa"
+                            href={CATALOGUE_HREF}
+                            title="Product catalogue | Maknisa"
                           >
-                            Magazine
+                            Catalogue
                           </Link>
                         </li>
                       </ul>

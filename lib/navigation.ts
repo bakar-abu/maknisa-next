@@ -1,3 +1,6 @@
+import { BOOK_APPOINTMENT_HREF } from "./routes";
+import { MAGAZINE_HREF } from "./magazine";
+import { SERVICE_PAGES, servicePageHref } from "./services";
 import { site } from "./site";
 
 export type NavLink = {
@@ -17,39 +20,17 @@ export type NavGroup = {
   };
 };
 
-export const collectionsMenu: NavGroup = {
-  label: "Collections",
-  links: [
-    { label: "Kitchens", href: "/ww/kitchens", title: "Kitchens" },
-    { label: "Bathrooms", href: "/ww/bathrooms", title: "Bathrooms" },
-    { label: "Living", href: "/ww/living", title: "Living" },
-    { label: "Night", href: "/ww/bedroom-furniture", title: "Night" },
-    {
-      label: "Tables, chairs and stools",
-      href: "/ww/tables-chairs-stools",
-      title: "Tables, chairs and stools",
-    },
-    { label: "Outdoor", href: "/ww/formalia-outdoor", title: "Outdoor" },
-    {
-      label: "Multi-functional modules",
-      href: "/ww/multi-functional-modules",
-      title: "Multi-functional modules",
-    },
-    { label: "Inspire me", href: "/ww/inspire-me", title: "Inspire me" },
-    {
-      label: "Marble & tiles",
-      href: "/ww/marble-tiles",
-      title: "Marble & Tiles | Maknisa",
-    },
-    { label: "Lighting", href: "/ww/lighting", title: "Lighting | Maknisa" },
-  ],
+export const servicesMenu: NavGroup = {
+  label: "Services",
+  links: SERVICE_PAGES.map((page) => ({
+    label: page.label,
+    href: servicePageHref(page.slug),
+    title: page.label,
+  })),
 };
 
-export const productsLink: NavLink = {
-  label: "Products",
-  href: "/ww/products",
-  title: "Products | Maknisa",
-};
+/** @deprecated Use servicesMenu */
+export const collectionsMenu = servicesMenu;
 
 export const companyMenu: NavGroup = {
   label: "Company",
@@ -100,9 +81,9 @@ export const serviceLinks: NavLink[] = [
     title: "Many After-Sales Services, Customer Care | Maknisa",
   },
   {
-    label: "Find a dealer",
-    href: "/ww/find-a-dealer",
-    title: "Find a Dealer: to see the products in person | Maknisa",
+    label: "Book an appointment",
+    href: BOOK_APPOINTMENT_HREF,
+    title: "Book an appointment with Maknisa",
   },
 ];
 
@@ -144,6 +125,11 @@ export const footerMenuLinks: NavLink[] = [
     label: "Request catalogue",
     href: "/ww/request-catalogue",
     title: "General catalogue | Maknisa",
+  },
+  {
+    label: "Magazine",
+    href: MAGAZINE_HREF,
+    title: "Interior design magazine: Kitchens Bathrooms Living | Maknisa",
   },
   { label: "FAQ", href: "/ww/magazine/faq", title: "FAQ" },
   { label: "Maknisa Biz", href: "/ww/maknisa-biz", title: "Maknisa Biz" },

@@ -22,6 +22,7 @@ function buildDefaultFilters(data: CatalogPageData): CatalogFilters {
     productTypeIds: [],
     roomSlugs: [],
     tagIds: [],
+    drawerFilters: {},
     priceMin: data.priceRange.min,
     priceMax: data.priceRange.max,
     onlineOnly: false,

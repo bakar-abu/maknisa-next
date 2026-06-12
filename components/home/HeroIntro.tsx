@@ -27,7 +27,7 @@ export function HeroIntro() {
           fetchPriority="high"
         />
         <Link
-          href="/ww/kitchens"
+          href="/services/Kitchens"
           className="sn_btn_grow _text_light"
           title="Discover the story"
         >

@@ -1,0 +1,490 @@
+.mk-catalogue-landing {
+  --mk-catalogue-brand: var(--maknisa-brand, #f99106);
+  --mk-header-offset: 60px;
+  padding: 1.25rem 0 3rem;
+  background: #fff;
+}
+
+@media only screen and (min-width: 80em) {
+  .mk-catalogue-landing {
+    --mk-header-offset: 120px;
+    padding: 1.75rem 0 4rem;
+  }
+}
+
+.mk-catalogue-landing__container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 992px) {
+  .mk-catalogue-landing__container {
+    padding: 0 2rem;
+  }
+}
+
+.mk-catalogue-landing__header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .mk-catalogue-landing__header {
+    text-align: left;
+  }
+
+  .mk-catalogue-landing .sn_breadcrumbs ul {
+    justify-content: flex-start;
+  }
+}
+
+.mk-catalogue-landing .sn_breadcrumbs {
+  margin-bottom: 0.75rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mk-catalogue-landing__title {
+  margin: 0 0 0.75rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+.mk-catalogue-landing__intro {
+  margin: 0;
+  max-width: 40rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #6b6d70;
+}
+
+@media (min-width: 992px) {
+  .mk-catalogue-landing__intro {
+    font-size: 1rem;
+  }
+}
+
+.mk-catalogue-landing__grid {
+  margin: 0 -0.5rem 2.5rem;
+}
+
+.mk-catalogue-landing__col {
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+@media only screen and (min-width: 80em) {
+  .mk-catalogue-landing__col {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Service catalogue card — single image, centred name, hover swap */
+.mk-catalogue-card {
+  height: 100%;
+}
+
+.mk-catalogue-card__media {
+  position: relative;
+  width: 100%;
+}
+
+.mk-catalogue-card__visual {
+  display: block;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mk-catalogue-card__visual:hover,
+.mk-catalogue-card__visual:focus-visible {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+.mk-catalogue-card__image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 5 / 6;
+  border-radius: 4px;
+  background: #f3f3f3;
+}
+
+@media only screen and (min-width: 80em) {
+  .mk-catalogue-card__image {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+.mk-catalogue-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    opacity 0.55s ease,
+    transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mk-catalogue-card__img--primary {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 0;
+}
+
+.mk-catalogue-card__img--hover {
+  opacity: 0;
+  transform: scale(1.08);
+  z-index: 0;
+}
+
+.mk-catalogue-card:hover .mk-catalogue-card__img--primary,
+.mk-catalogue-card:focus-within .mk-catalogue-card__img--primary {
+  opacity: 0;
+  transform: scale(1.06);
+}
+
+.mk-catalogue-card:hover .mk-catalogue-card__img--hover,
+.mk-catalogue-card:focus-within .mk-catalogue-card__img--hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.mk-catalogue-card__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.18) 0%,
+    rgba(0, 0, 0, 0.42) 42%,
+    rgba(0, 0, 0, 0.42) 58%,
+    rgba(0, 0, 0, 0.18) 100%
+  );
+  box-shadow: inset 0 0 72px rgba(0, 0, 0, 0.38);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mk-catalogue-card:hover .mk-catalogue-card__shade,
+.mk-catalogue-card:focus-within .mk-catalogue-card__shade {
+  opacity: 0.92;
+}
+
+.mk-catalogue-card__info {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.mk-catalogue-card:hover .mk-catalogue-card__info,
+.mk-catalogue-card:focus-within .mk-catalogue-card__info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mk-catalogue-card__title {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 1rem;
+  pointer-events: none;
+  width: 100%;
+}
+
+.mk-catalogue-card__title-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 0.7rem 1.15rem;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.45);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 4px 20px rgba(0, 0, 0, 0.2);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 2.2vw, 1.45rem);
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  transform: translate(-50%, -50%);
+  transition:
+    opacity 0.3s ease,
+    color 0.3s ease,
+    background 0.3s ease;
+}
+
+.mk-catalogue-card__title-text svg {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+}
+
+.mk-catalogue-card__title-text--download {
+  opacity: 0;
+  font-size: clamp(0.8rem, 1.8vw, 1rem);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.mk-catalogue-card:hover .mk-catalogue-card__title-text--label,
+.mk-catalogue-card:focus-within .mk-catalogue-card__title-text--label {
+  opacity: 0;
+}
+
+.mk-catalogue-card:hover .mk-catalogue-card__title-text--download,
+.mk-catalogue-card:focus-within .mk-catalogue-card__title-text--download {
+  opacity: 1;
+  color: var(--mk-catalogue-brand);
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* Appointment CTA */
+.mk-catalogue-landing__appointment {
+  max-width: 36rem;
+  margin: 0 auto 3.5rem;
+  padding: 2rem 1.25rem;
+  text-align: center;
+  border: 1px solid #e2e0dc;
+  border-radius: 4px;
+  background: #faf9f7;
+}
+
+@media (min-width: 992px) {
+  .mk-catalogue-landing__appointment {
+    margin-bottom: 5rem;
+    padding: 2.5rem 2rem;
+  }
+}
+
+.mk-catalogue-landing__appointment-lead {
+  margin: 0 0 0.5rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #1a1a1a;
+}
+
+.mk-catalogue-landing__appointment-text {
+  margin: 0 0 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #6b6d70;
+}
+
+@media (min-width: 768px) {
+  .mk-catalogue-landing__appointment-text {
+    font-size: 0.9375rem;
+  }
+}
+
+.mk-catalogue-landing__appointment-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0 1.75rem;
+  border: 1px solid #1a1a1a;
+  border-radius: 2px;
+  background: #fff;
+  color: #1a1a1a;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.mk-catalogue-landing__appointment-cta:hover,
+.mk-catalogue-landing__appointment-cta:focus-visible {
+  background: var(--mk-catalogue-brand);
+  border-color: var(--mk-catalogue-brand);
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+
+/* Related section */
+.mk-catalogue-landing__related {
+  padding-top: 2.5rem;
+  border-top: 1px solid #e2e0dc;
+}
+
+@media (min-width: 992px) {
+  .mk-catalogue-landing__related {
+    padding-top: 3.5rem;
+  }
+}
+
+.mk-catalogue-landing__related-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .mk-catalogue-landing__related-head {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+}
+
+.mk-catalogue-landing__related-title {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #1a1a1a;
+}
+
+.mk-catalogue-landing__related-sub {
+  margin: 0.35rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #6b6d70;
+}
+
+.mk-catalogue-landing__related-link {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s ease;
+}
+
+.mk-catalogue-landing__related-link:hover {
+  color: var(--mk-catalogue-brand);
+}
+
+.mk-catalogue-landing__related-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .mk-catalogue-landing__related-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.mk-catalogue-related-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.mk-catalogue-related-card:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.mk-catalogue-related-card__media {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #f3f3f3;
+  border-radius: 2px;
+}
+
+.mk-catalogue-related-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.mk-catalogue-related-card:hover .mk-catalogue-related-card__media img {
+  transform: scale(1.04);
+}
+
+.mk-catalogue-related-card__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #1a1a1a;
+  transition: color 0.2s ease;
+}
+
+.mk-catalogue-related-card:hover .mk-catalogue-related-card__title {
+  color: var(--mk-catalogue-brand);
+}
+
+.mk-catalogue-related-card__excerpt {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #6b6d70;
+}
+
+.mk-catalogue-related-card__more {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+@media (max-width: 575.98px) {
+  .mk-catalogue-card__image {
+    aspect-ratio: 1 / 1;
+  }
+}

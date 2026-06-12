@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useCallback, useId, useRef, useState } from "react";
+import { BOOK_APPOINTMENT_HREF } from "@/lib/appointment";
+import { customizeOrderHref } from "@/lib/customize-order";
 import type { ProductDetailView } from "@/lib/product-detail";
 import { buildMolteniGalleryBlocks } from "@/lib/molteni-gallery-blocks";
 
@@ -200,7 +202,10 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
 
                 <div className="molt-ctas-product">
                   <Link
-                    href="/ww/request-catalogue"
+                    href={customizeOrderHref({
+                      service: data.servicePageSlug ?? "Kitchens",
+                      product: data.product.id,
+                    })}
                     className="molt-generic-cta molt-generic-cta--black molt-generic-cta--product"
                   >
                     Configure
@@ -210,7 +215,7 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
 
                 <div className="molt-ctas-product">
                   <Link
-                    href="/ww/find-a-dealer"
+                    href={BOOK_APPOINTMENT_HREF}
                     className="molt-generic-cta molt-generic-cta--bordered"
                   >
                     Find the nearest store
@@ -517,10 +522,10 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
       <section className="molt-content-block molt-back-bar">
         <div className="molt-wrapper-content">
           <Link
-            href="/ww/products"
+            href={data.serviceListHref ?? "/ww/products"}
             className="molt-generic-cta molt-generic-cta--text"
           >
-            ← Back to products
+            ← Back to {data.serviceListHref ? data.breadcrumbLabel : "products"}
           </Link>
         </div>
       </section>

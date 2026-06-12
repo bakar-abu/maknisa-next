@@ -29,27 +29,27 @@ export const homeVideoSections: HomeVideoSection[] = [
     ],
     "thumbSlides": [
       {
-        "link": "/ww/kitchens/poetica-kitchen",
+        "link": "/ww/services/kitchens/poetica-kitchen",
         "title": "Poetica",
         "image": "/media/immagini/13148_z_poetica.jpg"
       },
       {
-        "link": "/ww/kitchens/moda-kitchen",
+        "link": "/ww/services/kitchens/moda-kitchen",
         "title": "Moda",
         "image": "/media/immagini/13147_z_moda.jpg"
       },
       {
-        "link": "/ww/kitchens/regola-kitchen",
+        "link": "/ww/services/kitchens/regola-kitchen",
         "title": "Regola",
         "image": "/media/immagini/13868_z_regola.jpg"
       },
       {
-        "link": "/ww/kitchens/jeometrica-kitchen",
+        "link": "/ww/services/kitchens/jeometrica-kitchen",
         "title": "Jeometrica",
         "image": "/media/immagini/13146_z_thumb__0000s_0008_cucina02_JEOMETRICA.jpg"
       },
       {
-        "link": "/ww/kitchens/kitchen-cabinet-favilla",
+        "link": "/ww/services/kitchens/kitchen-cabinet-favilla",
         "title": "Favilla",
         "image": "/media/immagini/13149_z_thumb__0000s_0005_cucina05_FAVILLA.jpg"
       }

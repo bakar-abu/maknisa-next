@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useId } from "react";
-import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ProductSliderShell } from "@/components/product/ProductSliderShell";
 import { usePdpSwiperPagination } from "@/components/product/usePdpSwiperPagination";
@@ -21,9 +20,20 @@ export function ProductRelatedCard({
   collectionTitle,
 }: ProductRelatedCardProps) {
   const uid = useId();
-  const { dotsRef, dotsClassName, onBeforeInit, onInit } = usePdpSwiperPagination();
   const images = product.images.length > 0 ? product.images : [];
-  const loop = images.length > 1;
+  const {
+    dotsRef,
+    dotsClassName,
+    modules,
+    showDots,
+    loop,
+    onBeforeInit,
+    onInit,
+    onSlideChange,
+  } = usePdpSwiperPagination({
+    slideCount: images.length,
+    loop: images.length > 1,
+  });
 
   return (
     <div className="mk-pdp__related-card-wrap">
@@ -34,14 +44,16 @@ export function ProductRelatedCard({
             dotsClassName={dotsClassName}
             ariaLabel={`${product.title} images`}
             compact
+            showDots={showDots && images.length > 1}
           >
             <Swiper
               className="mk-pdp__related-img-swiper swiper"
-              modules={[Pagination]}
+              modules={modules}
               slidesPerView={1}
               loop={loop}
               onBeforeInit={onBeforeInit}
               onInit={onInit}
+              onSlideChange={onSlideChange}
               onTouchEnd={(_, e) => e.stopPropagation()}
             >
               {images.map((src, index) => (

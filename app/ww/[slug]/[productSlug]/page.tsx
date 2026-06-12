@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProductDetailPage } from "@/components/product/ProductDetailPage";
 import { isGridCollectionSlug } from "@/lib/collections";
+import { isServicePdpCollectionSlug } from "@/lib/product-routes";
 import {
   getAllProductStaticParams,
   getProductDetail,
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ProductDetailRoute({ params }: PageProps) {
   const { slug, productSlug } = await params;
 
-  if (!isGridCollectionSlug(slug)) notFound();
+  if (!isGridCollectionSlug(slug) || isServicePdpCollectionSlug(slug)) notFound();
 
   const detail = await getProductDetail(slug, productSlug);
   if (!detail) notFound();

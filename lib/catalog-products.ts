@@ -36,8 +36,23 @@ export async function getCatalogProducts(): Promise<CatalogProduct[]> {
   return catalogCache;
 }
 
-export async function getCatalogPageData(): Promise<CatalogPageData> {
-  const products = await getCatalogProducts();
+export type CatalogPageOptions = {
+  title?: string;
+  h1?: string;
+  intro?: string;
+  roomSlugs?: GridCollectionSlug[];
+};
+
+export async function getCatalogPageData(
+  options?: CatalogPageOptions,
+): Promise<CatalogPageData> {
+  let products = await getCatalogProducts();
+
+  if (options?.roomSlugs?.length) {
+    products = products.filter((product) =>
+      options.roomSlugs!.includes(product.collectionSlug),
+    );
+  }
   const tagCounts = new Map<number, CatalogTag>();
 
   for (const slug of GRID_COLLECTION_SLUGS) {
@@ -78,11 +93,17 @@ export async function getCatalogPageData(): Promise<CatalogPageData> {
     }),
   );
 
-  return {
+  const defaults = {
     title: "Products",
     h1: "Our Products",
     intro:
       "Browse furniture, kitchens, bathrooms, lighting, and surfaces. Filter by product type, room, style, and budget to find the right piece for your project.",
+  };
+
+  return {
+    title: options?.title ?? defaults.title,
+    h1: options?.h1 ?? defaults.h1,
+    intro: options?.intro ?? defaults.intro,
     products,
     tags,
     productTypes,

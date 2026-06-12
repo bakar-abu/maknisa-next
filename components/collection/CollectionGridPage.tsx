@@ -2,18 +2,32 @@
 
 import Link from "next/link";
 import { useCallback, useMemo, useState } from "react";
-import { MagazineBreadcrumbs } from "@/components/magazine/MagazineBreadcrumbs";
+import { CollectionGridHero } from "@/components/collection/CollectionGridHero";
 import { CollectionProductCard } from "@/components/collection/CollectionProductCard";
+import { MagazineBreadcrumbs } from "@/components/magazine/MagazineBreadcrumbs";
 import type {
   CollectionGridData,
   CollectionProduct,
   CollectionTag,
 } from "@/lib/collection-types";
+import {
+  buildServiceFiltersWithImages,
+  productMatchesServiceFilter,
+  type ServiceFilterSetId,
+} from "@/lib/collection-service-filters";
+import { CUSTOMIZE_ORDER_HREF } from "@/lib/routes";
 import { site } from "@/lib/site";
+
+import "@/app/styles/collection-grid-hero.css";
 
 type CollectionGridPageProps = {
   data: CollectionGridData;
   allProducts: CollectionProduct[];
+  useServiceHero?: boolean;
+  heroTitle?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  filterSetId?: ServiceFilterSetId;
 };
 
 function productMatchesCategories(
@@ -24,11 +38,25 @@ function productMatchesCategories(
   return product.categoryIds.some((id) => categoryIds.includes(id));
 }
 
-export function CollectionGridPage({ data, allProducts }: CollectionGridPageProps) {
+export function CollectionGridPage({
+  data,
+  allProducts,
+  useServiceHero = false,
+  heroTitle,
+  ctaLabel = "Customize your kitchen",
+  ctaHref = CUSTOMIZE_ORDER_HREF,
+  filterSetId = "kitchens",
+}: CollectionGridPageProps) {
   const [activeCategoryIds, setActiveCategoryIds] = useState<number[]>(
     data.primaryCategoryIds,
   );
+  const [activeStyleId, setActiveStyleId] = useState<string | null>(null);
   const [page, setPage] = useState(1);
+
+  const serviceFilters = useMemo(
+    () => buildServiceFiltersWithImages(data.products, filterSetId),
+    [data.products, filterSetId],
+  );
 
   const tagsById = useMemo(() => {
     const map = new Map<number, CollectionTag>();
@@ -45,6 +73,12 @@ export function CollectionGridPage({ data, allProducts }: CollectionGridPageProp
   }, [allProducts, data.tags]);
 
   const pool = useMemo(() => {
+    if (useServiceHero) {
+      return data.products.filter((product) =>
+        productMatchesServiceFilter(product, filterSetId, activeStyleId),
+      );
+    }
+
     const onlyPrimary =
       activeCategoryIds.length === data.primaryCategoryIds.length &&
       data.primaryCategoryIds.every((id) => activeCategoryIds.includes(id));
@@ -52,7 +86,15 @@ export function CollectionGridPage({ data, allProducts }: CollectionGridPageProp
     return source.filter((p) =>
       productMatchesCategories(p, activeCategoryIds),
     );
-  }, [activeCategoryIds, allProducts, data.primaryCategoryIds, data.products]);
+  }, [
+    activeCategoryIds,
+    activeStyleId,
+    allProducts,
+    data.primaryCategoryIds,
+    data.products,
+    filterSetId,
+    useServiceHero,
+  ]);
 
   const totalPages = Math.max(1, Math.ceil(pool.length / data.itemsPerPage));
   const visible = pool.slice(
@@ -73,6 +115,13 @@ export function CollectionGridPage({ data, allProducts }: CollectionGridPageProp
     [data.primaryCategoryIds],
   );
 
+  const handleStyleChange = useCallback((styleId: string | null) => {
+    setActiveStyleId(styleId);
+    setPage(1);
+  }, []);
+
+  const displayTitle = heroTitle ?? data.breadcrumbLabel;
+
   return (
     <main id="main-content" role="main">
       <section className="sn_kitchens_grid mt-40 mb-90 mt-xl-70 mb-xl-120">
@@ -80,66 +129,78 @@ export function CollectionGridPage({ data, allProducts }: CollectionGridPageProp
           <input type="hidden" name="page" value={page} readOnly />
           <input type="hidden" name="itemsforpage" value={data.itemsPerPage} readOnly />
 
-          <div className="sn_kitchens_grid_filters mb-70 mb-xl-100">
-            <div className="container-fluid text-center mb-30 mb-lg-40">
-              <div className="row align-items-end justify-content-center">
-                <div className="col-12 mb-20 mb-lg-30">
-                  <MagazineBreadcrumbs
-                    items={[
-                      { label: "Home", href: "/" },
-                      { label: data.breadcrumbLabel },
-                    ]}
-                  />
-                  <h1 className="h4 m-0">{data.h1}</h1>
-                </div>
-                {data.intro ? (
-                  <div className="col-12">
-                    <p className="sn_paragraph_lg m-0">{data.intro}</p>
+          {useServiceHero ? (
+            <CollectionGridHero
+              heroTitle={displayTitle}
+              ctaLabel={ctaLabel}
+              ctaHref={ctaHref}
+              breadcrumbLabel={data.breadcrumbLabel}
+              styleFilters={serviceFilters}
+              activeStyleId={activeStyleId}
+              onStyleChange={handleStyleChange}
+            />
+          ) : (
+            <div className="sn_kitchens_grid_filters mb-70 mb-xl-100">
+              <div className="container-fluid text-center mb-30 mb-lg-40">
+                <div className="row align-items-end justify-content-center">
+                  <div className="col-12 mb-20 mb-lg-30">
+                    <MagazineBreadcrumbs
+                      items={[
+                        { label: "Home", href: "/" },
+                        { label: data.breadcrumbLabel },
+                      ]}
+                    />
+                    <h1 className="h4 m-0">{data.h1}</h1>
                   </div>
-                ) : null}
-              </div>
-            </div>
-
-            {data.categories.length > 0 ? (
-              <div className="sn_kitchens_grid_filters_checks col-12">
-                <div className="row align-items-center justify-content-center">
-                  <div className="col-12 col-md-auto text-center text-md-left mb-10 mb-md-0">
-                    <div className="sn_kitchens_grid_filters_checks_title">
-                      Show me
+                  {data.intro ? (
+                    <div className="col-12">
+                      <p className="sn_paragraph_lg m-0">{data.intro}</p>
                     </div>
-                  </div>
-                  {data.categories.map((cat) => (
-                    <div key={cat.id} className="col-auto my-5">
-                      <div className="d-flex align-items-center filter-group">
-                        <div className="custom-control custom-checkbox mr-2">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            id={`filter-cat-${data.slug}-${cat.id}`}
-                            name="qsCategorie"
-                            value={cat.id}
-                            checked={activeCategoryIds.includes(cat.id)}
-                            onChange={() => toggleCategory(cat.id)}
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor={`filter-cat-${data.slug}-${cat.id}`}
-                          />
-                        </div>
-                        <Link
-                          href={cat.href}
-                          className="filter-link-label"
-                          aria-label={`Go to ${cat.label}`}
-                        >
-                          {cat.label}
-                        </Link>
+                  ) : null}
+                </div>
+              </div>
+
+              {data.categories.length > 0 ? (
+                <div className="sn_kitchens_grid_filters_checks col-12">
+                  <div className="row align-items-center justify-content-center">
+                    <div className="col-12 col-md-auto text-center text-md-left mb-10 mb-md-0">
+                      <div className="sn_kitchens_grid_filters_checks_title">
+                        Show me
                       </div>
                     </div>
-                  ))}
+                    {data.categories.map((cat) => (
+                      <div key={cat.id} className="col-auto my-5">
+                        <div className="d-flex align-items-center filter-group">
+                          <div className="custom-control custom-checkbox mr-2">
+                            <input
+                              type="checkbox"
+                              className="custom-control-input"
+                              id={`filter-cat-${data.slug}-${cat.id}`}
+                              name="qsCategorie"
+                              value={cat.id}
+                              checked={activeCategoryIds.includes(cat.id)}
+                              onChange={() => toggleCategory(cat.id)}
+                            />
+                            <label
+                              className="custom-control-label"
+                              htmlFor={`filter-cat-${data.slug}-${cat.id}`}
+                            />
+                          </div>
+                          <Link
+                            href={cat.href}
+                            className="filter-link-label"
+                            aria-label={`Go to ${cat.label}`}
+                          >
+                            {cat.label}
+                          </Link>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ) : null}
-          </div>
+              ) : null}
+            </div>
+          )}
 
           <div className="container-fluid">
             <div className="sn_kitchens_grid_row row" role="list">
@@ -155,7 +216,7 @@ export function CollectionGridPage({ data, allProducts }: CollectionGridPageProp
             {pool.length === 0 ? (
               <div className="text-center py-60">
                 <p className="sn_paragraph_lg">
-                  No products match your filters. Try a different category.
+                  No products match your filters. Try a different style.
                 </p>
               </div>
             ) : null}
