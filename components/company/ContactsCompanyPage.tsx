@@ -57,7 +57,12 @@ export function ContactsCompanyPage() {
             </div>
 
             <div className="sn_store_locator_map_stores_main">
-              {storesContent.map((office, index) => (
+              {storesContent.map((office, index) => {
+                const phone = office.phone ?? site.phone;
+                const phoneTel = phone.replace(/\s/g, "");
+                const email = office.email ?? site.email;
+
+                return (
                 <div key={office.id} className="sn_store_locator_i _sb_gray">
                   <div className="marker">
                     <Icon
@@ -73,22 +78,23 @@ export function ContactsCompanyPage() {
                     <br />
                     T:{" "}
                     <Link
-                      href={`tel:${office.phone.replace(/\s/g, "")}`}
+                      href={`tel:${phoneTel}`}
                       className="mk-contacts-page__accent"
                     >
-                      {office.phone}
+                      {phone}
                     </Link>
                     <br />
                     <Link
-                      href={`mailto:${office.email}`}
+                      href={`mailto:${email}`}
                       title={office.title}
                       className="mk-contacts-page__accent"
                     >
-                      {office.email}
+                      {email}
                     </Link>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
