@@ -305,10 +305,39 @@ body.home-2025 .sn_slider_video.is-autoplay-paused
   min-height: 420px;
 }
 
-.sn_store_locator_map .sn_store_locator_map_stores {
-  max-width: 720px;
-  margin: 80px auto 120px;
-  padding: 0 20px;
+@media only screen and (max-width: 79.99em) {
+  .sn_store_locator_map .sn_store_locator_map_stores {
+    max-width: 720px;
+    margin: 80px auto 120px;
+    padding: 0 20px;
+  }
+}
+
+@media only screen and (min-width: 80em) {
+  .sn_store_locator_map .sn_store_locator_map_stores {
+    max-width: none;
+    margin: 0;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+  }
+}
+
+.mk-contacts-page__accent {
+  color: #f99106;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.mk-contacts-page__accent:hover,
+.mk-contacts-page__accent:focus-visible {
+  color: #d97d05;
+  text-decoration: underline;
+}
+
+.mk-contacts-page__hq strong {
+  color: #f99106;
 }
 
 /* Floating contact widget (call + WhatsApp) */

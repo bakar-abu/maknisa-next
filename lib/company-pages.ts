@@ -293,6 +293,7 @@ export const qualityContent = {
 };
 
 export const contactsContent = {
+  mapQuery: `${site.name}, ${site.address}`,
   headquarters: {
     name: site.name,
     address: site.address,
