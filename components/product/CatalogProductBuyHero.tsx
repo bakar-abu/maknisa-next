@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useId, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { CatalogOptionModal } from "@/components/product/CatalogOptionModal";
@@ -28,6 +28,99 @@ const SIZE_OPTIONS = [
   "W180 × L200 cm",
   "W193 × L203 cm",
 ];
+
+const PIECES_BY_FURNITURE_TYPE = {
+  sofa: ["1 Seater", "2 Seater", "3 Seater", "L-Shape", "Sectional (5+ Seater)"],
+  chair: ["Single Chair", "Set of 2", "Set of 4", "Set of 6"],
+  table: ["2 Seater", "4 Seater", "6 Seater", "8 Seater", "10 Seater"],
+  bed: ["Single", "Queen", "King", "Super King"],
+  storage: ["2 Door", "3 Door", "4 Door", "6 Door"],
+  default: ["Single Piece", "Set of 2", "Set of 4", "Custom Quantity"],
+} as const;
+
+function resolvePiecesOptions(product: CatalogProduct, categoryLabel: string): string[] {
+  const haystack = `${product.title} ${categoryLabel}`.toLowerCase();
+
+  if (/(sofa|couch|loveseat|sectional|recliner)/.test(haystack)) {
+    return [...PIECES_BY_FURNITURE_TYPE.sofa];
+  }
+  if (/(chair|stool|bench)/.test(haystack)) {
+    return [...PIECES_BY_FURNITURE_TYPE.chair];
+  }
+  if (/(table|dining|coffee table|side table|desk)/.test(haystack)) {
+    return [...PIECES_BY_FURNITURE_TYPE.table];
+  }
+  if (/(bed|headboard)/.test(haystack)) {
+    return [...PIECES_BY_FURNITURE_TYPE.bed];
+  }
+  if (/(wardrobe|cabinet|closet|storage)/.test(haystack)) {
+    return [...PIECES_BY_FURNITURE_TYPE.storage];
+  }
+
+  return [...PIECES_BY_FURNITURE_TYPE.default];
+}
+
+const DEFAULT_COLOR_PALETTE = [
+  "#F2F2F2",
+  "#D9D9D9",
+  "#BFBFBF",
+  "#9A9A9A",
+  "#6E6E6E",
+  "#2D2D2D",
+  "#DDEFFD",
+  "#9BD8FF",
+  "#55B4F3",
+  "#2688D7",
+  "#1A5EA8",
+  "#103C77",
+  "#F7E7C6",
+  "#EFCF8A",
+  "#DBAD4A",
+  "#BC7D19",
+  "#8F5B10",
+  "#5F3908",
+  "#E9D7DD",
+  "#DBA9B9",
+  "#C77A93",
+  "#A54B71",
+  "#762F58",
+  "#4F1B3D",
+  "#D4EED8",
+  "#9BDEAA",
+  "#5BCB76",
+  "#33A956",
+  "#1D7A3D",
+  "#11572C",
+];
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, value));
+}
+
+function applyShade(hex: string, shade: number): string {
+  const normalized = hex.replace("#", "");
+  const full = normalized.length === 3
+    ? normalized
+        .split("")
+        .map((char) => `${char}${char}`)
+        .join("")
+    : normalized;
+
+  if (!/^[\da-fA-F]{6}$/.test(full)) return "#2688EB";
+
+  const channel = (start: number) => parseInt(full.slice(start, start + 2), 16);
+  const percent = shade / 100;
+  const adjust = (value: number) => {
+    if (percent >= 0) return Math.round(value + (255 - value) * percent);
+    return Math.round(value * (1 + percent));
+  };
+
+  const r = clamp(adjust(channel(0)), 0, 255);
+  const g = clamp(adjust(channel(2)), 0, 255);
+  const b = clamp(adjust(channel(4)), 0, 255);
+
+  return `#${[r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("")}`.toUpperCase();
+}
 
 type CatalogProductBuyHeroProps = {
   product: CatalogProduct;
@@ -107,15 +200,29 @@ export function CatalogProductBuyHero({
   const nextRef = useRef<HTMLButtonElement>(null);
   const [colorOpen, setColorOpen] = useState(false);
   const [sizeOpen, setSizeOpen] = useState(false);
+  const [piecesOpen, setPiecesOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [customWidth, setCustomWidth] = useState("");
+  const [customLength, setCustomLength] = useState("");
+  const [selectedPiece, setSelectedPiece] = useState<string | null>(null);
   const [addedToCart, setAddedToCart] = useState(false);
+  const [customBaseColor, setCustomBaseColor] = useState("#2688EB");
+  const [shadeValue, setShadeValue] = useState(0);
 
   const swatches = getProductCardSwatches(product);
   const moreSwatches = hasMoreSwatchOptions(product);
   const pricing = getProductCardPricing(product);
   const starRating = productStarRating(product.id);
   const showCarouselControls = images.length > 1;
+  const customPreviewColor = useMemo(
+    () => applyShade(customBaseColor, shadeValue),
+    [customBaseColor, shadeValue],
+  );
+  const paletteColors = useMemo(() => {
+    const fromProduct = swatches.map((swatch) => swatch.color.toUpperCase());
+    return [...new Set([...fromProduct, ...DEFAULT_COLOR_PALETTE])];
+  }, [swatches]);
 
   const { dotsRef, dotsClassName, onBeforeInit, onInit, onSlideChange, showDots } =
     usePdpSwiperPagination({
@@ -129,6 +236,37 @@ export function CatalogProductBuyHero({
       .concat(SIZE_OPTIONS.slice(0, Math.max(0, 4 - (SIZE_OPTIONS.length - hash))))
       .slice(0, 4);
   }, [product.id]);
+  const pieceOptions = useMemo(
+    () => resolvePiecesOptions(product, categoryLabel),
+    [product, categoryLabel],
+  );
+
+  const customSizeLabel =
+    customWidth.trim() && customLength.trim()
+      ? `W${customWidth.trim()} × L${customLength.trim()} cm`
+      : null;
+  const isCustomSizeSelected =
+    customSizeLabel !== null && selectedSize === customSizeLabel;
+
+  const applyCustomSize = () => {
+    if (!customSizeLabel) return;
+    setSelectedSize(customSizeLabel);
+    setSizeOpen(false);
+  };
+
+  useEffect(() => {
+    if (!sizeOpen || !selectedSize) return;
+    if (sizeOptions.includes(selectedSize)) {
+      setCustomWidth("");
+      setCustomLength("");
+      return;
+    }
+    const match = selectedSize.match(/^W([\d.]+)\s*×\s*L([\d.]+)\s*cm$/i);
+    if (match) {
+      setCustomWidth(match[1]);
+      setCustomLength(match[2]);
+    }
+  }, [sizeOpen, selectedSize, sizeOptions]);
 
   return (
     <section className="mk-catalog-pdp-buy" aria-label="Product overview">
@@ -165,13 +303,11 @@ export function CatalogProductBuyHero({
                     slidesPerView={1}
                     spaceBetween={0}
                     loop={false}
-                    navigation={{
-                      prevEl: prevRef.current,
-                      nextEl: nextRef.current,
-                    }}
+                    navigation={showCarouselControls}
                     onBeforeInit={(swiper) => {
                       onBeforeInit(swiper);
                       if (
+                        showCarouselControls &&
                         typeof swiper.params.navigation !== "boolean" &&
                         swiper.params.navigation
                       ) {
@@ -292,6 +428,16 @@ export function CatalogProductBuyHero({
               </span>
               <ChevronDownIcon />
             </button>
+            <button
+              type="button"
+              className="mk-catalog-pdp-buy__option-btn mk-catalog-pdp-buy__option-btn--pieces"
+              onClick={() => setPiecesOpen(true)}
+            >
+              <span className="mk-catalog-pdp-buy__option-label">
+                {selectedPiece ? `Pieces: ${selectedPiece}` : "Pieces"}
+              </span>
+              <ChevronDownIcon />
+            </button>
           </div>
 
           {description ? (
@@ -320,27 +466,85 @@ export function CatalogProductBuyHero({
         onClose={() => setColorOpen(false)}
       >
         <div className="mk-catalog-pdp-options">
-          {swatches.map((swatch) => (
-            <button
-              key={swatch.title}
-              type="button"
-              className={
-                selectedColor === swatch.title
-                  ? "mk-catalog-pdp-options__swatch is-active"
-                  : "mk-catalog-pdp-options__swatch"
-              }
-              onClick={() => {
-                setSelectedColor(swatch.title);
-                setColorOpen(false);
-              }}
-            >
-              <span
-                className="mk-catalog-pdp-options__dot"
-                style={{ backgroundColor: swatch.color }}
+          <section className="mk-catalog-pdp-options__section">
+            <h4 className="mk-catalog-pdp-options__section-title">Theme colors</h4>
+            <div className="mk-catalog-pdp-options__palette" role="list">
+              {paletteColors.map((color) => {
+                const isActive = selectedColor === color;
+                return (
+                  <button
+                    key={color}
+                    type="button"
+                    className={
+                      isActive
+                        ? "mk-catalog-pdp-options__square is-active"
+                        : "mk-catalog-pdp-options__square"
+                    }
+                    style={{ backgroundColor: color }}
+                    title={color}
+                    aria-label={`Choose ${color}`}
+                    aria-pressed={isActive}
+                    onClick={() => setSelectedColor(color)}
+                  />
+                );
+              })}
+            </div>
+          </section>
+
+          <section className="mk-catalog-pdp-options__section">
+            <div className="mk-catalog-pdp-options__custom-head">
+              <h4 className="mk-catalog-pdp-options__section-title">My color</h4>
+              <label className="mk-catalog-pdp-options__add">
+                <span>+ Add</span>
+                <input
+                  type="color"
+                  value={customBaseColor}
+                  aria-label="Pick a base color"
+                  onChange={(event) => setCustomBaseColor(event.target.value.toUpperCase())}
+                />
+              </label>
+            </div>
+
+            <div className="mk-catalog-pdp-options__custom-preview-row">
+              <button
+                type="button"
+                className={
+                  selectedColor === customPreviewColor
+                    ? "mk-catalog-pdp-options__custom-preview is-active"
+                    : "mk-catalog-pdp-options__custom-preview"
+                }
+                style={{ backgroundColor: customPreviewColor }}
+                title={customPreviewColor}
+                aria-label={`Use custom color ${customPreviewColor}`}
+                aria-pressed={selectedColor === customPreviewColor}
+                onClick={() => setSelectedColor(customPreviewColor)}
               />
-              <span>{swatch.title}</span>
-            </button>
-          ))}
+              <span className="mk-catalog-pdp-options__hex">{customPreviewColor}</span>
+            </div>
+
+            <label className="mk-catalog-pdp-options__range-label" htmlFor={`${uid}-shade`}>
+              Shade
+            </label>
+            <input
+              id={`${uid}-shade`}
+              type="range"
+              min={-45}
+              max={45}
+              step={1}
+              value={shadeValue}
+              className="mk-catalog-pdp-options__range"
+              onChange={(event) => setShadeValue(Number(event.target.value))}
+            />
+          </section>
+
+          <button
+            type="button"
+            className="mk-catalog-pdp-options__confirm"
+            onClick={() => setColorOpen(false)}
+          >
+            Apply color
+          </button>
+
           {moreSwatches ? (
             <p className="mk-catalog-pdp-options__note">
               Additional finishes are available in store. Contact us for the full
@@ -353,24 +557,116 @@ export function CatalogProductBuyHero({
       <CatalogOptionModal
         open={sizeOpen}
         title="Choose a size"
+        panelClassName="mk-catalog-pdp-modal__panel--wide"
         onClose={() => setSizeOpen(false)}
       >
-        <div className="mk-catalog-pdp-options mk-catalog-pdp-options--sizes">
-          {sizeOptions.map((size) => (
+        <div className="mk-catalog-pdp-size-layout">
+          <section className="mk-catalog-pdp-size-layout__col">
+            <h3 className="mk-catalog-pdp-size-layout__title">Choose a size</h3>
+            <div className="mk-catalog-pdp-options mk-catalog-pdp-options--sizes">
+              {sizeOptions.map((size) => (
+                <button
+                  key={size}
+                  type="button"
+                  className={
+                    selectedSize === size
+                      ? "mk-catalog-pdp-options__size is-active"
+                      : "mk-catalog-pdp-options__size"
+                  }
+                  onClick={() => {
+                    setSelectedSize(size);
+                    setCustomWidth("");
+                    setCustomLength("");
+                    setSizeOpen(false);
+                  }}
+                >
+                  {size}
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <section className="mk-catalog-pdp-size-layout__col mk-catalog-pdp-size-layout__col--custom">
+            <h3 className="mk-catalog-pdp-size-layout__title">Customize size</h3>
+            <p className="mk-catalog-pdp-size-layout__hint">
+              Enter your preferred dimensions in centimeters.
+            </p>
+            <div className="mk-catalog-pdp-size-layout__fields">
+              <label className="mk-catalog-pdp-size-layout__field" htmlFor={`${uid}-width`}>
+                <span className="mk-catalog-pdp-size-layout__label">Width</span>
+                <span className="mk-catalog-pdp-size-layout__input-wrap">
+                  <input
+                    id={`${uid}-width`}
+                    type="number"
+                    min={1}
+                    step={0.5}
+                    inputMode="decimal"
+                    placeholder="e.g. 180"
+                    value={customWidth}
+                    onChange={(event) => setCustomWidth(event.target.value)}
+                  />
+                  <span className="mk-catalog-pdp-size-layout__unit">cm</span>
+                </span>
+              </label>
+              <label className="mk-catalog-pdp-size-layout__field" htmlFor={`${uid}-length`}>
+                <span className="mk-catalog-pdp-size-layout__label">Length</span>
+                <span className="mk-catalog-pdp-size-layout__input-wrap">
+                  <input
+                    id={`${uid}-length`}
+                    type="number"
+                    min={1}
+                    step={0.5}
+                    inputMode="decimal"
+                    placeholder="e.g. 200"
+                    value={customLength}
+                    onChange={(event) => setCustomLength(event.target.value)}
+                  />
+                  <span className="mk-catalog-pdp-size-layout__unit">cm</span>
+                </span>
+              </label>
+            </div>
+            {customSizeLabel ? (
+              <p className="mk-catalog-pdp-size-layout__preview">
+                Preview: <strong>{customSizeLabel}</strong>
+              </p>
+            ) : null}
             <button
-              key={size}
               type="button"
               className={
-                selectedSize === size
+                isCustomSizeSelected
+                  ? "mk-catalog-pdp-options__confirm is-active"
+                  : "mk-catalog-pdp-options__confirm"
+              }
+              disabled={!customSizeLabel}
+              onClick={applyCustomSize}
+            >
+              Apply custom size
+            </button>
+          </section>
+        </div>
+      </CatalogOptionModal>
+
+      <CatalogOptionModal
+        open={piecesOpen}
+        title="Choose pieces"
+        onClose={() => setPiecesOpen(false)}
+      >
+        <div className="mk-catalog-pdp-options mk-catalog-pdp-options--sizes">
+          {pieceOptions.map((piece) => (
+            <button
+              key={piece}
+              type="button"
+              className={
+                selectedPiece === piece
                   ? "mk-catalog-pdp-options__size is-active"
                   : "mk-catalog-pdp-options__size"
               }
               onClick={() => {
-                setSelectedSize(size);
-                setSizeOpen(false);
+                setSelectedPiece(piece);
+                setPiecesOpen(false);
               }}
             >
-              {size}
+              {piece}
             </button>
           ))}
         </div>

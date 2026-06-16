@@ -55,6 +55,8 @@ export type CatalogFilters = {
   roomSlugs: GridCollectionSlug[];
   tagIds: number[];
   drawerFilters: DrawerFiltersState;
+  searchQuery: string;
+  selectedColors: string[];
   priceMin: number;
   priceMax: number;
   onlineOnly: boolean;

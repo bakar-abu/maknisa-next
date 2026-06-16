@@ -10,10 +10,6 @@ import {
 
   getProductCardPricing,
 
-  getProductCardSwatches,
-
-  hasMoreSwatchOptions,
-
 } from "@/lib/catalog-card-display";
 
 import type { CatalogProduct } from "@/lib/catalog-types";
@@ -57,10 +53,6 @@ function ServiceProductCard({
   const badges = getProductCardBadges(product);
 
   const materials = getProductCardMaterials(product);
-
-  const swatches = getProductCardSwatches(product);
-
-  const moreSwatches = hasMoreSwatchOptions(product);
 
   const pricing = getProductCardPricing(product);
 
@@ -162,42 +154,6 @@ function ServiceProductCard({
             ))}
 
           </div>
-
-
-
-          {swatches.length > 0 ? (
-
-            <ul className="mk-bc-card__swatches" aria-label="Available colours">
-
-              {swatches.map((swatch) => (
-
-                <li key={swatch.title}>
-
-                  <span
-
-                    className="mk-bc-card__swatch"
-
-                    style={
-                      { "--swatch-color": swatch.color } as React.CSSProperties
-                    }
-
-                    title={swatch.title}
-
-                  />
-
-                </li>
-
-              ))}
-
-              {moreSwatches ? (
-
-                <li className="mk-bc-card__swatches-more">+ more options</li>
-
-              ) : null}
-
-            </ul>
-
-          ) : null}
 
 
 

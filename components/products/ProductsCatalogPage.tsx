@@ -23,6 +23,8 @@ function buildDefaultFilters(data: CatalogPageData): CatalogFilters {
     roomSlugs: [],
     tagIds: [],
     drawerFilters: {},
+    searchQuery: "",
+    selectedColors: [],
     priceMin: data.priceRange.min,
     priceMax: data.priceRange.max,
     onlineOnly: false,

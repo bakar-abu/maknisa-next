@@ -9,6 +9,7 @@ import { resolveServiceCollectionRoute } from "@/lib/services";
 import { site } from "@/lib/site";
 
 import "@/app/styles/molteni-product.css";
+import "@/app/styles/woodwork-pdp-sections.css";
 
 type PageProps = {
   params: Promise<{ slug: string; productSlug: string }>;

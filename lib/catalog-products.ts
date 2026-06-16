@@ -1,3 +1,4 @@
+import { productMatchesColorFilter } from "./catalog-card-display";
 import { enrichCatalogProduct } from "./catalog-enrich";
 import { isEligibleCatalogProduct } from "./catalog-eligibility";
 import type {
@@ -132,7 +133,17 @@ export function filterCatalogProducts(
   products: CatalogProduct[],
   filters: CatalogFilters,
 ): CatalogProduct[] {
+  const searchQuery = filters.searchQuery.trim().toLowerCase();
+
   let result = products.filter((product) => {
+    if (searchQuery && !product.title.toLowerCase().includes(searchQuery)) {
+      return false;
+    }
+
+    if (!productMatchesColorFilter(product, filters.selectedColors)) {
+      return false;
+    }
+
     if (filters.productTypeIds.length > 0) {
       if (!filters.productTypeIds.includes(product.primaryProductTypeId)) {
         return false;

@@ -6,6 +6,7 @@ type CatalogOptionModalProps = {
   open: boolean;
   title: string;
   onClose: () => void;
+  panelClassName?: string;
   children: React.ReactNode;
 };
 
@@ -13,6 +14,7 @@ export function CatalogOptionModal({
   open,
   title,
   onClose,
+  panelClassName,
   children,
 }: CatalogOptionModalProps) {
   useEffect(() => {
@@ -38,7 +40,13 @@ export function CatalogOptionModal({
         aria-label="Close"
         onClick={onClose}
       />
-      <div className="mk-catalog-pdp-modal__panel">
+      <div
+        className={
+          panelClassName
+            ? `mk-catalog-pdp-modal__panel ${panelClassName}`
+            : "mk-catalog-pdp-modal__panel"
+        }
+      >
         <header className="mk-catalog-pdp-modal__head">
           <h2 id="catalog-option-title" className="mk-catalog-pdp-modal__title">
             {title}

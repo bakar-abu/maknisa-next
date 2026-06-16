@@ -5,7 +5,14 @@ import { useCallback, useId, useRef, useState } from "react";
 import { BOOK_APPOINTMENT_HREF } from "@/lib/appointment";
 import { customizeOrderHref } from "@/lib/customize-order";
 import type { ProductDetailView } from "@/lib/product-detail";
+import { WoodworkColourProposalsSection } from "@/components/product/WoodworkColourProposalsSection";
+import { WoodworkMustHavesSection } from "@/components/product/WoodworkMustHavesSection";
 import { buildMolteniGalleryBlocks } from "@/lib/molteni-gallery-blocks";
+import {
+  getWoodworkColourProposals,
+  getWoodworkMustHaves,
+  isWoodworkPdp,
+} from "@/lib/woodwork-pdp-content";
 
 type MolteniProductPageProps = {
   data: ProductDetailView;
@@ -126,6 +133,21 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
   const designerPortrait =
     data.galleryImages[1] ?? data.galleryImages[0] ?? heroImage;
 
+  const showWoodworkSections = isWoodworkPdp(data.servicePageSlug);
+  const woodworkImages = Array.from(
+    new Set(
+      [heroImage, ...data.galleryImages, ...data.heroImages, ...data.product.images].filter(
+        Boolean,
+      ),
+    ),
+  );
+  const woodworkMustHaves = showWoodworkSections
+    ? getWoodworkMustHaves(woodworkImages)
+    : [];
+  const woodworkColourProposals = showWoodworkSections
+    ? getWoodworkColourProposals(woodworkImages)
+    : [];
+
   return (
     <div className="molt-product">
       {/* Hero — split image left, product info right */}
@@ -245,6 +267,19 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
           </article>
         </div>
       </section>
+
+      {showWoodworkSections ? (
+        <>
+          <WoodworkMustHavesSection
+            productTitle={data.product.title}
+            items={woodworkMustHaves}
+          />
+          <WoodworkColourProposalsSection
+            productTitle={data.product.title}
+            proposals={woodworkColourProposals}
+          />
+        </>
+      ) : null}
 
       {/* Gallery blocks 0–9 (Molteni sequence) */}
       {galleryBlocks.map((block, index) => {

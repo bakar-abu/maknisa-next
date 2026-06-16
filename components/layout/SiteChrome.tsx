@@ -1,6 +1,7 @@
 import { AffixBar } from "./AffixBar";
 import { BodyRouteClasses } from "./BodyRouteClasses";
 import { Footer } from "./Footer";
+import { FloatingContactWidget } from "./FloatingContactWidget";
 import { Header } from "./Header";
 import { HeaderScrollEffects } from "./HeaderScrollEffects";
 import { SkipLinks } from "./SkipLinks";
@@ -17,6 +18,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
       <AffixBar />
       {children}
       <Footer />
+      <FloatingContactWidget />
       <SvgSprites />
       <UserWayWidget />
     </>

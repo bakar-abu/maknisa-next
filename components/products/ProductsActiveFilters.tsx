@@ -1,5 +1,6 @@
 "use client";
 
+import { CATALOG_COLOR_PALETTE } from "@/lib/catalog-card-display";
 import type { CatalogFilters, CatalogPageData } from "@/lib/catalog-types";
 import { PRODUCT_TYPE_BY_ID } from "@/lib/product-types";
 
@@ -7,14 +8,42 @@ type ProductsActiveFiltersProps = {
   data: CatalogPageData;
   filters: CatalogFilters;
   onChange: (next: CatalogFilters) => void;
+  variant?: "default" | "drawer";
 };
 
 export function ProductsActiveFilters({
   data,
   filters,
   onChange,
+  variant = "default",
 }: ProductsActiveFiltersProps) {
   const chips: { key: string; label: string; remove: () => void }[] = [];
+
+  if (filters.searchQuery.trim()) {
+    chips.push({
+      key: "search",
+      label: `Search: ${filters.searchQuery.trim()}`,
+      remove: () => onChange({ ...filters, searchQuery: "", page: 1 }),
+    });
+  }
+
+  for (const color of filters.selectedColors) {
+    const swatch = CATALOG_COLOR_PALETTE.find(
+      (item) => item.color.toUpperCase() === color.toUpperCase(),
+    );
+    chips.push({
+      key: `color-${color}`,
+      label: swatch?.title ?? color,
+      remove: () =>
+        onChange({
+          ...filters,
+          selectedColors: filters.selectedColors.filter(
+            (item) => item.toUpperCase() !== color.toUpperCase(),
+          ),
+          page: 1,
+        }),
+    });
+  }
 
   for (const id of filters.productTypeIds) {
     const type = PRODUCT_TYPE_BY_ID.get(id);
@@ -86,10 +115,22 @@ export function ProductsActiveFilters({
     });
   }
 
-  if (chips.length === 0) return null;
+  if (chips.length === 0) {
+    if (variant === "drawer") {
+      return (
+        <p className="mk-catalog-drawer__no-filters">No active filters yet.</p>
+      );
+    }
+    return null;
+  }
 
   return (
-    <div className="mk-products__chips" aria-label="Active filters">
+    <div
+      className={
+        variant === "drawer" ? "mk-products__chips mk-products__chips--drawer" : "mk-products__chips"
+      }
+      aria-label="Active filters"
+    >
       {chips.map((chip) => (
         <button
           key={chip.key}

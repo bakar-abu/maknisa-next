@@ -1,14 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import {
-  getDrawerSectionsForCategory,
-  QUICK_FILTER_CHIPS,
-} from "@/lib/catalog-drawer-filters";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { CatalogDrawerFilterFields } from "@/components/products/CatalogDrawerFilterFields";
+import { ProductsActiveFilters } from "@/components/products/ProductsActiveFilters";
+import { getDrawerSectionsForCategory } from "@/lib/catalog-drawer-filters";
 import type { CatalogFilters, CatalogPageData } from "@/lib/catalog-types";
 import type { GridCollectionSlug } from "@/lib/collections";
-import { PRICE_TIER_BOUNDS } from "@/lib/catalog-types";
-import { formatPkr } from "@/lib/format-price";
 
 type CatalogFiltersDrawerProps = {
   open: boolean;
@@ -41,17 +38,34 @@ export function CatalogFiltersDrawer({
   onChange,
   onApply,
 }: CatalogFiltersDrawerProps) {
-  const [expanded, setExpanded] = useState<string[]>(["colour", "material", "price"]);
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const [expanded, setExpanded] = useState<string[]>(["material", "collection"]);
 
   const categorySections = getDrawerSectionsForCategory(activeCategoryId);
   const colourTags = data.tags.slice(0, Math.ceil(data.tags.length / 2));
   const materialTags = data.tags.slice(Math.ceil(data.tags.length / 2));
 
   useEffect(() => {
-    if (open && initialSection) {
+    if (!open) return;
+
+    if (initialSection === "material" || initialSection === "collection") {
       setExpanded((prev) =>
         prev.includes(initialSection) ? prev : [...prev, initialSection],
       );
+    }
+
+    const scrollTarget =
+      initialSection === "colour"
+        ? "drawer-filter-colour"
+        : initialSection === "price"
+          ? "drawer-filter-price"
+          : initialSection
+            ? `drawer-section-${initialSection}`
+            : null;
+
+    if (scrollTarget && bodyRef.current) {
+      const node = bodyRef.current.querySelector(`#${scrollTarget}`);
+      node?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [open, initialSection]);
 
@@ -87,7 +101,7 @@ export function CatalogFiltersDrawer({
         onClick={onClose}
       />
       <aside
-        className="mk-catalog-drawer"
+        className="mk-catalog-drawer mk-catalog-drawer--filters"
         role="dialog"
         aria-modal="true"
         aria-label="Filters"
@@ -109,40 +123,24 @@ export function CatalogFiltersDrawer({
           </button>
         </header>
 
-        <div className="mk-catalog-drawer__chips">
-          {QUICK_FILTER_CHIPS.map((chip) => (
-            <button key={chip.id} type="button" className="mk-catalog-drawer__chip">
-              {chip.label}
-            </button>
-          ))}
-        </div>
+        <div ref={bodyRef} className="mk-catalog-drawer__body">
+          <div id="drawer-filter-search">
+            <CatalogDrawerFilterFields
+              filters={filters}
+              data={data}
+              onChange={onChange}
+            />
+          </div>
 
-        <div className="mk-catalog-drawer__body">
-          <AccordionSection
-            id="colour"
-            label="Colour"
-            expanded={expanded.includes("colour")}
-            onToggle={toggleSection}
-          >
-            <div className="mk-catalog-drawer__options">
-              {colourTags.map((tag) => (
-                <label key={tag.id} className="mk-catalog-drawer__option">
-                  <input
-                    type="checkbox"
-                    checked={filters.tagIds.includes(tag.id)}
-                    onChange={() =>
-                      onChange({
-                        ...filters,
-                        tagIds: toggleId(filters.tagIds, tag.id),
-                        page: 1,
-                      })
-                    }
-                  />
-                  <span>{tag.label}</span>
-                </label>
-              ))}
-            </div>
-          </AccordionSection>
+          <div className="mk-catalog-drawer__active-filters">
+            <span className="mk-catalog-drawer-filters__label">Active filters</span>
+            <ProductsActiveFilters
+              data={data}
+              filters={filters}
+              onChange={onChange}
+              variant="drawer"
+            />
+          </div>
 
           <AccordionSection
             id="material"
@@ -199,38 +197,6 @@ export function CatalogFiltersDrawer({
             </div>
           </AccordionSection>
 
-          <AccordionSection
-            id="price"
-            label="Price"
-            expanded={expanded.includes("price")}
-            onToggle={toggleSection}
-          >
-            <div className="mk-catalog-drawer__price">
-              <p className="mk-catalog-drawer__price-values">
-                {formatPkr(filters.priceMin)} – {formatPkr(filters.priceMax)}
-              </p>
-              <div className="mk-catalog-drawer__price-tiers">
-                {Object.values(PRICE_TIER_BOUNDS).map((tier) => (
-                  <button
-                    key={tier.label}
-                    type="button"
-                    className="mk-catalog-drawer__price-btn"
-                    onClick={() =>
-                      onChange({
-                        ...filters,
-                        priceMin: tier.min,
-                        priceMax: tier.max,
-                        page: 1,
-                      })
-                    }
-                  >
-                    {tier.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </AccordionSection>
-
           {categorySections.map((section) => (
             <AccordionSection
               key={section.id}
@@ -281,7 +247,7 @@ function AccordionSection({
   children: React.ReactNode;
 }) {
   return (
-    <section className="mk-catalog-drawer__section">
+    <section className="mk-catalog-drawer__section" id={`drawer-section-${id}`}>
       <button
         type="button"
         className="mk-catalog-drawer__section-head"

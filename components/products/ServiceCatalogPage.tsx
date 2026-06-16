@@ -15,8 +15,6 @@ import { CatalogFiltersDrawer } from "@/components/products/CatalogFiltersDrawer
 import { CatalogPageFooter } from "@/components/products/CatalogPageFooter";
 import { CatalogProductGrid } from "@/components/products/CatalogProductGrid";
 
-import { ProductsActiveFilters } from "@/components/products/ProductsActiveFilters";
-
 import {
 
   countDrawerFilters,
@@ -76,6 +74,10 @@ function buildDefaultFilters(data: CatalogPageData): CatalogFilters {
 
     drawerFilters: {},
 
+    searchQuery: "",
+
+    selectedColors: [],
+
     priceMin: data.priceRange.min,
 
     priceMax: data.priceRange.max,
@@ -109,6 +111,10 @@ function countActiveFilters(
     filters.tagIds.length +
 
     countDrawerFilters(filters.drawerFilters);
+
+  if (filters.searchQuery.trim()) count += 1;
+
+  if (filters.selectedColors.length) count += filters.selectedColors.length;
 
   if (filters.onlineOnly) count += 1;
 
@@ -263,6 +269,10 @@ export function ServiceCatalogPage({
 
     filters.drawerFilters,
 
+    filters.searchQuery,
+
+    filters.selectedColors,
+
     filters.priceMin,
 
     filters.priceMax,
@@ -384,18 +394,6 @@ export function ServiceCatalogPage({
 
 
         <div className="mk-service-catalog__main">
-
-          <ProductsActiveFilters
-
-            data={data}
-
-            filters={filters}
-
-            onChange={setFilters}
-
-          />
-
-
 
           {visible.length > 0 ? (
 

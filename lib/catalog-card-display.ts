@@ -34,7 +34,7 @@ const FINISH_OPTIONS = [
   "Marble",
 ];
 
-const SWATCH_PALETTE: ProductCardSwatch[] = [
+export const CATALOG_COLOR_PALETTE: ProductCardSwatch[] = [
   { title: "Brown", color: "#5E3E34" },
   { title: "Beige", color: "#C6B8A3" },
   { title: "Blue", color: "#152D81" },
@@ -91,10 +91,10 @@ export function getProductCardSwatches(product: CatalogProduct): ProductCardSwat
   const used = new Set<number>();
 
   for (let i = 0; i < count && swatches.length < 4; i++) {
-    const idx = (hash + i * 7) % SWATCH_PALETTE.length;
+    const idx = (hash + i * 7) % CATALOG_COLOR_PALETTE.length;
     if (used.has(idx)) continue;
     used.add(idx);
-    swatches.push(SWATCH_PALETTE[idx]);
+    swatches.push(CATALOG_COLOR_PALETTE[idx]);
   }
 
   return swatches;
@@ -102,6 +102,18 @@ export function getProductCardSwatches(product: CatalogProduct): ProductCardSwat
 
 export function hasMoreSwatchOptions(product: CatalogProduct): boolean {
   return hashString(product.id) % 3 === 0;
+}
+
+export function productMatchesColorFilter(
+  product: CatalogProduct,
+  selectedColors: string[],
+): boolean {
+  if (selectedColors.length === 0) return true;
+
+  const normalized = new Set(selectedColors.map((color) => color.toUpperCase()));
+  return getProductCardSwatches(product).some((swatch) =>
+    normalized.has(swatch.color.toUpperCase()),
+  );
 }
 
 export function getProductCardPricing(product: CatalogProduct): {

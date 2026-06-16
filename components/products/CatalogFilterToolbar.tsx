@@ -112,16 +112,16 @@ export function CatalogFilterToolbar({
               <span className="sr-only">Sort products</span>
               <select
                 value={filters.sort}
-                onChange={(e) =>
-                  onSortChange(e.target.value as CatalogFilters["sort"])
+                onChange={(event) =>
+                  onSortChange(event.target.value as CatalogFilters["sort"])
                 }
-                aria-label="Sort by relevance"
+                aria-label="Sort products"
               >
                 <option value="recommended">Relevance</option>
-                <option value="name-asc">Name A–Z</option>
-                <option value="name-desc">Name Z–A</option>
                 <option value="price-asc">Price: Low to High</option>
                 <option value="price-desc">Price: High to Low</option>
+                <option value="name-asc">Name A–Z</option>
+                <option value="name-desc">Name Z–A</option>
               </select>
             </label>
           </div>
