@@ -8,7 +8,7 @@ import { useBodyClass } from "@/hooks/useBodyClass";
 
 import { CatalogCategoryHero } from "@/components/products/CatalogCategoryHero";
 
-import { CatalogFilterToolbar } from "@/components/products/CatalogFilterToolbar";
+import { CatalogPageFilterPanel } from "@/components/products/CatalogPageFilterPanel";
 
 import { CatalogFiltersDrawer } from "@/components/products/CatalogFiltersDrawer";
 
@@ -375,23 +375,23 @@ export function ServiceCatalogPage({
 
 
 
+      <CatalogPageFilterPanel
+
+        data={data}
+
+        filters={filters}
+
+        activeFilterCount={activeCount}
+
+        onFiltersChange={setFilters}
+
+        onOpenDrawer={() => openDrawer()}
+
+      />
+
+
+
       <div className="mk-service-catalog__body" id="mk-catalog-products">
-
-        <CatalogFilterToolbar
-
-          filters={filters}
-
-          resultCount={filtered.length}
-
-          activeFilterCount={activeCount}
-
-          onOpenDrawer={openDrawer}
-
-          onSortChange={(sort) => setFilters({ ...filters, sort, page: 1 })}
-
-        />
-
-
 
         <div className="mk-service-catalog__main">
 
