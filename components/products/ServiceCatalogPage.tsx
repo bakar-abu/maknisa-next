@@ -377,15 +377,15 @@ export function ServiceCatalogPage({
 
       <CatalogPageFilterPanel
 
-        data={data}
-
         filters={filters}
 
         activeFilterCount={activeCount}
 
+        resultCount={filtered.length}
+
         onFiltersChange={setFilters}
 
-        onOpenDrawer={() => openDrawer()}
+        onOpenDrawer={openDrawer}
 
       />
 
