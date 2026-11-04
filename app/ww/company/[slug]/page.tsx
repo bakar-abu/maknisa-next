@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CompanyPageRenderer } from "@/components/company/CompanyPageRenderer";
 import {
+  asCompanyMainContent,
+  COMPANY_MAIN_SECTION,
+} from "@/lib/cms/company-page";
+import { fetchPublicCompanyPageContent } from "@/lib/cms/fetch-company-page";
+import {
   getAllCompanySlugs,
   getCompanyPage,
   type CompanySlug,
@@ -21,9 +26,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const page = getCompanyPage(slug);
   if (!page) return { title: site.name };
 
+  const cms = await fetchPublicCompanyPageContent(slug as CompanySlug);
+  const robots = {
+    index: !cms.seo.noIndex,
+    follow: !cms.seo.noFollow,
+  };
+
   return {
-    title: `${page.title} | ${site.name}`,
-    description: page.metaDescription,
+    title: cms.seo.metaTitle || `${page.title} | ${site.name}`,
+    description: cms.seo.metaDescription || page.metaDescription,
+    robots,
   };
 }
 
@@ -32,5 +44,11 @@ export default async function CompanySlugPage({ params }: PageProps) {
   const page = getCompanyPage(slug);
   if (!page) notFound();
 
-  return <CompanyPageRenderer slug={slug as CompanySlug} />;
+  const cms = await fetchPublicCompanyPageContent(slug as CompanySlug);
+  const content = asCompanyMainContent(
+    slug as CompanySlug,
+    cms.sections[COMPANY_MAIN_SECTION],
+  );
+
+  return <CompanyPageRenderer slug={slug as CompanySlug} content={content} />;
 }

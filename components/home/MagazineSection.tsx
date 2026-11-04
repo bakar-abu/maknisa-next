@@ -1,9 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import { GrowButton } from "@/components/home/shared/GrowButton";
+import type { MagazineContent } from "@/lib/cms/home-page";
 import { magazineSection } from "@/lib/homeSections";
 import { mediaUrl } from "@/lib/media";
 
-export function MagazineSection() {
+type MagazineSectionProps = {
+  content?: MagazineContent;
+};
+
+export function MagazineSection({ content }: MagazineSectionProps) {
+  const section = content ?? magazineSection;
+
   return (
     <section className="sn_magazine py-80 py-lg-160">
       <div className="container-fluid">
@@ -11,21 +20,21 @@ export function MagazineSection() {
           <div className="col-12 col-xl-10 offset-xl-1">
             <div className="cont-head pb-0 pb-sm-40 pb-md-80">
               <div className="cont-head__header">
-                <div className="title h1">{magazineSection.title}</div>
+                <div className="title h1">{section.title}</div>
                 <div
                   className="txt"
-                  dangerouslySetInnerHTML={{ __html: magazineSection.introHtml }}
+                  dangerouslySetInnerHTML={{ __html: section.introHtml }}
                 />
               </div>
               <div className="cont-head__link">
                 <GrowButton
-                  href={magazineSection.allArticlesCta.href}
-                  label={magazineSection.allArticlesCta.label}
+                  href={section.allArticlesCta.href}
+                  label={section.allArticlesCta.label}
                 />
               </div>
             </div>
             <div className="listing-news">
-              {magazineSection.articles.map((article) => (
+              {section.articles.map((article) => (
                 <div key={article.id} className="card-news">
                   {article.image ? (
                     <picture>

@@ -1,12 +1,20 @@
 import { HistoricDetailsSlider } from "@/components/company/HistoricDetailsSlider";
+import type { HistoricPageContent } from "@/lib/cms/company-page";
 import { historicContent } from "@/lib/company-pages";
+import { mediaUrl } from "@/lib/media";
 
-export function HistoricCompanyPage() {
-  const c = historicContent;
+type HistoricCompanyPageProps = {
+  content?: HistoricPageContent;
+};
+
+export function HistoricCompanyPage({ content }: HistoricCompanyPageProps) {
+  const c = content ?? historicContent;
 
   return (
     <main id="main-content" role="main">
-      <HistoricDetailsSlider images={c.sliderImages} />
+      <HistoricDetailsSlider
+        images={c.sliderImages.map((image) => mediaUrl(image))}
+      />
 
       <section className="sn_text my-120 my-lg-200 _strong_primary">
         <div className="sn_vertical_text">

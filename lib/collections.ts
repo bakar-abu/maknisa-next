@@ -1,5 +1,6 @@
 import type { CollectionGridData } from "./collection-types";
 import { enrichCollectionProducts } from "./product-routes";
+import { fetchPublicCollectionGrid } from "./cms/fetch-catalog";
 
 export const GRID_COLLECTION_SLUGS = [
   "kitchens",
@@ -35,6 +36,14 @@ export function isGridCollectionSlug(slug: string): slug is GridCollectionSlug {
 export async function getCollectionGridData(
   slug: GridCollectionSlug,
 ): Promise<CollectionGridData> {
+  const fromApi = await fetchPublicCollectionGrid(slug);
+  if (fromApi) {
+    return {
+      ...fromApi,
+      products: enrichCollectionProducts(slug, fromApi.products),
+    };
+  }
+
   const mod = await import(`./collection-data/${slug}.json`);
   const data = mod.default as CollectionGridData;
   return {

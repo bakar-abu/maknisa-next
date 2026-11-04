@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { CatalogPromoCard as CatalogPromoCardData } from "@/lib/catalog-promo-cards";
 import type { PromoAlign } from "@/lib/catalog-grid-layout";
-import { upscaleScavoliniImage } from "@/lib/catalog-images";
+import { upscaleCatalogImage } from "@/lib/catalog-images";
 
 type CatalogPromoCardProps = {
   promo: CatalogPromoCardData;
@@ -10,7 +10,7 @@ type CatalogPromoCardProps = {
 
 export function CatalogPromoCard({ promo, align = "left" }: CatalogPromoCardProps) {
   const imageSrc = promo.image
-    ? upscaleScavoliniImage(promo.image, 1600)
+    ? upscaleCatalogImage(promo.image, 1600)
     : null;
 
   return (

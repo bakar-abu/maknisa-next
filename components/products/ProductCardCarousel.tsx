@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useState } from "react";
-import { upscaleScavoliniImage } from "@/lib/catalog-images";
+import { upscaleCatalogImage } from "@/lib/catalog-images";
 
 type ProductCardCarouselProps = {
   images: string[];
@@ -14,7 +14,7 @@ const CARD_SIZES =
   "(max-width: 767px) 100vw, (max-width: 1023px) 50vw, (max-width: 2399px) 25vw, 500px";
 
 function getImageSrc(url: string): string {
-  return upscaleScavoliniImage(url, 1200);
+  return upscaleCatalogImage(url, 1200);
 }
 
 export function ProductCardCarousel({

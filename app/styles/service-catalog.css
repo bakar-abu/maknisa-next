@@ -92,7 +92,7 @@
 .mk-catalog-hero__nav {
   position: absolute;
   top: 40%;
-  z-index: 2;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,6 +104,13 @@
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.mk-catalog-hero__nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
 }
 
 .mk-catalog-hero__nav--prev {

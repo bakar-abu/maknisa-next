@@ -1,4 +1,4 @@
-/* Furniture / Lights catalog PDP — commerce buy box + Poliform sections */
+/* Furniture / Lights catalog PDP — commerce buy box + product sections */
 
 .mk-catalog-pdp {
   --mk-catalog-pdp-max: 1320px;
@@ -127,7 +127,7 @@
   }
 }
 
-/* Poliform chapter hero — wide banner with centered title */
+/* Chapter hero — wide banner with centered title */
 .mk-catalog-pdp .mk-pdp__hero {
   aspect-ratio: 2.4 / 1;
   min-height: 12rem;
@@ -215,20 +215,7 @@
   }
 }
 
-.mk-catalog-pdp-buy__carousel {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  min-height: 0;
-}
-
-@media (min-width: 992px) {
-  .mk-catalog-pdp-buy__carousel {
-    height: 100%;
-  }
-}
-
-/* Outer frame — matches right column height */
+/* Single image frame — grey background with carousel on top */
 .mk-catalog-pdp-buy__main {
   position: relative;
   display: flex;
@@ -236,7 +223,7 @@
   flex-direction: column;
   align-items: stretch;
   min-height: 18rem;
-  padding: 1.25rem 0.5rem 0.75rem;
+  padding: 1.25rem 3.5rem 0.75rem;
   border: 1px solid #d4cfc8;
   border-radius: 4px;
   background: #e8e4e0;
@@ -245,50 +232,32 @@
 
 @media (min-width: 768px) {
   .mk-catalog-pdp-buy__main {
-    padding: 1.5rem 0.75rem 1rem;
+    padding: 1.5rem 4rem 1rem;
   }
 }
 
 @media (min-width: 992px) {
   .mk-catalog-pdp-buy__main {
     min-height: 100%;
-    padding: 2rem 0.5rem 1.25rem;
-  }
-}
-
-/* Inner stage — shorter inset area for the product */
-.mk-catalog-pdp-buy__stage {
-  display: flex;
-  flex: 0 1 auto;
-  align-items: center;
-  justify-content: center;
-  width: calc(100% - 5.5rem);
-  height: 68%;
-  max-height: 22rem;
-  margin: auto;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.18);
-}
-
-@media (min-width: 768px) {
-  .mk-catalog-pdp-buy__stage {
-    width: calc(100% - 6.5rem);
-    max-height: 26rem;
-  }
-}
-
-@media (min-width: 992px) {
-  .mk-catalog-pdp-buy__stage {
-    width: calc(100% - 7rem);
-    height: 70%;
-    max-height: min(32rem, 70%);
+    padding: 2rem 4.25rem 1.25rem;
   }
 }
 
 .mk-catalog-pdp-buy__swiper {
+  flex: 1 1 auto;
   width: 100%;
-  height: 100%;
+  min-height: 12rem;
+}
+
+@media (min-width: 992px) {
+  .mk-catalog-pdp-buy__swiper {
+    min-height: 0;
+  }
+}
+
+.mk-catalog-pdp-buy__swiper .swiper-button-prev,
+.mk-catalog-pdp-buy__swiper .swiper-button-next {
+  display: none !important;
 }
 
 .mk-catalog-pdp-buy__slide {
@@ -346,6 +315,12 @@
   color: #fff;
   outline: none;
   box-shadow: 0 3px 14px rgba(0, 0, 0, 0.22);
+}
+
+.mk-catalog-pdp-buy__arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
 }
 
 .mk-catalog-pdp-buy__arrow--prev {

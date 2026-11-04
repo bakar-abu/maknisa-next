@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useRef } from "react";
-import { Navigation } from "swiper/modules";
+import { useCallback, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { MagazineBreadcrumbs } from "@/components/magazine/MagazineBreadcrumbs";
@@ -10,7 +9,6 @@ import type { CollectionServiceFilter } from "@/lib/collection-service-filters";
 import { SERVICES_LANDING_HREF } from "@/lib/services-landing";
 
 import "swiper/css";
-import "swiper/css/navigation";
 
 type CollectionGridHeroProps = {
   heroTitle: string;
@@ -32,8 +30,13 @@ export function CollectionGridHero({
   onStyleChange,
 }: CollectionGridHeroProps) {
   const swiperRef = useRef<SwiperType | null>(null);
-  const prevRef = useRef<HTMLButtonElement>(null);
-  const nextRef = useRef<HTMLButtonElement>(null);
+  const [canGoPrev, setCanGoPrev] = useState(false);
+  const [canGoNext, setCanGoNext] = useState(false);
+
+  const updateNavState = useCallback((swiper: SwiperType) => {
+    setCanGoPrev(!swiper.isBeginning);
+    setCanGoNext(!swiper.isEnd);
+  }, []);
 
   const scrollToStyle = useCallback(
     (styleId: string) => {
@@ -52,6 +55,14 @@ export function CollectionGridHero({
     },
     [onStyleChange, scrollToStyle],
   );
+
+  const handlePrev = useCallback(() => {
+    swiperRef.current?.slidePrev();
+  }, []);
+
+  const handleNext = useCallback(() => {
+    swiperRef.current?.slideNext();
+  }, []);
 
   return (
     <div className="mk-grid-hero mb-50 mb-xl-80">
@@ -78,42 +89,29 @@ export function CollectionGridHero({
             <div className="mk-grid-hero__slider-wrap">
               <button
                 type="button"
-                ref={prevRef}
                 className="mk-grid-hero__nav mk-grid-hero__nav--prev"
                 aria-label="Previous styles"
+                disabled={!canGoPrev}
+                onClick={handlePrev}
               >
                 ‹
               </button>
               <Swiper
                 className="mk-grid-hero__swiper"
-                modules={[Navigation]}
                 slidesPerView={1.35}
                 spaceBetween={16}
                 centeredSlides={false}
                 breakpoints={{
                   576: { slidesPerView: 2.1, spaceBetween: 20 },
-                  992: { slidesPerView: 3, spaceBetween: 24 },
-                }}
-                navigation={{
-                  prevEl: prevRef.current,
-                  nextEl: nextRef.current,
-                }}
-                onBeforeInit={(swiper) => {
-                  if (
-                    typeof swiper.params.navigation !== "boolean" &&
-                    swiper.params.navigation
-                  ) {
-                    swiper.params.navigation.prevEl = prevRef.current;
-                    swiper.params.navigation.nextEl = nextRef.current;
-                  }
+                  992: { slidesPerView: 2.4, spaceBetween: 24 },
                 }}
                 onSwiper={(swiper) => {
                   swiperRef.current = swiper;
+                  updateNavState(swiper);
                 }}
-                onInit={(swiper) => {
-                  swiper.navigation.init();
-                  swiper.navigation.update();
-                }}
+                onSlideChange={updateNavState}
+                onResize={updateNavState}
+                onBreakpoint={updateNavState}
               >
                 {styleFilters.map((filter) => {
                   const isActive = activeStyleId === filter.id;
@@ -141,9 +139,10 @@ export function CollectionGridHero({
               </Swiper>
               <button
                 type="button"
-                ref={nextRef}
                 className="mk-grid-hero__nav mk-grid-hero__nav--next"
                 aria-label="Next styles"
+                disabled={!canGoNext}
+                onClick={handleNext}
               >
                 ›
               </button>

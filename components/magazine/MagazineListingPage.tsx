@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { MagazineBreadcrumbs } from "@/components/magazine/MagazineBreadcrumbs";
 import { MagazineGridCard } from "@/components/magazine/MagazineGridCard";
-import {
-  getMagazineCategories,
-  getMagazineListArticles,
-} from "@/lib/magazine";
+import { getMagazineCategories } from "@/lib/magazine";
+import type { MagazineListArticle } from "@/lib/magazine";
 
-export function MagazineListingPage() {
+type MagazineListingPageProps = {
+  articles: MagazineListArticle[];
+};
+
+export function MagazineListingPage({ articles }: MagazineListingPageProps) {
   const categories = getMagazineCategories();
-  const articles = getMagazineListArticles();
 
   return (
     <main id="main-content" role="main">

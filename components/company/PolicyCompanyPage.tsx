@@ -1,10 +1,15 @@
 import { MagazineBreadcrumbs } from "@/components/magazine/MagazineBreadcrumbs";
 import { CompanyAccordion } from "@/components/company/CompanyAccordion";
+import type { PolicyPageContent } from "@/lib/cms/company-page";
 import { companyPages, policyContent } from "@/lib/company-pages";
 
-export function PolicyCompanyPage() {
+type PolicyCompanyPageProps = {
+  content?: PolicyPageContent;
+};
+
+export function PolicyCompanyPage({ content }: PolicyCompanyPageProps) {
   const page = companyPages["company-policy"];
-  const c = policyContent;
+  const c = content ?? policyContent;
 
   return (
     <main id="main-content" role="main">

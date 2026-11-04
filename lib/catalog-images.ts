@@ -8,8 +8,8 @@ export type CatalogCardImage = {
 
 const CARD_WIDTHS = [700, 1200, 1600, 2000] as const;
 
-/** Upgrade Scavolini CDN URLs to higher resolutions for catalog cards. */
-export function upscaleScavoliniImage(
+/** Upgrade catalog CDN URLs to higher resolutions for catalog cards. */
+export function upscaleCatalogImage(
   url: string,
   width: number = 1200,
 ): string {
@@ -22,7 +22,7 @@ export function upscaleScavoliniImage(
 
 function buildSrcSet(url: string): string {
   if (!url) return "";
-  return CARD_WIDTHS.map((w) => `${upscaleScavoliniImage(url, w)} ${w}w`).join(
+  return CARD_WIDTHS.map((w) => `${upscaleCatalogImage(url, w)} ${w}w`).join(
     ", ",
   );
 }
@@ -37,7 +37,7 @@ export function getCatalogCardImage(
   if (!primary) return null;
 
   return {
-    src: upscaleScavoliniImage(primary, 1200),
+    src: upscaleCatalogImage(primary, 1200),
     srcSet: buildSrcSet(primary),
     alt: product.title,
   };

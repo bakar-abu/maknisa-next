@@ -58,6 +58,8 @@ type ServiceCatalogPageProps = {
 
   categories: CatalogServiceCategory[];
 
+  productCategoryById?: Record<string, string | null>;
+
 };
 
 
@@ -146,6 +148,8 @@ export function ServiceCatalogPage({
 
   categories,
 
+  productCategoryById,
+
 }: ServiceCatalogPageProps) {
 
   const defaults = CATALOG_SERVICE_DEFAULTS[serviceSlug] ??
@@ -207,15 +211,20 @@ export function ServiceCatalogPage({
 
   const categoryFiltered = useMemo(
 
-    () =>
+    () => {
+      if (productCategoryById) {
+        return data.products.filter((product) => {
+          if (!activeCategoryId) return true;
+          return productCategoryById[product.id] === activeCategoryId;
+        });
+      }
 
-      data.products.filter((product) =>
-
+      return data.products.filter((product) =>
         productMatchesCategory(product, activeCategoryId, categories),
+      );
+    },
 
-      ),
-
-    [activeCategoryId, categories, data.products],
+    [activeCategoryId, categories, data.products, productCategoryById],
 
   );
 

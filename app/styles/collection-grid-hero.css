@@ -70,7 +70,7 @@
 .mk-grid-hero__nav {
   position: absolute;
   top: 38%;
-  z-index: 2;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,7 +85,13 @@
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.mk-grid-hero__nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
 }
 
 .mk-grid-hero__nav:hover {

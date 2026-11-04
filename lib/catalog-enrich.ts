@@ -140,6 +140,8 @@ export function enrichCatalogProduct(
     productTypeIds,
     primaryProductTypeId: productTypeIds[0],
     price,
+    priceBefore: null,
+    fromPrice: null,
     priceTier,
     catalogImage: getCatalogCardImage(product),
   };

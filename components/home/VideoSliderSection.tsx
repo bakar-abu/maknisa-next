@@ -7,6 +7,7 @@ import { Autoplay, EffectFade, Pagination, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { HomeVideoSection } from "@/lib/homeSliders";
 import { mediaUrl } from "@/lib/media";
+import { getVideoUrlIssue, resolveVideoUrl } from "@/lib/video-url";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -76,16 +77,18 @@ export function VideoSliderSection({ section, index }: VideoSliderSectionProps) 
   } | null>(null);
 
   const primaryCta = section.ctas[0];
-  const exploreCta = section.ctas.find((c) => c.className.includes("link-cucina"));
+  const exploreCtaClassName =
+    section.ctas.find((cta) => cta.className.includes("link-cucina"))?.className ??
+    "sn_btn_grow _text_light link-cucina";
 
   const updateSecondaryCta = useCallback(
     (slideIndex: number) => {
       const thumb = section.thumbSlides[slideIndex];
-      if (thumb && exploreCta) {
+      if (thumb) {
         setSecondaryCta({ href: thumb.link, label: `Explore ${thumb.title}` });
       }
     },
-    [exploreCta, section.thumbSlides],
+    [section.thumbSlides],
   );
 
   useEffect(() => {
@@ -192,10 +195,10 @@ export function VideoSliderSection({ section, index }: VideoSliderSectionProps) 
               />
             </Link>
           ) : null}
-          {exploreCta && secondaryCta ? (
+          {secondaryCta ? (
             <Link
               href={secondaryCta.href}
-              className={exploreCta.className}
+              className={exploreCtaClassName}
               title={secondaryCta.label}
             >
               <span className="tx">{secondaryCta.label}</span>
@@ -247,7 +250,7 @@ export function VideoSliderSection({ section, index }: VideoSliderSectionProps) 
           <SwiperSlide key={slideIndex}>
             <video
               className="desktop"
-              data-url={slide.desktop}
+              data-url={resolveVideoUrl(slide.desktop)}
               muted
               loop
               playsInline
@@ -255,7 +258,7 @@ export function VideoSliderSection({ section, index }: VideoSliderSectionProps) 
             />
             <video
               className="mobile"
-              data-url={slide.mobile}
+              data-url={resolveVideoUrl(slide.mobile || slide.desktop)}
               muted
               loop
               playsInline

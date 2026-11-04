@@ -3,10 +3,16 @@
 import { useRef } from "react";
 import { SwiperNav } from "@/components/home/shared/SwiperNav";
 import { useMobileSwiper } from "@/components/home/shared/useMobileSwiper";
+import type { DesignColumnsContent } from "@/lib/cms/home-page";
 import { designColumns } from "@/lib/homeSections";
 import { mediaUrl } from "@/lib/media";
 
-export function DesignColumnsSection() {
+type DesignColumnsSectionProps = {
+  content?: DesignColumnsContent;
+};
+
+export function DesignColumnsSection({ content }: DesignColumnsSectionProps) {
+  const columns = content?.columns ?? designColumns;
   const containerRef = useRef<HTMLDivElement>(null);
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
@@ -18,7 +24,7 @@ export function DesignColumnsSection() {
       <div className="container-fluid">
         <div ref={containerRef} className="swiper swiperProgettazione">
           <div className="swiper-wrapper">
-            {designColumns.map((column) => (
+            {columns.map((column) => (
               <div key={column.title} className="swiper-slide">
                 <div className="box-progettazione">
                   <h5 className="title h5">{column.title}</h5>

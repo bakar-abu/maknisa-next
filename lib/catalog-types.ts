@@ -21,6 +21,8 @@ export type CatalogProduct = {
   collectionSlug: GridCollectionSlug;
   productTypeIds: number[];
   price: number | null;
+  priceBefore: number | null;
+  fromPrice: number | null;
   priceTier: PriceTier;
   catalogImage: CatalogCardImage | null;
   primaryProductTypeId: number;

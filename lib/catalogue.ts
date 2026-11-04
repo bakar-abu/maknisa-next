@@ -79,3 +79,25 @@ export async function getCatalogueListingCards(): Promise<CatalogueListingCard[]
     }),
   );
 }
+
+export async function resolveCatalogueListingCards(
+  cmsCards: CatalogueListingCard[],
+): Promise<CatalogueListingCard[]> {
+  const dynamicCards = await getCatalogueListingCards();
+
+  if (cmsCards.length === 0) {
+    return dynamicCards;
+  }
+
+  return cmsCards.map((card) => {
+    const match = dynamicCards.find((item) => item.slug === card.slug);
+    if (!match) return card;
+
+    return {
+      ...match,
+      ...card,
+      image: card.image || match.image,
+      hoverImage: card.hoverImage || match.hoverImage,
+    };
+  });
+}

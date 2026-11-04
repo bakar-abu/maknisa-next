@@ -9,7 +9,7 @@ import {
 } from "@/lib/product-detail";
 import { site } from "@/lib/site";
 
-import "@/app/styles/molteni-product.css";
+import "@/app/styles/maknisa-product.css";
 import "@/app/styles/woodwork-pdp-sections.css";
 
 type PageProps = {

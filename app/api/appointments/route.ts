@@ -1,5 +1,16 @@
 import { NextResponse } from "next/server";
+import { getApiBaseUrl } from "@/lib/admin-auth/session";
 import type { AppointmentFormData } from "@/lib/appointment";
+
+function sourcePathFromRequest(request: Request): string {
+  try {
+    const referer = request.headers.get("referer");
+    if (!referer) return "";
+    return new URL(referer).pathname;
+  } catch {
+    return "";
+  }
+}
 
 function isNonEmpty(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0;
@@ -56,11 +67,23 @@ export async function POST(request: Request) {
     );
   }
 
-  // Ready to wire to email, CRM, or database — logged for now.
-  console.info("[appointment-request]", {
-    ...appointment,
-    receivedAt: new Date().toISOString(),
-  });
+  try {
+    const response = await fetch(`${getApiBaseUrl()}/api/leads/public/appointments`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...appointment,
+        sourcePath: sourcePathFromRequest(request),
+      }),
+      cache: "no-store",
+    });
 
-  return NextResponse.json({ ok: true });
+    const data = await response.json().catch(() => ({}));
+    return NextResponse.json(data.ok ? { ok: true } : data, { status: response.status });
+  } catch {
+    return NextResponse.json(
+      { error: "Unable to reach the submission server." },
+      { status: 503 },
+    );
+  }
 }

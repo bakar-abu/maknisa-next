@@ -1,6 +1,17 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import type {
+  ActionsSiteContent,
+  BespokeTextContent,
+  DesignColumnsContent,
+  EnvironmentVideoContent,
+  LaunchBoxesContent,
+  MagazineContent,
+  NewsScrollingContent,
+  VideoSlidersContent,
+} from "@/lib/cms/home-page";
+import { homeVideoSections } from "@/lib/homeSliders";
 import { BespokeTextSection } from "@/components/home/BespokeTextSection";
 import { EnvironmentVideoSection } from "@/components/home/EnvironmentVideoSection";
 import { LaunchBoxesSection } from "@/components/home/LaunchBoxesSection";
@@ -34,17 +45,37 @@ const ActionsSiteSection = dynamic(
   { ssr: false },
 );
 
-export function HomeClientSections() {
+export function HomeClientSections({
+  bespokeContent,
+  videoSlidersContent,
+  launchBoxesContent,
+  designColumnsContent,
+  newsScrollingContent,
+  environmentVideoContent,
+  actionsSiteContent,
+  magazineContent,
+}: {
+  bespokeContent?: BespokeTextContent;
+  videoSlidersContent?: VideoSlidersContent;
+  launchBoxesContent?: LaunchBoxesContent;
+  designColumnsContent?: DesignColumnsContent;
+  newsScrollingContent?: NewsScrollingContent;
+  environmentVideoContent?: EnvironmentVideoContent;
+  actionsSiteContent?: ActionsSiteContent;
+  magazineContent?: MagazineContent;
+}) {
+  const videoSections = videoSlidersContent?.sections ?? homeVideoSections;
+
   return (
     <>
-      <VideoStackSliders />
-      <BespokeTextSection />
-      <LaunchBoxesSection />
-      <DesignColumnsSection />
-      <NewsScrollingSection />
-      <EnvironmentVideoSection />
-      <ActionsSiteSection />
-      <MagazineSection />
+      <VideoStackSliders sections={videoSections} />
+      <BespokeTextSection content={bespokeContent} />
+      <LaunchBoxesSection boxes={launchBoxesContent?.boxes} />
+      <DesignColumnsSection content={designColumnsContent} />
+      <NewsScrollingSection content={newsScrollingContent} />
+      <EnvironmentVideoSection content={environmentVideoContent} />
+      <ActionsSiteSection content={actionsSiteContent} />
+      <MagazineSection content={magazineContent} />
     </>
   );
 }

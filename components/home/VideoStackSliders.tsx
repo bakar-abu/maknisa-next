@@ -1,16 +1,20 @@
 "use client";
 
-import { homeVideoSections } from "@/lib/homeSliders";
+import type { HomeVideoSection } from "@/lib/homeSliders";
 import { VideoSliderSection } from "./VideoSliderSection";
 
-export function VideoStackSliders() {
+type VideoStackSlidersProps = {
+  sections: HomeVideoSection[];
+};
+
+export function VideoStackSliders({ sections }: VideoStackSlidersProps) {
   return (
     <>
       <span className="label-scopri" hidden>
         Discover
       </span>
-      {homeVideoSections.map((section, index) => (
-        <VideoSliderSection key={section.title} section={section} index={index} />
+      {sections.map((section, index) => (
+        <VideoSliderSection key={`${section.title}-${index}`} section={section} index={index} />
       ))}
     </>
   );

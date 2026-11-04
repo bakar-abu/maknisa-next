@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { FloatingCartWidget } from "@/components/cart/FloatingCartWidget";
 
 function PhoneIcon() {
   return (
@@ -28,6 +29,7 @@ export function FloatingContactWidget() {
 
   return (
     <div className="mk-floating-contact" aria-label="Quick contact actions">
+      <FloatingCartWidget />
       <a
         href={`tel:${site.phoneTel}`}
         className="mk-floating-contact__btn mk-floating-contact__btn--call"

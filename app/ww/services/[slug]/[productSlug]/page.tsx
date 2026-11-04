@@ -5,10 +5,11 @@ import {
   getAllServiceProductStaticParams,
   getServiceProductDetail,
 } from "@/lib/product-detail";
+import { fetchPublicProductContent } from "@/lib/cms/fetch-catalog";
 import { resolveServiceCollectionRoute } from "@/lib/services";
 import { site } from "@/lib/site";
 
-import "@/app/styles/molteni-product.css";
+import "@/app/styles/maknisa-product.css";
 import "@/app/styles/woodwork-pdp-sections.css";
 
 type PageProps = {
@@ -26,9 +27,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const detail = await getServiceProductDetail(slug, productSlug);
   if (!detail) return { title: site.name };
 
+  const storedContent = await fetchPublicProductContent(productSlug);
+
   return {
-    title: `${detail.product.title} | ${detail.collectionTitle} | ${site.name}`,
-    description: detail.intro,
+    title:
+      storedContent?.metaTitle ??
+      `${detail.product.title} | ${detail.collectionTitle} | ${site.name}`,
+    description: storedContent?.metaDescription ?? detail.intro,
   };
 }
 

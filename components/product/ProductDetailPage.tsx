@@ -1,6 +1,6 @@
 "use client";
 
-import { MolteniProductPage } from "@/components/product/MolteniProductPage";
+import { MaknisaProductPage } from "@/components/product/MaknisaProductPage";
 import type { ProductDetailView } from "@/lib/product-detail";
 
 type ProductDetailPageProps = {
@@ -8,5 +8,5 @@ type ProductDetailPageProps = {
 };
 
 export function ProductDetailPage({ data }: ProductDetailPageProps) {
-  return <MolteniProductPage data={data} />;
+  return <MaknisaProductPage data={data} />;
 }

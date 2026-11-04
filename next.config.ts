@@ -32,6 +32,11 @@ const nextConfig: NextConfig = {
         hostname: "scavolini-cdn.thron.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "**.supabase.co",
+        pathname: "/storage/v1/object/public/**",
+      },
     ],
   },
 };

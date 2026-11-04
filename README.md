@@ -1,6 +1,6 @@
 # maknisa-next
 
-Maknisa furniture website — Next.js 16 (App Router), Poliform-inspired product pages, Scavolini-reference layout with Maknisa branding.
+Maknisa furniture website — Next.js 16 (App Router) with Maknisa-branded product pages and catalog layout.
 
 ## Requirements
 
@@ -31,7 +31,7 @@ npm start
 4. Build command: `npm run build` — Output: `.next`
 5. Deploy.
 
-Product and collection images load from `scavolini-cdn.thron.com` and `scavolini.com` CDNs; no local `public/media` folder is required in production.
+Product and collection images load from external CDNs; no local `public/media` folder is required in production.
 
 ## Project structure
 

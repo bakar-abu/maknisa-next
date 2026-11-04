@@ -8,7 +8,7 @@ import {
   hydrateAdviceImages,
   type CatalogSeoAccordionItem,
 } from "@/lib/catalog-footer-content";
-import { upscaleScavoliniImage } from "@/lib/catalog-images";
+import { upscaleCatalogImage } from "@/lib/catalog-images";
 
 type CatalogPageFooterProps = {
   serviceSlug: string;
@@ -47,7 +47,7 @@ export function CatalogPageFooter({
                 {article.image ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={upscaleScavoliniImage(article.image, 800)}
+                    src={upscaleCatalogImage(article.image, 800)}
                     alt=""
                     loading="lazy"
                     decoding="async"
@@ -88,7 +88,7 @@ export function CatalogPageFooter({
                   {category.image ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                      src={upscaleScavoliniImage(category.image, 600)}
+                      src={upscaleCatalogImage(category.image, 600)}
                       alt=""
                       loading="lazy"
                       decoding="async"

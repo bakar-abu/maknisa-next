@@ -9,6 +9,7 @@ import type {
 } from "./catalog-types";
 import { ITEMS_PER_PAGE } from "./catalog-types";
 import type { CollectionGridData } from "./collection-types";
+import { fetchPublicCatalogProducts } from "./cms/fetch-catalog";
 import {
   getCollectionPageTitle,
   GRID_COLLECTION_SLUGS,
@@ -19,9 +20,7 @@ import { enrichCollectionProducts } from "./product-routes";
 
 let catalogCache: CatalogProduct[] | null = null;
 
-export async function getCatalogProducts(): Promise<CatalogProduct[]> {
-  if (catalogCache) return catalogCache;
-
+async function loadCatalogProductsFromJson(): Promise<CatalogProduct[]> {
   const lists = await Promise.all(
     GRID_COLLECTION_SLUGS.map(async (slug) => {
       const mod = await import(`./collection-data/${slug}.json`);
@@ -32,8 +31,74 @@ export async function getCatalogProducts(): Promise<CatalogProduct[]> {
         .map((product) => enrichCatalogProduct(product, slug, data.tags));
     }),
   );
+  return lists.flat();
+}
 
-  catalogCache = lists.flat();
+export async function getCatalogProducts(): Promise<CatalogProduct[]> {
+  if (catalogCache) return catalogCache;
+
+  const apiProducts = await fetchPublicCatalogProducts();
+  if (apiProducts.length > 0) {
+    const tagData = await Promise.all(
+      GRID_COLLECTION_SLUGS.map(async (slug) => {
+        const mod = await import(`./collection-data/${slug}.json`);
+        return { slug, tags: (mod.default as CollectionGridData).tags };
+      }),
+    );
+    const tagsBySlug = new Map(tagData.map((entry) => [entry.slug, entry.tags]));
+
+    catalogCache = apiProducts
+      .filter((product) =>
+        isEligibleCatalogProduct(
+          {
+            id: product.id,
+            title: product.title,
+            href: product.href,
+            onlineShop: product.onlineShop,
+            images: product.images,
+            tagIds: product.tagIds,
+            categoryIds: product.categoryIds,
+          },
+          product.collectionSlug as GridCollectionSlug,
+        ),
+      )
+      .map((product) => {
+        const slug = product.collectionSlug as GridCollectionSlug;
+        const base = {
+          id: product.id,
+          title: product.title,
+          href: product.href,
+          onlineShop: product.onlineShop,
+          images: product.images,
+          tagIds: product.tagIds,
+          categoryIds: product.categoryIds,
+        };
+        const enriched = enrichCatalogProduct(
+          base,
+          slug,
+          tagsBySlug.get(slug) ?? [],
+        );
+        if (product.primaryProductTypeId) {
+          return {
+            ...enriched,
+            primaryProductTypeId: product.primaryProductTypeId,
+            productTypeIds: [product.primaryProductTypeId],
+          };
+        }
+        if (product.price !== undefined && product.price !== null) {
+          return {
+            ...enriched,
+            price: product.price,
+            priceBefore: product.priceBefore ?? null,
+            fromPrice: product.fromPrice ?? null,
+          };
+        }
+        return enriched;
+      });
+    return catalogCache;
+  }
+
+  catalogCache = await loadCatalogProductsFromJson();
   return catalogCache;
 }
 
@@ -44,16 +109,10 @@ export type CatalogPageOptions = {
   roomSlugs?: GridCollectionSlug[];
 };
 
-export async function getCatalogPageData(
+export async function buildCatalogPageDataFromProducts(
+  products: CatalogProduct[],
   options?: CatalogPageOptions,
 ): Promise<CatalogPageData> {
-  let products = await getCatalogProducts();
-
-  if (options?.roomSlugs?.length) {
-    products = products.filter((product) =>
-      options.roomSlugs!.includes(product.collectionSlug),
-    );
-  }
   const tagCounts = new Map<number, CatalogTag>();
 
   for (const slug of GRID_COLLECTION_SLUGS) {
@@ -111,6 +170,20 @@ export async function getCatalogPageData(
     rooms,
     priceRange,
   };
+}
+
+export async function getCatalogPageData(
+  options?: CatalogPageOptions,
+): Promise<CatalogPageData> {
+  let products = await getCatalogProducts();
+
+  if (options?.roomSlugs?.length) {
+    products = products.filter((product) =>
+      options.roomSlugs!.includes(product.collectionSlug),
+    );
+  }
+
+  return buildCatalogPageDataFromProducts(products, options);
 }
 
 function sortProducts(products: CatalogProduct[], sort: CatalogFilters["sort"]) {

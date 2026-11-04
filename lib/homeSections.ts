@@ -54,7 +54,7 @@ export const launchBoxes: LaunchBox[] = [
     abstractHtml:
       "<p><strong>Custom-sized walk-in wardrobes</strong>, designed to fit your budget, to customise your space.</p>",
     cta: {
-      href: "/ww/night",
+      href: "/ww/bedroom-furniture",
       label: "All walk-in wardrobes",
       className: "sn_btn_grow _small mt-20 mt-md-40",
     },
@@ -76,7 +76,7 @@ export const launchBoxes: LaunchBox[] = [
     abstractHtml:
       "<p>Extend the Maknisa living experience outdoors: our Formalia kitchen adapts to multiple needs and settings.</p>",
     cta: {
-      href: "/ww/services/kitchens/kitchen-cabinet-formalia",
+      href: "/ww/formalia-outdoor",
       label: "Explore Formalia",
       className: "sn_btn_grow _small mt-20 mt-md-40",
     },
@@ -146,7 +146,7 @@ export const environmentVideoSection = {
   title: "With Maknisa, you protect the environment.",
   subtitle: "Because Maknisa invests in sustainability",
   cta: {
-    href: "/ww/company/quality/environmental-awareness-and-respect",
+    href: "/ww/company/quality",
     label: "The principles of Maknisa Green Mind",
   },
   keyPhrases: [

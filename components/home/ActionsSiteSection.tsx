@@ -4,10 +4,16 @@ import Link from "next/link";
 import { useRef } from "react";
 import { SwiperNav } from "@/components/home/shared/SwiperNav";
 import { useMobileSwiper } from "@/components/home/shared/useMobileSwiper";
+import type { ActionsSiteContent } from "@/lib/cms/home-page";
 import { actionsSiteItems } from "@/lib/homeSections";
 import { mediaUrl } from "@/lib/media";
 
-export function ActionsSiteSection() {
+type ActionsSiteSectionProps = {
+  content?: ActionsSiteContent;
+};
+
+export function ActionsSiteSection({ content }: ActionsSiteSectionProps) {
+  const items = content?.items ?? actionsSiteItems;
   const containerRef = useRef<HTMLDivElement>(null);
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
@@ -19,7 +25,7 @@ export function ActionsSiteSection() {
       <div className="container-fluid">
         <div ref={containerRef} className="swiper swiperActionsSite">
           <div className="swiper-wrapper">
-            {actionsSiteItems.map((item) => (
+            {items.map((item) => (
               <div key={item.title} className="swiper-slide">
                 <div className="action-site text-center">
                   <div>

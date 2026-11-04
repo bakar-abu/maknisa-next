@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { BodyRouteClassScript } from "@/components/layout/BodyRouteClassScript";
-import { SiteChrome } from "@/components/layout/SiteChrome";
+import { ConditionalSiteChrome } from "@/components/layout/ConditionalSiteChrome";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -39,7 +39,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         <BodyRouteClassScript />
-        <SiteChrome>{children}</SiteChrome>
+        <ConditionalSiteChrome>{children}</ConditionalSiteChrome>
       </body>
     </html>
   );

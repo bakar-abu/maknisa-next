@@ -1,5 +1,5 @@
 /**
- * Product detail page — Poliform-inspired layout, Maknisa brand tokens.
+ * Product detail page — Maknisa layout and brand tokens.
  */
 
 .mk-pdp {
@@ -273,7 +273,7 @@
   }
 }
 
-/* Breadcrumbs — Poliform trail */
+/* Breadcrumbs — product detail trail */
 .mk-pdp__crumbs .sn_breadcrumbs {
   margin: 0;
 }

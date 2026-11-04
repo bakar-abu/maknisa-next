@@ -7,14 +7,14 @@ import { customizeOrderHref } from "@/lib/customize-order";
 import type { ProductDetailView } from "@/lib/product-detail";
 import { WoodworkColourProposalsSection } from "@/components/product/WoodworkColourProposalsSection";
 import { WoodworkMustHavesSection } from "@/components/product/WoodworkMustHavesSection";
-import { buildMolteniGalleryBlocks } from "@/lib/molteni-gallery-blocks";
+import { buildProductGalleryBlocks } from "@/lib/product-gallery-blocks";
 import {
   getWoodworkColourProposals,
   getWoodworkMustHaves,
   isWoodworkPdp,
 } from "@/lib/woodwork-pdp-content";
 
-type MolteniProductPageProps = {
+type MaknisaProductPageProps = {
   data: ProductDetailView;
 };
 
@@ -25,7 +25,7 @@ function ConfigureIcon() {
       width="18"
       height="18"
       aria-hidden="true"
-      className="molt-cta-icon"
+      className="mkn-cta-icon"
     >
       <path
         fill="currentColor"
@@ -90,7 +90,7 @@ function TwitterIcon() {
   );
 }
 
-export function MolteniProductPage({ data }: MolteniProductPageProps) {
+export function MaknisaProductPage({ data }: MaknisaProductPageProps) {
   const uid = useId();
   const specsRef = useRef<HTMLElement>(null);
   const [specPanel, setSpecPanel] = useState<
@@ -101,7 +101,7 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
   const heroImage =
     data.heroImages[0] ?? data.galleryImages[0] ?? data.product.images[0] ?? "";
 
-  const galleryBlocks = buildMolteniGalleryBlocks(
+  const galleryBlocks = buildProductGalleryBlocks(
     data.galleryImages,
     {
       detail: data.detailParagraph,
@@ -149,14 +149,14 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
     : [];
 
   return (
-    <div className="molt-product">
+    <div className="mkn-product">
       {/* Hero — split image left, product info right */}
-      <section className="molt-content-block molt-content-block--hero">
-        <div className="molt-wrapper-content molt-wrapper-content--medium">
-          <article className="molt-block-text-img molt-block-text-img--text-right">
-            <div className="molt-block-text-img__media">
+      <section className="mkn-content-block mkn-content-block--hero">
+        <div className="mkn-wrapper-content mkn-wrapper-content--medium">
+          <article className="mkn-block-text-img mkn-block-text-img--text-right">
+            <div className="mkn-block-text-img__media">
               {heroImage ? (
-                <div className="molt-hero-image">
+                <div className="mkn-hero-image">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={heroImage}
@@ -166,9 +166,9 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
                 </div>
               ) : null}
 
-              <div className="molt-product-share is-product">
+              <div className="mkn-product-share is-product">
                 <p>share:</p>
-                <ul className="molt-social-menu">
+                <ul className="mkn-social-menu">
                   <li>
                     <a
                       href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
@@ -203,42 +203,42 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
               </div>
             </div>
 
-            <div className="molt-block-text-img__text">
-              <div className="molt-block-info-product">
-                <h1 className="molt-serif-title molt-to-upper">
+            <div className="mkn-block-text-img__text">
+              <div className="mkn-block-info-product">
+                <h1 className="mkn-serif-title mkn-to-upper">
                   {data.product.title}
                 </h1>
 
-                <h3 className="molt-category-label molt-to-upper">
+                <h3 className="mkn-category-label mkn-to-upper">
                   {data.productTypeLabel}
                 </h3>
 
-                <p className="molt-generic-text molt-lead">{data.intro}</p>
+                <p className="mkn-generic-text mkn-lead">{data.intro}</p>
 
-                <div className="molt-design-line">
-                  <span className="molt-design-by">Design</span>
-                  <strong className="molt-designer-name molt-to-upper">
+                <div className="mkn-design-line">
+                  <span className="mkn-design-by">Design</span>
+                  <strong className="mkn-designer-name mkn-to-upper">
                     {data.designer.name}
                   </strong>
                 </div>
 
-                <div className="molt-ctas-product">
+                <div className="mkn-ctas-product">
                   <Link
                     href={customizeOrderHref({
                       service: data.servicePageSlug ?? "Kitchens",
                       product: data.product.id,
                     })}
-                    className="molt-generic-cta molt-generic-cta--black molt-generic-cta--product"
+                    className="mkn-generic-cta mkn-generic-cta--black mkn-generic-cta--product"
                   >
                     Configure
                     <ConfigureIcon />
                   </Link>
                 </div>
 
-                <div className="molt-ctas-product">
+                <div className="mkn-ctas-product">
                   <Link
                     href={BOOK_APPOINTMENT_HREF}
-                    className="molt-generic-cta molt-generic-cta--bordered"
+                    className="mkn-generic-cta mkn-generic-cta--bordered"
                   >
                     Find the nearest store
                   </Link>
@@ -246,7 +246,7 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
 
                 <button
                   type="button"
-                  className="molt-scroll-specs"
+                  className="mkn-scroll-specs"
                   onClick={scrollToSpecs}
                 >
                   <svg
@@ -281,17 +281,17 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
         </>
       ) : null}
 
-      {/* Gallery blocks 0–9 (Molteni sequence) */}
+      {/* Gallery blocks 0–9 (Maknisa gallery sequence) */}
       {galleryBlocks.map((block, index) => {
         if (block.type === "full") {
           return (
             <section
               key={`${uid}-full-${index}`}
-              className="molt-content-block molt-content-block--gallery"
+              className="mkn-content-block mkn-content-block--gallery"
             >
-              <div className="molt-wrapper-content">
-                <div className="molt-row">
-                  <div className="molt-col-12 molt-block-caption molt-block-caption--center">
+              <div className="mkn-wrapper-content">
+                <div className="mkn-row">
+                  <div className="mkn-col-12 mkn-block-caption mkn-block-caption--center">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={block.image} alt="" loading="lazy" />
                   </div>
@@ -305,15 +305,15 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
           return (
             <section
               key={`${uid}-split-${index}`}
-              className="molt-content-block molt-content-block--gallery"
+              className="mkn-content-block mkn-content-block--gallery"
             >
-              <div className="molt-wrapper-content">
-                <div className="molt-row molt-row--split molt-block-two-img">
+              <div className="mkn-wrapper-content">
+                <div className="mkn-row mkn-row--split mkn-block-two-img">
                   <div
                     className={
                       block.wideLeft
-                        ? "molt-col-7 molt-block-caption"
-                        : "molt-col-5 molt-block-caption"
+                        ? "mkn-col-7 mkn-block-caption"
+                        : "mkn-col-5 mkn-block-caption"
                     }
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -322,8 +322,8 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
                   <div
                     className={
                       block.wideLeft
-                        ? "molt-col-5 molt-block-caption"
-                        : "molt-col-7 molt-block-caption"
+                        ? "mkn-col-5 mkn-block-caption"
+                        : "mkn-col-7 mkn-block-caption"
                     }
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -339,14 +339,14 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
           return (
             <section
               key={`${uid}-triple-${index}`}
-              className="molt-content-block molt-content-block--gallery"
+              className="mkn-content-block mkn-content-block--gallery"
             >
-              <div className="molt-wrapper-content">
-                <div className="molt-row molt-row--triple">
+              <div className="mkn-wrapper-content">
+                <div className="mkn-row mkn-row--triple">
                   {block.images.map((src, imgIndex) => (
                     <div
                       key={`${uid}-triple-${index}-${imgIndex}`}
-                      className="molt-col-4 molt-block-caption"
+                      className="mkn-col-4 mkn-block-caption"
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={src} alt="" loading="lazy" />
@@ -362,11 +362,11 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
           return (
             <section
               key={`${uid}-text-${index}`}
-              className="molt-content-block molt-content-block--text"
+              className="mkn-content-block mkn-content-block--text"
             >
-              <div className="molt-wrapper-content">
-                <div className="molt-block-text molt-block-text--left">
-                  <p className="molt-generic-text">{block.paragraph}</p>
+              <div className="mkn-wrapper-content">
+                <div className="mkn-block-text mkn-block-text--left">
+                  <p className="mkn-generic-text">{block.paragraph}</p>
                 </div>
               </div>
             </section>
@@ -376,14 +376,14 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
         return (
           <section
             key={`${uid}-quote-${index}`}
-            className="molt-content-block molt-content-block--text"
+            className="mkn-content-block mkn-content-block--text"
           >
-            <div className="molt-wrapper-content">
-              <div className="molt-block-text molt-block-text--center">
-                <p className="molt-generic-text-serif">
+            <div className="mkn-wrapper-content">
+              <div className="mkn-block-text mkn-block-text--center">
+                <p className="mkn-generic-text-serif">
                   &ldquo;{block.text}&rdquo;
                 </p>
-                <p className="molt-quote-attribution">— {block.author}</p>
+                <p className="mkn-quote-attribution">— {block.author}</p>
               </div>
             </div>
           </section>
@@ -391,24 +391,24 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
       })}
 
       {/* Designer block */}
-      <section className="molt-content-block molt-content-block--designer">
-        <div className="molt-wrapper-content">
-          <div className="molt-designer-flex">
-            <div className="molt-designer-text">
-              <span className="molt-design-by">Design</span>
-              <h2 className="molt-designer-heading">{data.designer.name}</h2>
-              <div className="molt-designer-line">
-                <p className="molt-generic-text">{data.designer.bio}</p>
+      <section className="mkn-content-block mkn-content-block--designer">
+        <div className="mkn-wrapper-content">
+          <div className="mkn-designer-flex">
+            <div className="mkn-designer-text">
+              <span className="mkn-design-by">Design</span>
+              <h2 className="mkn-designer-heading">{data.designer.name}</h2>
+              <div className="mkn-designer-line">
+                <p className="mkn-generic-text">{data.designer.bio}</p>
                 <Link
                   href="/ww/company/company"
-                  className="molt-generic-cta molt-generic-cta--outline-box"
+                  className="mkn-generic-cta mkn-generic-cta--outline-box"
                 >
                   Complete biography
                 </Link>
               </div>
             </div>
 
-            <div className="molt-designer-image">
+            <div className="mkn-designer-image">
               {designerPortrait ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -419,12 +419,12 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
               ) : null}
             </div>
 
-            <div className="molt-block-square-quote">
-              <div className="molt-block-quote-content">
-                <p className="molt-block-quote-text">
+            <div className="mkn-block-square-quote">
+              <div className="mkn-block-quote-content">
+                <p className="mkn-block-quote-text">
                   &ldquo;{data.designer.quote}&rdquo;
                 </p>
-                <p className="molt-block-quote-name">{data.designer.name}</p>
+                <p className="mkn-block-quote-name">{data.designer.name}</p>
               </div>
             </div>
           </div>
@@ -435,18 +435,18 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
       <section
         ref={specsRef}
         id="specs"
-        className="molt-content-block molt-product-specs"
+        className="mkn-content-block mkn-product-specs"
       >
-        <div className="molt-wrapper-content molt-wrapper-content--specs">
-          <div className="molt-product-specs-intro">
-            <p className="molt-sans-title molt-to-upper">{data.product.title}</p>
-            <h2 className="molt-serif-title molt-to-upper">Technical Details</h2>
+        <div className="mkn-wrapper-content mkn-wrapper-content--specs">
+          <div className="mkn-product-specs-intro">
+            <p className="mkn-sans-title mkn-to-upper">{data.product.title}</p>
+            <h2 className="mkn-serif-title mkn-to-upper">Technical Details</h2>
           </div>
 
-          <div className="molt-product-specs-row">
+          <div className="mkn-product-specs-row">
             <button
               type="button"
-              className={`molt-product-specs-box${specPanel === "finishes" ? " is-active" : ""}`}
+              className={`mkn-product-specs-box${specPanel === "finishes" ? " is-active" : ""}`}
               onClick={() =>
                 setSpecPanel((c) => (c === "finishes" ? null : "finishes"))
               }
@@ -456,7 +456,7 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
             </button>
             <button
               type="button"
-              className={`molt-product-specs-box${specPanel === "downloads" ? " is-active" : ""}`}
+              className={`mkn-product-specs-box${specPanel === "downloads" ? " is-active" : ""}`}
               onClick={() =>
                 setSpecPanel((c) => (c === "downloads" ? null : "downloads"))
               }
@@ -466,7 +466,7 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
             </button>
             <button
               type="button"
-              className={`molt-product-specs-box${specPanel === "sheet" ? " is-active" : ""}`}
+              className={`mkn-product-specs-box${specPanel === "sheet" ? " is-active" : ""}`}
               onClick={() =>
                 setSpecPanel((c) => (c === "sheet" ? null : "sheet"))
               }
@@ -477,15 +477,15 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
           </div>
 
           {specPanel === "finishes" ? (
-            <div className="molt-specs-panel">
+            <div className="mkn-specs-panel">
               {data.tags.length > 0 ? (
-                <ul className="molt-finishes-list">
+                <ul className="mkn-finishes-list">
                   {data.tags.map((tag) => (
                     <li key={tag.id}>{tag.label}</li>
                   ))}
                 </ul>
               ) : (
-                <p className="molt-generic-text molt-specs-panel-text">
+                <p className="mkn-generic-text mkn-specs-panel-text">
                   Contact Maknisa for available finishes and material samples.
                 </p>
               )}
@@ -493,10 +493,10 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
           ) : null}
 
           {specPanel === "downloads" ? (
-            <div className="molt-specs-panel">
+            <div className="mkn-specs-panel">
               <Link
                 href="/ww/request-catalogue"
-                className="molt-generic-cta molt-generic-cta--black"
+                className="mkn-generic-cta mkn-generic-cta--black"
               >
                 Download catalogue
               </Link>
@@ -504,10 +504,10 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
           ) : null}
 
           {specPanel === "sheet" ? (
-            <div className="molt-specs-panel">
+            <div className="mkn-specs-panel">
               <Link
                 href="/ww/request-catalogue"
-                className="molt-generic-cta molt-generic-cta--black"
+                className="mkn-generic-cta mkn-generic-cta--black"
               >
                 Product Sheet
               </Link>
@@ -517,25 +517,25 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
       </section>
 
       {/* Technical drawings */}
-      <section className="molt-content-block molt-content-block--drawings">
-        <div className="molt-wrapper-content">
-          <h3 className="molt-drawings-title molt-to-upper">
+      <section className="mkn-content-block mkn-content-block--drawings">
+        <div className="mkn-wrapper-content">
+          <h3 className="mkn-drawings-title mkn-to-upper">
             Technical drawings 2d (.jpg)
           </h3>
-          <div className="molt-drawings-grid">
+          <div className="mkn-drawings-grid">
             {visibleDrawings.map((item) => (
               <a
                 key={item.code}
                 href={item.src}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="molt-drawing-card"
+                className="mkn-drawing-card"
               >
-                <span className="molt-drawing-card__code">{item.code}</span>
+                <span className="mkn-drawing-card__code">{item.code}</span>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={item.src} alt={item.label} loading="lazy" />
-                <div className="molt-drawing-card__caption">
-                  <span className="molt-drawing-card__line" aria-hidden="true" />
+                <div className="mkn-drawing-card__caption">
+                  <span className="mkn-drawing-card__line" aria-hidden="true" />
                   <span>{item.label}</span>
                   <span>{item.label}</span>
                 </div>
@@ -545,7 +545,7 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
           {drawingItems.length > 3 ? (
             <button
               type="button"
-              className="molt-generic-cta molt-generic-cta--outline-box molt-see-all"
+              className="mkn-generic-cta mkn-generic-cta--outline-box mkn-see-all"
               onClick={() => setDrawingsExpanded((v) => !v)}
             >
               {drawingsExpanded ? "Close" : "See all"}
@@ -554,11 +554,11 @@ export function MolteniProductPage({ data }: MolteniProductPageProps) {
         </div>
       </section>
 
-      <section className="molt-content-block molt-back-bar">
-        <div className="molt-wrapper-content">
+      <section className="mkn-content-block mkn-back-bar">
+        <div className="mkn-wrapper-content">
           <Link
             href={data.serviceListHref ?? "/ww/products"}
-            className="molt-generic-cta molt-generic-cta--text"
+            className="mkn-generic-cta mkn-generic-cta--text"
           >
             ← Back to {data.serviceListHref ? data.breadcrumbLabel : "products"}
           </Link>

@@ -96,12 +96,7 @@ export const languages = [
   { code: "fr", label: "French", href: "/fr" },
   { code: "ru", label: "Russian", href: "/ru" },
   { code: "gr", label: "Greek", href: "/gr" },
-  {
-    code: "cn",
-    label: "Chinese",
-    href: "https://www.scavolini.cn/",
-    external: true,
-  },
+  { code: "ur", label: "Urdu", href: "/ur" },
 ];
 
 export const footerMenuLinks: NavLink[] = [
@@ -113,14 +108,18 @@ export const footerMenuLinks: NavLink[] = [
   {
     label: "Contact us",
     href: "/ww/company/contacts",
-    title: "How to contact Maknisa in Italy and around the world | Maknisa",
+    title: "How to contact Maknisa in Pakistan and around the world | Maknisa",
   },
   {
     label: "Tables, chairs and stools",
     href: "/ww/tables-chairs-stools",
     title: "Kitchen Tables, Living Room Chairs and Stools | Maknisa",
   },
-  { label: "Dealers Area", href: "http://www.scavolini.net/", external: true },
+  {
+    label: "Maknisa Stores",
+    href: "/ww/company/maknisa-store",
+    title: "Visit Maknisa showrooms | Maknisa",
+  },
   {
     label: "Request catalogue",
     href: "/ww/request-catalogue",

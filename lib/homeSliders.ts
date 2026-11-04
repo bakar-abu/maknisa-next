@@ -17,12 +17,12 @@ export const homeVideoSections: HomeVideoSection[] = [
     "description": "Find your dream kitchen, in perfect harmony with your needs and desires.",
     "ctas": [
       {
-        "href": "/kitchens",
+        "href": "/services/Kitchens",
         "className": "sn_btn_grow _text_light",
         "label": "All kitchens"
       },
       {
-        "href": "/kitchens/poetica-kitchen",
+        "href": "/ww/services/kitchens/poetica-kitchen",
         "className": "sn_btn_grow _text_light link-cucina",
         "label": "Explore Poetica"
       }
@@ -82,34 +82,39 @@ export const homeVideoSections: HomeVideoSection[] = [
     "description": "For a home that speaks of versatility, comfort and style.",
     "ctas": [
       {
-        "href": "/living",
+        "href": "/ww/living",
         "className": "sn_btn_grow _text_light",
         "label": "All Living rooms"
+      },
+      {
+        "href": "/ww/living/formalia-living-6",
+        "className": "sn_btn_grow _text_light link-cucina",
+        "label": "Explore Sideboard Glow"
       }
     ],
     "thumbSlides": [
       {
-        "link": "/ww/living/sideboard",
+        "link": "/ww/living/formalia-living-6",
         "title": "Sideboard Glow",
         "image": "/media/immagini/13150_z_thumb__0000s_0004_living01_SIDEBOARD_GLOW.jpg"
       },
       {
-        "link": "/ww/living/sideboard",
+        "link": "/ww/living/exclusiva-living-5",
         "title": "Sideboard Diamond",
         "image": "/media/immagini/13199_z_thumb__0000s_0004_living01_SIDEBOARD_DIAMOND.jpg"
       },
       {
-        "link": "/ww/living/musa-living",
+        "link": "/ww/living/moda-living-12",
         "title": "Musa Living",
         "image": "/media/immagini/13152_z_thumb__0000s_0002_living03_MUSA-LIVING.jpg"
       },
       {
-        "link": "/ww/living/libra-living",
+        "link": "/ww/living/libra-living-8",
         "title": "Libra Living",
         "image": "/media/immagini/13153_z_thumb__0000s_0001_living04_LIBRA-LIVING.jpg"
       },
       {
-        "link": "/ww/living/living-motus",
+        "link": "/ww/living/jeometrica-living-7",
         "title": "Motus Living",
         "image": "/media/immagini/13154_z_thumb__0000s_0000_living05_MOTUS-LIVING.jpg"
       }
@@ -142,34 +147,39 @@ export const homeVideoSections: HomeVideoSection[] = [
     "description": "Furnish the perfect bathroom for you and your home.",
     "ctas": [
       {
-        "href": "/bathrooms",
+        "href": "/ww/bathrooms",
         "className": "sn_btn_grow _text_light",
         "label": "All bathrooms"
+      },
+      {
+        "href": "/ww/bathrooms/lido-11",
+        "className": "sn_btn_grow _text_light link-cucina",
+        "label": "Explore Lido"
       }
     ],
     "thumbSlides": [
       {
-        "link": "/ww/bathrooms/lido",
+        "link": "/ww/bathrooms/lido-11",
         "title": "Lido",
         "image": "/media/immagini/13189_z_thumb__0000s_0019_bagno01_LIDO.jpg"
       },
       {
-        "link": "/ww/bathrooms/miko-bathroom",
+        "link": "/ww/bathrooms/idro-7",
         "title": "miko",
         "image": "/media/immagini/13190_z_thumb__0000s_0018_bagno02_MIKO.jpg"
       },
       {
-        "link": "/ww/bathrooms/bathroom-formalia",
+        "link": "/ww/bathrooms/formalia-5",
         "title": "Formalia",
         "image": "/media/immagini/13191_z_thumb__0000s_0017_bagno03_FORMALIA.jpg"
       },
       {
-        "link": "/ww/bathrooms/laundry-space",
+        "link": "/ww/bathrooms/laundry-space-10",
         "title": "Laudry Space",
         "image": "/media/immagini/13192_z_thumb__0000s_0016_bagno04_LAUNDRY-SPACE.jpg"
       },
       {
-        "link": "/ww/bathrooms/gym-space",
+        "link": "/ww/bathrooms/gym-space-6",
         "title": "Gym space",
         "image": "/media/immagini/13193_z_thumb__0000s_0015_bagno05_GYM-SPACE.jpg"
       }
@@ -202,34 +212,39 @@ export const homeVideoSections: HomeVideoSection[] = [
     "description": "If you’re looking to furnish your home, don’t forget the tables and chairs that complete your Maknisa décor.",
     "ctas": [
       {
-        "href": "/tables-chairs-stools",
+        "href": "/ww/tables-chairs-stools",
         "className": "sn_btn_grow _text_light",
         "label": "All matching furniture"
+      },
+      {
+        "href": "/ww/tables-chairs-stools/note-table-1",
+        "className": "sn_btn_grow _text_light link-cucina",
+        "label": "Explore Osaka"
       }
     ],
     "thumbSlides": [
       {
-        "link": "/ww/tables-chairs-stools/osaka-table",
+        "link": "/ww/tables-chairs-stools/note-table-1",
         "title": "Osaka",
         "image": "/media/immagini/13194_z_thumb__0000s_0014_complementi01_TAVOLO_OSAKA.jpg"
       },
       {
-        "link": "/ww/tables-chairs-stools/boston-table",
+        "link": "/ww/tables-chairs-stools/boston-table-9",
         "title": "Boston",
         "image": "/media/immagini/13195_z_thumb__0000s_0013_complementi02_TAVOLO_BOSTON.jpg"
       },
       {
-        "link": "/ww/tables-chairs-stools/paris-table",
+        "link": "/ww/tables-chairs-stools/paris-table-10",
         "title": "Paris",
         "image": "/media/immagini/13196_z_thumb__0000s_0012_complementi03_TAVOLO_PARIS.jpg"
       },
       {
-        "link": "/ww/tables-chairs-stools/style-table",
+        "link": "/ww/tables-chairs-stools/brooklin-table-3",
         "title": "Style",
         "image": "/media/immagini/13197_z_thumb__0000s_0011_complementi04_TAVOLO_STYLE.jpg"
       },
       {
-        "link": "/ww/tables-chairs-stools/infinity-table",
+        "link": "/ww/tables-chairs-stools/luxor-table-12",
         "title": "Infinity",
         "image": "/media/immagini/13198_z_thumb__0000s_0010_complementi05_TAVOLO_INFINITY.jpg"
       }

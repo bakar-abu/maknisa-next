@@ -5,6 +5,7 @@ import {
   getAllCatalogServiceProductStaticParams,
   getCatalogProductDetail,
 } from "@/lib/catalog-product-detail";
+import { fetchPublicProductContent } from "@/lib/cms/fetch-catalog";
 import { resolveServiceCatalogRoute } from "@/lib/services";
 import { site } from "@/lib/site";
 
@@ -23,12 +24,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug, productSlug } = await params;
   if (!resolveServiceCatalogRoute(slug)) return { title: site.name };
 
+  const storedContent = await fetchPublicProductContent(productSlug);
   const detail = await getCatalogProductDetail(slug, productSlug);
   if (!detail) return { title: site.name };
 
   return {
-    title: `${detail.product.title} | ${detail.serviceLabel} | ${site.name}`,
-    description: detail.intro,
+    title:
+      storedContent?.metaTitle ??
+      `${detail.product.title} | ${detail.serviceLabel} | ${site.name}`,
+    description: storedContent?.metaDescription ?? detail.intro,
   };
 }
 

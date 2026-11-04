@@ -11,7 +11,15 @@ import {
 
 import "@/app/styles/book-appointment.css";
 
-export function BookAppointmentForm() {
+type BookAppointmentFormProps = {
+  successTitle?: string;
+  successMessage?: string;
+};
+
+export function BookAppointmentForm({
+  successTitle = appointmentContent.successTitle,
+  successMessage = appointmentContent.successMessage,
+}: BookAppointmentFormProps = {}) {
   const [form, setForm] = useState<AppointmentFormData>(emptyAppointmentForm);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -59,12 +67,8 @@ export function BookAppointmentForm() {
   if (submitted) {
     return (
       <div className="mk-appointment-form__success" role="status">
-        <h2 className="mk-appointment-form__success-title">
-          {appointmentContent.successTitle}
-        </h2>
-        <p className="mk-appointment-form__success-text">
-          {appointmentContent.successMessage}
-        </p>
+        <h2 className="mk-appointment-form__success-title">{successTitle}</h2>
+        <p className="mk-appointment-form__success-text">{successMessage}</p>
         <button
           type="button"
           className="mk-appointment-form__submit"

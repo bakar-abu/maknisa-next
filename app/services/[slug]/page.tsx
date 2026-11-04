@@ -4,6 +4,7 @@ import { ServiceCollectionGridRoute } from "@/components/services/ServiceCollect
 import { ServiceProductsRoute } from "@/components/services/ServiceProductsRoute";
 import { getCollectionGridData } from "@/lib/collections";
 import { getCatalogPageData } from "@/lib/catalog-products";
+import { fetchPublicServiceBundle } from "@/lib/cms/fetch-catalog";
 import {
   isServiceCatalogPage,
   isServiceCollectionPage,
@@ -26,6 +27,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const service = resolveServicePage(slug);
   if (!service) return { title: site.name };
+
+  const bundle = await fetchPublicServiceBundle(slug);
+  if (bundle?.service) {
+    return {
+      title: bundle.service.metaTitle ?? `${bundle.service.title} | ${site.name}`,
+      description: bundle.service.metaDescription ?? bundle.service.intro,
+    };
+  }
 
   if (isServiceCollectionPage(service)) {
     const data = await getCollectionGridData(service.dataSlug);

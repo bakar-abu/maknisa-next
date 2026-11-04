@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Icon } from "@/components/icons/Icon";
+import type { ContactsPageContent } from "@/lib/cms/company-page";
 import { companyPages, contactsContent, storesContent } from "@/lib/company-pages";
 import { site } from "@/lib/site";
 
@@ -9,9 +10,14 @@ function mapsEmbedSrc(query: string) {
   return `https://maps.google.com/maps?q=${encodeURIComponent(query)}&z=14&output=embed`;
 }
 
-export function ContactsCompanyPage() {
+type ContactsCompanyPageProps = {
+  content?: ContactsPageContent;
+};
+
+export function ContactsCompanyPage({ content }: ContactsCompanyPageProps) {
   const page = companyPages.contacts;
-  const hq = contactsContent.headquarters;
+  const c = content ?? contactsContent;
+  const hq = c.headquarters;
 
   return (
     <main id="main-content" role="main">
@@ -20,7 +26,7 @@ export function ContactsCompanyPage() {
           <div className="sn_store_locator_map_gmap">
             <iframe
               title={`${site.name} showroom map`}
-              src={mapsEmbedSrc(contactsContent.mapQuery)}
+              src={mapsEmbedSrc(c.mapQuery)}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
@@ -63,36 +69,33 @@ export function ContactsCompanyPage() {
                 const email = office.email ?? site.email;
 
                 return (
-                <div key={office.id} className="sn_store_locator_i _sb_gray">
-                  <div className="marker">
-                    <Icon
-                      id={MARKER_ICONS[index % MARKER_ICONS.length]}
-                      className="_marker"
-                    />
+                  <div key={office.id} className="sn_store_locator_i _sb_gray">
+                    <div className="marker">
+                      <Icon
+                        id={MARKER_ICONS[index % MARKER_ICONS.length]}
+                        className="_marker"
+                      />
+                    </div>
+                    <h2 className="tt">{office.title}</h2>
+                    <div className="sn_paragraph_sm _color_inherit">
+                      {office.city}
+                      <br />
+                      {office.address}
+                      <br />
+                      T:{" "}
+                      <Link href={`tel:${phoneTel}`} className="mk-contacts-page__accent">
+                        {phone}
+                      </Link>
+                      <br />
+                      <Link
+                        href={`mailto:${email}`}
+                        title={office.title}
+                        className="mk-contacts-page__accent"
+                      >
+                        {email}
+                      </Link>
+                    </div>
                   </div>
-                  <h2 className="tt">{office.title}</h2>
-                  <div className="sn_paragraph_sm _color_inherit">
-                    {office.city}
-                    <br />
-                    {office.address}
-                    <br />
-                    T:{" "}
-                    <Link
-                      href={`tel:${phoneTel}`}
-                      className="mk-contacts-page__accent"
-                    >
-                      {phone}
-                    </Link>
-                    <br />
-                    <Link
-                      href={`mailto:${email}`}
-                      title={office.title}
-                      className="mk-contacts-page__accent"
-                    >
-                      {email}
-                    </Link>
-                  </div>
-                </div>
                 );
               })}
             </div>

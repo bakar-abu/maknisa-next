@@ -1,11 +1,28 @@
 import { BookAppointmentForm } from "@/components/appointment/BookAppointmentForm";
 import { MagazineBreadcrumbs } from "@/components/magazine/MagazineBreadcrumbs";
 import { appointmentContent } from "@/lib/appointment";
-import { site } from "@/lib/site";
+import type { AppointmentPageContent } from "@/lib/cms/support-page";
 
 import "@/app/styles/book-appointment.css";
 
-export function BookAppointmentPage() {
+type BookAppointmentPageProps = {
+  content?: AppointmentPageContent;
+};
+
+export function BookAppointmentPage({ content }: BookAppointmentPageProps = {}) {
+  const pageContent = content ?? {
+    title: appointmentContent.title,
+    intro: appointmentContent.intro,
+    asideTitle: "What to expect",
+    asideItems: [
+      "One-to-one consultation with a Maknisa design specialist",
+      "Guidance on materials, layouts, and collections for your space",
+      "Showroom visit or follow-up tailored to your project",
+    ],
+    successTitle: appointmentContent.successTitle,
+    successMessage: appointmentContent.successMessage,
+  };
+
   return (
     <main id="main-content" role="main" className="mk-appointment-page">
       <div className="mk-appointment-page__container">
@@ -13,25 +30,28 @@ export function BookAppointmentPage() {
           <MagazineBreadcrumbs
             items={[
               { label: "Home", href: "/" },
-              { label: appointmentContent.title },
+              { label: pageContent.title },
             ]}
           />
-          <h1 className="mk-appointment-page__title">{appointmentContent.title}</h1>
-          <p className="mk-appointment-page__intro">{appointmentContent.intro}</p>
+          <h1 className="mk-appointment-page__title">{pageContent.title}</h1>
+          <p className="mk-appointment-page__intro">{pageContent.intro}</p>
         </header>
 
         <div className="mk-appointment-page__layout">
           <aside className="mk-appointment-page__aside">
-            <h2 className="mk-appointment-page__aside-title">What to expect</h2>
+            <h2 className="mk-appointment-page__aside-title">{pageContent.asideTitle}</h2>
             <ul className="mk-appointment-page__list">
-              <li>One-to-one consultation with a {site.name} design specialist</li>
-              <li>Guidance on materials, layouts, and collections for your space</li>
-              <li>Showroom visit or follow-up tailored to your project</li>
+              {pageContent.asideItems.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
             </ul>
           </aside>
 
           <div className="mk-appointment-page__form-wrap">
-            <BookAppointmentForm />
+            <BookAppointmentForm
+              successTitle={pageContent.successTitle}
+              successMessage={pageContent.successMessage}
+            />
           </div>
         </div>
       </div>

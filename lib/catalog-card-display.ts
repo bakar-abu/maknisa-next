@@ -125,6 +125,14 @@ export function getProductCardPricing(product: CatalogProduct): {
     return { price: null, beforePrice: null, fromPrice: null };
   }
 
+  if (product.priceBefore !== null || product.fromPrice !== null) {
+    return {
+      price: product.price,
+      beforePrice: product.priceBefore,
+      fromPrice: product.fromPrice,
+    };
+  }
+
   const hash = hashString(product.id);
   const badges = getProductCardBadges(product);
   const onSale = badges.some((b) => b.id === "sale");

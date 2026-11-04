@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useRef } from "react";
-import { Navigation } from "swiper/modules";
+import { useCallback, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { MagazineBreadcrumbs } from "@/components/magazine/MagazineBreadcrumbs";
@@ -10,7 +9,6 @@ import type { CatalogServiceCategory } from "@/lib/catalog-service-categories";
 import { SERVICES_LANDING_HREF } from "@/lib/services-landing";
 
 import "swiper/css";
-import "swiper/css/navigation";
 
 type CatalogCategoryHeroProps = {
   serviceLabel: string;
@@ -32,8 +30,13 @@ export function CatalogCategoryHero({
   onCategoryChange,
 }: CatalogCategoryHeroProps) {
   const swiperRef = useRef<SwiperType | null>(null);
-  const prevRef = useRef<HTMLButtonElement>(null);
-  const nextRef = useRef<HTMLButtonElement>(null);
+  const [canGoPrev, setCanGoPrev] = useState(false);
+  const [canGoNext, setCanGoNext] = useState(false);
+
+  const updateNavState = useCallback((swiper: SwiperType) => {
+    setCanGoPrev(!swiper.isBeginning);
+    setCanGoNext(!swiper.isEnd);
+  }, []);
 
   const handleCategoryClick = useCallback(
     (categoryId: string) => {
@@ -41,6 +44,14 @@ export function CatalogCategoryHero({
     },
     [activeCategoryId, onCategoryChange],
   );
+
+  const handlePrev = useCallback(() => {
+    swiperRef.current?.slidePrev();
+  }, []);
+
+  const handleNext = useCallback(() => {
+    swiperRef.current?.slideNext();
+  }, []);
 
   return (
     <section className="mk-catalog-hero">
@@ -67,41 +78,28 @@ export function CatalogCategoryHero({
             <div className="mk-catalog-hero__slider-wrap">
               <button
                 type="button"
-                ref={prevRef}
                 className="mk-catalog-hero__nav mk-catalog-hero__nav--prev"
                 aria-label="Previous categories"
+                disabled={!canGoPrev}
+                onClick={handlePrev}
               >
                 ‹
               </button>
               <Swiper
                 className="mk-catalog-hero__swiper"
-                modules={[Navigation]}
                 slidesPerView={1.4}
                 spaceBetween={12}
                 breakpoints={{
                   576: { slidesPerView: 2.2, spaceBetween: 16 },
-                  992: { slidesPerView: 3, spaceBetween: 20 },
-                }}
-                navigation={{
-                  prevEl: prevRef.current,
-                  nextEl: nextRef.current,
-                }}
-                onBeforeInit={(swiper) => {
-                  if (
-                    typeof swiper.params.navigation !== "boolean" &&
-                    swiper.params.navigation
-                  ) {
-                    swiper.params.navigation.prevEl = prevRef.current;
-                    swiper.params.navigation.nextEl = nextRef.current;
-                  }
+                  992: { slidesPerView: 2.4, spaceBetween: 20 },
                 }}
                 onSwiper={(swiper) => {
                   swiperRef.current = swiper;
+                  updateNavState(swiper);
                 }}
-                onInit={(swiper) => {
-                  swiper.navigation.init();
-                  swiper.navigation.update();
-                }}
+                onSlideChange={updateNavState}
+                onResize={updateNavState}
+                onBreakpoint={updateNavState}
               >
                 {categories.map((category) => {
                   const isActive = activeCategoryId === category.id;
@@ -129,9 +127,10 @@ export function CatalogCategoryHero({
               </Swiper>
               <button
                 type="button"
-                ref={nextRef}
                 className="mk-catalog-hero__nav mk-catalog-hero__nav--next"
                 aria-label="Next categories"
+                disabled={!canGoNext}
+                onClick={handleNext}
               >
                 ›
               </button>

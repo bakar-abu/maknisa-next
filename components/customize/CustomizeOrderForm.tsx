@@ -17,6 +17,11 @@ import {
 
 import "@/app/styles/customize-order.css";
 
+type CustomizeOrderFormProps = {
+  successTitle?: string;
+  successMessage?: string;
+};
+
 function renderFieldInput(
   field: CustomizeField,
   value: string,
@@ -65,7 +70,10 @@ function renderFieldInput(
   );
 }
 
-export function CustomizeOrderForm() {
+export function CustomizeOrderForm({
+  successTitle = customizeOrderContent.successTitle,
+  successMessage = customizeOrderContent.successMessage,
+}: CustomizeOrderFormProps = {}) {
   const searchParams = useSearchParams();
   const [form, setForm] = useState<CustomizeOrderFormData>(emptyCustomizeOrderForm());
   const [submitting, setSubmitting] = useState(false);
@@ -151,12 +159,8 @@ export function CustomizeOrderForm() {
   if (submitted) {
     return (
       <div className="mk-customize-form__success" role="status">
-        <h2 className="mk-customize-form__success-title">
-          {customizeOrderContent.successTitle}
-        </h2>
-        <p className="mk-customize-form__success-text">
-          {customizeOrderContent.successMessage}
-        </p>
+        <h2 className="mk-customize-form__success-title">{successTitle}</h2>
+        <p className="mk-customize-form__success-text">{successMessage}</p>
         <button
           type="button"
           className="mk-customize-form__submit"

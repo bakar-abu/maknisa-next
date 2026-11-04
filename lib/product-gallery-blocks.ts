@@ -1,11 +1,11 @@
-export type MolteniResolvedSection =
+export type ProductGallerySection =
   | { type: "full"; image: string }
   | { type: "split"; left: string; right: string; wideLeft: boolean }
   | { type: "triple"; images: [string, string, string] }
   | { type: "textLeft"; paragraph: string }
   | { type: "quoteCenter"; text: string; author: string };
 
-type MolteniSectionTemplate =
+type ProductGalleryTemplate =
   | { type: "full"; imageIndex: number }
   | {
       type: "split";
@@ -17,8 +17,8 @@ type MolteniSectionTemplate =
   | { type: "textLeft"; key: "detail" | "crafted" }
   | { type: "quoteCenter" };
 
-/** Mirrors Molteni Emile PDP blocks 0–9 (post-hero gallery + copy). */
-const MOLTENI_SECTION_TEMPLATES: MolteniSectionTemplate[] = [
+/** Maknisa PDP gallery blocks 0–9 (post-hero gallery + copy). */
+const PRODUCT_GALLERY_TEMPLATES: ProductGalleryTemplate[] = [
   { type: "full", imageIndex: 0 },
   { type: "split", leftIndex: 1, rightIndex: 2, wideLeft: true },
   { type: "triple", indices: [3, 4, 5] },
@@ -36,15 +36,15 @@ function pickImage(images: string[], index: number): string {
   return images[index % images.length];
 }
 
-export function buildMolteniGalleryBlocks(
+export function buildProductGalleryBlocks(
   images: string[],
   textParagraphs: { detail: string; crafted: string },
   quote: { text: string; author: string },
-): MolteniResolvedSection[] {
+): ProductGallerySection[] {
   const gallery = images.length > 0 ? images : [""];
 
-  const sections: MolteniResolvedSection[] = MOLTENI_SECTION_TEMPLATES.map(
-    (template): MolteniResolvedSection => {
+  const sections: ProductGallerySection[] = PRODUCT_GALLERY_TEMPLATES.map(
+    (template): ProductGallerySection => {
       switch (template.type) {
         case "full":
           return {

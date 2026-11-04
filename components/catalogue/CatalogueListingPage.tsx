@@ -1,34 +1,60 @@
 import Link from "next/link";
 import { MagazineBreadcrumbs } from "@/components/magazine/MagazineBreadcrumbs";
 import { CatalogueServiceCard } from "@/components/catalogue/CatalogueServiceCard";
-import { BOOK_APPOINTMENT_HREF } from "@/lib/appointment";
 import type { CatalogueListingCard } from "@/lib/catalogue";
-import { getMagazineListArticles, MAGAZINE_HREF } from "@/lib/magazine";
+import { cataloguePageDefaults } from "@/lib/catalogue-page";
+import type { MagazineListArticle } from "@/lib/magazine";
 
 import "@/app/styles/catalogue-landing.css";
 
-type CatalogueListingPageProps = {
-  cards: CatalogueListingCard[];
+export type CatalogueListingContent = {
+  title: string;
+  intro: string;
+  appointmentLead: string;
+  appointmentText: string;
+  appointmentCtaLabel: string;
+  appointmentCtaHref: string;
+  relatedTitle: string;
+  relatedSubtitle: string;
+  relatedViewAllLabel: string;
+  relatedViewAllHref: string;
+  relatedEnabled: boolean;
 };
 
-export function CatalogueListingPage({ cards }: CatalogueListingPageProps) {
-  const relatedArticles = getMagazineListArticles()
-    .filter((article) => article.image)
-    .slice(0, 3);
+type CatalogueListingPageProps = {
+  cards: CatalogueListingCard[];
+  content?: CatalogueListingContent;
+  relatedArticles?: MagazineListArticle[];
+};
+
+export function CatalogueListingPage({
+  cards,
+  content,
+  relatedArticles = [],
+}: CatalogueListingPageProps) {
+  const pageContent = content ?? {
+    title: cataloguePageDefaults.title,
+    intro: cataloguePageDefaults.intro,
+    appointmentLead: cataloguePageDefaults.appointmentLead,
+    appointmentText: cataloguePageDefaults.appointmentText,
+    appointmentCtaLabel: cataloguePageDefaults.appointmentCtaLabel,
+    appointmentCtaHref: cataloguePageDefaults.appointmentCtaHref,
+    relatedTitle: cataloguePageDefaults.relatedTitle,
+    relatedSubtitle: cataloguePageDefaults.relatedSubtitle,
+    relatedViewAllLabel: cataloguePageDefaults.relatedViewAllLabel,
+    relatedViewAllHref: cataloguePageDefaults.relatedViewAllHref,
+    relatedEnabled: cataloguePageDefaults.relatedEnabled,
+  };
 
   return (
     <main id="main-content" role="main" className="mk-catalogue-landing">
       <div className="mk-catalogue-landing__container">
         <header className="mk-catalogue-landing__header">
           <MagazineBreadcrumbs
-            items={[{ label: "Home", href: "/" }, { label: "Catalogue" }]}
+            items={[{ label: "Home", href: "/" }, { label: pageContent.title }]}
           />
-          <h1 className="mk-catalogue-landing__title">Catalogue</h1>
-          <p className="mk-catalogue-landing__intro">
-            Browse Maknisa catalogues by service — kitchens, surfaces, woodwork,
-            interior design, furniture, and lighting. Hover a card to preview,
-            then click the image to download that service catalogue.
-          </p>
+          <h1 className="mk-catalogue-landing__title">{pageContent.title}</h1>
+          <p className="mk-catalogue-landing__intro">{pageContent.intro}</p>
         </header>
 
         <div className="mk-catalogue-landing__grid row">
@@ -44,21 +70,20 @@ export function CatalogueListingPage({ cards }: CatalogueListingPageProps) {
 
         <div className="mk-catalogue-landing__appointment">
           <p className="mk-catalogue-landing__appointment-lead">
-            Can&apos;t find what you&apos;re looking for?
+            {pageContent.appointmentLead}
           </p>
           <p className="mk-catalogue-landing__appointment-text">
-            Book a personalised appointment with our team to customise your
-            project — from layout and materials to finishes and installation.
+            {pageContent.appointmentText}
           </p>
           <Link
-            href={BOOK_APPOINTMENT_HREF}
+            href={pageContent.appointmentCtaHref}
             className="mk-catalogue-landing__appointment-cta"
           >
-            Book an appointment
+            {pageContent.appointmentCtaLabel}
           </Link>
         </div>
 
-        {relatedArticles.length > 0 ? (
+        {pageContent.relatedEnabled && relatedArticles.length > 0 ? (
           <section
             className="mk-catalogue-landing__related"
             aria-labelledby="catalogue-related-heading"
@@ -69,18 +94,17 @@ export function CatalogueListingPage({ cards }: CatalogueListingPageProps) {
                   id="catalogue-related-heading"
                   className="mk-catalogue-landing__related-title"
                 >
-                  Related inspiration
+                  {pageContent.relatedTitle}
                 </h2>
                 <p className="mk-catalogue-landing__related-sub">
-                  Ideas and guides from the Maknisa Magazine to help you plan
-                  your project.
+                  {pageContent.relatedSubtitle}
                 </p>
               </div>
               <Link
-                href={MAGAZINE_HREF}
+                href={pageContent.relatedViewAllHref}
                 className="mk-catalogue-landing__related-link"
               >
-                View all articles
+                {pageContent.relatedViewAllLabel}
               </Link>
             </div>
 
@@ -103,9 +127,7 @@ export function CatalogueListingPage({ cards }: CatalogueListingPageProps) {
                   <p className="mk-catalogue-related-card__excerpt">
                     {article.excerpt}
                   </p>
-                  <span className="mk-catalogue-related-card__more">
-                    Read more
-                  </span>
+                  <span className="mk-catalogue-related-card__more">Read more</span>
                 </Link>
               ))}
             </div>

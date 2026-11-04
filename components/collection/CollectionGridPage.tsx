@@ -13,6 +13,7 @@ import type {
 import {
   buildServiceFiltersWithImages,
   productMatchesServiceFilter,
+  type CollectionServiceFilter,
   type ServiceFilterSetId,
 } from "@/lib/collection-service-filters";
 import { CUSTOMIZE_ORDER_HREF } from "@/lib/routes";
@@ -28,6 +29,9 @@ type CollectionGridPageProps = {
   ctaLabel?: string;
   ctaHref?: string;
   filterSetId?: ServiceFilterSetId;
+  serviceFilters?: CollectionServiceFilter[];
+  /** product id → service category slug (from CMS) */
+  productCategoryById?: Record<string, string | null>;
 };
 
 function productMatchesCategories(
@@ -46,6 +50,8 @@ export function CollectionGridPage({
   ctaLabel = "Customize your kitchen",
   ctaHref = CUSTOMIZE_ORDER_HREF,
   filterSetId = "kitchens",
+  serviceFilters: serviceFiltersProp,
+  productCategoryById,
 }: CollectionGridPageProps) {
   const [activeCategoryIds, setActiveCategoryIds] = useState<number[]>(
     data.primaryCategoryIds,
@@ -54,8 +60,10 @@ export function CollectionGridPage({
   const [page, setPage] = useState(1);
 
   const serviceFilters = useMemo(
-    () => buildServiceFiltersWithImages(data.products, filterSetId),
-    [data.products, filterSetId],
+    () =>
+      serviceFiltersProp ??
+      buildServiceFiltersWithImages(data.products, filterSetId),
+    [data.products, filterSetId, serviceFiltersProp],
   );
 
   const tagsById = useMemo(() => {
@@ -74,9 +82,16 @@ export function CollectionGridPage({
 
   const pool = useMemo(() => {
     if (useServiceHero) {
-      return data.products.filter((product) =>
-        productMatchesServiceFilter(product, filterSetId, activeStyleId),
-      );
+      const useCmsCategories = Boolean(serviceFiltersProp && productCategoryById);
+
+      return data.products.filter((product) => {
+        if (useCmsCategories) {
+          if (!activeStyleId) return true;
+          return productCategoryById?.[product.id] === activeStyleId;
+        }
+
+        return productMatchesServiceFilter(product, filterSetId, activeStyleId);
+      });
     }
 
     const onlyPrimary =
@@ -94,6 +109,8 @@ export function CollectionGridPage({
     data.products,
     filterSetId,
     useServiceHero,
+    serviceFiltersProp,
+    productCategoryById,
   ]);
 
   const totalPages = Math.max(1, Math.ceil(pool.length / data.itemsPerPage));

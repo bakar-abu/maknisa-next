@@ -6,6 +6,10 @@ import { WarrantyAnchorNav } from "@/components/after-sales/WarrantyAnchorNav";
 import { afterSalesContent } from "@/lib/after-sales";
 import type { WarrantyBlock } from "@/lib/after-sales";
 
+export type AfterSalesPageProps = {
+  content?: typeof afterSalesContent;
+};
+
 function WarrantyImageOverflow({ block }: { block: WarrantyBlock }) {
   return (
     <section
@@ -99,8 +103,8 @@ function WarrantyBlockSection({ block }: { block: WarrantyBlock }) {
   );
 }
 
-export function AfterSalesPage() {
-  const c = afterSalesContent;
+export function AfterSalesPage({ content }: AfterSalesPageProps = {}) {
+  const c = content ?? afterSalesContent;
 
   return (
     <main id="main-content" role="main">

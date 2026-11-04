@@ -1,10 +1,16 @@
 import Link from "next/link";
 import { MagazineBreadcrumbs } from "@/components/magazine/MagazineBreadcrumbs";
+import type { CommunicationPageContent } from "@/lib/cms/company-page";
 import { communicationContent, companyPages } from "@/lib/company-pages";
+import { mediaUrl } from "@/lib/media";
 
-export function CommunicationCompanyPage() {
+type CommunicationCompanyPageProps = {
+  content?: CommunicationPageContent;
+};
+
+export function CommunicationCompanyPage({ content }: CommunicationCompanyPageProps) {
   const page = companyPages.communication;
-  const c = communicationContent;
+  const c = content ?? communicationContent;
 
   return (
     <main id="main-content" role="main">
@@ -38,7 +44,7 @@ export function CommunicationCompanyPage() {
           <figure>
             <picture>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={c.bannerImage} alt="" className="_full" loading="lazy" />
+              <img src={mediaUrl(c.bannerImage)} alt="" className="_full" loading="lazy" />
             </picture>
           </figure>
         </div>

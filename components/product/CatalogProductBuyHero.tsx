@@ -1,24 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useMemo, useRef, useState } from "react";
-import { Navigation, Pagination } from "swiper/modules";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
+import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
 import { CatalogOptionModal } from "@/components/product/CatalogOptionModal";
-import { usePdpSwiperPagination } from "@/components/product/usePdpSwiperPagination";
+import { useCart } from "@/components/cart/CartProvider";
 import {
   getProductCardPricing,
   getProductCardSwatches,
   hasMoreSwatchOptions,
 } from "@/lib/catalog-card-display";
 import type { CatalogProduct } from "@/lib/catalog-types";
-import { BOOK_APPOINTMENT_HREF } from "@/lib/appointment";
+import type { ProductOrderLineItem } from "@/lib/cart/types";
 import { customizeOrderHref } from "@/lib/customize-order";
 import { formatPkr } from "@/lib/format-price";
-import { upscaleScavoliniImage } from "@/lib/catalog-images";
+import { upscaleCatalogImage } from "@/lib/catalog-images";
+import { usePdpSwiperPagination } from "@/components/product/usePdpSwiperPagination";
 
 import "swiper/css";
-import "swiper/css/navigation";
 
 const SIZE_OPTIONS = [
   "W90 × L190 cm",
@@ -191,13 +192,15 @@ export function CatalogProductBuyHero({
     () =>
       product.images
         .filter((url) => url && url.startsWith("http"))
-        .map((url) => upscaleScavoliniImage(url, 1200)),
+        .map((url) => upscaleCatalogImage(url, 1200)),
     [product.images],
   );
 
   const uid = useId();
-  const prevRef = useRef<HTMLButtonElement>(null);
-  const nextRef = useRef<HTMLButtonElement>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
+  const { addItem, openOrderModal } = useCart();
+  const [canGoPrev, setCanGoPrev] = useState(false);
+  const [canGoNext, setCanGoNext] = useState(false);
   const [colorOpen, setColorOpen] = useState(false);
   const [sizeOpen, setSizeOpen] = useState(false);
   const [piecesOpen, setPiecesOpen] = useState(false);
@@ -206,7 +209,7 @@ export function CatalogProductBuyHero({
   const [customWidth, setCustomWidth] = useState("");
   const [customLength, setCustomLength] = useState("");
   const [selectedPiece, setSelectedPiece] = useState<string | null>(null);
-  const [addedToCart, setAddedToCart] = useState(false);
+  const [cartMessage, setCartMessage] = useState(false);
   const [customBaseColor, setCustomBaseColor] = useState("#2688EB");
   const [shadeValue, setShadeValue] = useState(0);
 
@@ -229,6 +232,19 @@ export function CatalogProductBuyHero({
       slideCount: images.length,
       loop: false,
     });
+
+  const updateNavState = useCallback((swiper: SwiperType) => {
+    setCanGoPrev(!swiper.isBeginning);
+    setCanGoNext(!swiper.isEnd);
+  }, []);
+
+  const handlePrev = useCallback(() => {
+    swiperRef.current?.slidePrev();
+  }, []);
+
+  const handleNext = useCallback(() => {
+    swiperRef.current?.slideNext();
+  }, []);
 
   const sizeOptions = useMemo(() => {
     const hash = product.id.length % SIZE_OPTIONS.length;
@@ -268,86 +284,131 @@ export function CatalogProductBuyHero({
     }
   }, [sizeOpen, selectedSize, sizeOptions]);
 
+  const buildOrderLine = useCallback((): ProductOrderLineItem => {
+    return {
+      productId: product.id,
+      productTitle: product.title,
+      serviceSlug,
+      categoryLabel,
+      image: images[0] ?? "",
+      price: pricing.price,
+      quantity: 1,
+      color: selectedColor ?? undefined,
+      size: selectedSize ?? undefined,
+      pieces: selectedPiece ?? undefined,
+    };
+  }, [
+    product.id,
+    product.title,
+    serviceSlug,
+    categoryLabel,
+    images,
+    pricing.price,
+    selectedColor,
+    selectedSize,
+    selectedPiece,
+  ]);
+
+  const handleAddToCart = useCallback(() => {
+    const line = buildOrderLine();
+    addItem({
+      productId: line.productId,
+      productTitle: line.productTitle,
+      serviceSlug: line.serviceSlug,
+      categoryLabel: line.categoryLabel ?? categoryLabel,
+      image: line.image ?? "",
+      href: product.href,
+      price: line.price ?? null,
+      color: line.color,
+      size: line.size,
+      pieces: line.pieces,
+      quantity: 1,
+    });
+    setCartMessage(true);
+    window.setTimeout(() => setCartMessage(false), 2000);
+  }, [addItem, buildOrderLine, categoryLabel, product.href]);
+
+  const handleBuyNow = useCallback(() => {
+    openOrderModal({
+      items: [buildOrderLine()],
+      orderType: "buy_now",
+    });
+  }, [buildOrderLine, openOrderModal]);
+
   return (
     <section className="mk-catalog-pdp-buy" aria-label="Product overview">
       <div className="mk-catalog-pdp-buy__layout">
         <div className="mk-catalog-pdp-buy__media">
-          <div className="mk-catalog-pdp-buy__carousel">
-            <div className="mk-catalog-pdp-buy__main">
-              {showCarouselControls ? (
-                <>
-                  <button
-                    ref={prevRef}
-                    type="button"
-                    className="mk-catalog-pdp-buy__arrow mk-catalog-pdp-buy__arrow--prev"
-                    aria-label="Previous image"
-                  >
-                    ‹
-                  </button>
-                  <button
-                    ref={nextRef}
-                    type="button"
-                    className="mk-catalog-pdp-buy__arrow mk-catalog-pdp-buy__arrow--next"
-                    aria-label="Next image"
-                  >
-                    ›
-                  </button>
-                </>
-              ) : null}
+          <div className="mk-catalog-pdp-buy__main">
+            {showCarouselControls ? (
+              <>
+                <button
+                  type="button"
+                  className="mk-catalog-pdp-buy__arrow mk-catalog-pdp-buy__arrow--prev"
+                  aria-label="Previous image"
+                  disabled={!canGoPrev}
+                  onClick={handlePrev}
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  className="mk-catalog-pdp-buy__arrow mk-catalog-pdp-buy__arrow--next"
+                  aria-label="Next image"
+                  disabled={!canGoNext}
+                  onClick={handleNext}
+                >
+                  ›
+                </button>
+              </>
+            ) : null}
 
-              <div className="mk-catalog-pdp-buy__stage">
-                {images.length > 0 ? (
-                  <Swiper
-                    className="mk-catalog-pdp-buy__swiper"
-                    modules={[Navigation, Pagination]}
-                    slidesPerView={1}
-                    spaceBetween={0}
-                    loop={false}
-                    navigation={showCarouselControls}
-                    onBeforeInit={(swiper) => {
-                      onBeforeInit(swiper);
-                      if (
-                        showCarouselControls &&
-                        typeof swiper.params.navigation !== "boolean" &&
-                        swiper.params.navigation
-                      ) {
-                        swiper.params.navigation.prevEl = prevRef.current;
-                        swiper.params.navigation.nextEl = nextRef.current;
-                      }
-                    }}
-                    onInit={(swiper) => {
-                      onInit(swiper);
-                      swiper.navigation.init();
-                      swiper.navigation.update();
-                    }}
-                    onSlideChange={onSlideChange}
-                  >
-                    {images.map((src, index) => (
-                      <SwiperSlide key={`${uid}-buy-${index}`}>
-                        <div className="mk-catalog-pdp-buy__slide">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={src}
-                            alt={`${product.title} — view ${index + 1}`}
-                            loading={index === 0 ? "eager" : "lazy"}
-                          />
-                        </div>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                ) : (
-                  <div className="mk-catalog-pdp-buy__placeholder" />
-                )}
-              </div>
+            {images.length > 0 ? (
+              <Swiper
+                className="mk-catalog-pdp-buy__swiper"
+                modules={[Pagination]}
+                slidesPerView={1}
+                spaceBetween={0}
+                loop={false}
+                onBeforeInit={onBeforeInit}
+                onSwiper={(swiper) => {
+                  swiperRef.current = swiper;
+                  updateNavState(swiper);
+                }}
+                onInit={(swiper) => {
+                  onInit(swiper);
+                  updateNavState(swiper);
+                }}
+                onSlideChange={(swiper) => {
+                  onSlideChange(swiper);
+                  updateNavState(swiper);
+                }}
+                onResize={updateNavState}
+              >
+                {images.map((src, index) => (
+                  <SwiperSlide key={`${uid}-buy-${index}`}>
+                    <div className="mk-catalog-pdp-buy__slide">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={src}
+                        alt={`${product.title} — view ${index + 1}`}
+                        loading={index === 0 ? "eager" : "lazy"}
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            ) : (
+              <div className="mk-catalog-pdp-buy__placeholder" />
+            )}
 
-              {showDots ? (
-                <div
-                  ref={dotsRef}
-                  className={`mk-catalog-pdp-buy__dots ${dotsClassName}`}
-                  aria-label="Product image slides"
-                />
-              ) : null}
-            </div>
+            {showDots ? (
+              <div
+                ref={dotsRef}
+                className={`mk-catalog-pdp-buy__dots ${dotsClassName}`}
+                aria-label="Product image slides"
+              />
+            ) : null}
           </div>
         </div>
 
@@ -390,20 +451,18 @@ export function CatalogProductBuyHero({
           </div>
 
           <div className="mk-catalog-pdp-buy__actions">
-            <Link href={BOOK_APPOINTMENT_HREF} className="mk-catalog-pdp-buy__buy">
+            <button type="button" className="mk-catalog-pdp-buy__buy" onClick={handleBuyNow}>
               Buy now
-            </Link>
+            </button>
             <button
               type="button"
               className={
-                addedToCart
-                  ? "mk-catalog-pdp-buy__cart is-added"
-                  : "mk-catalog-pdp-buy__cart"
+                cartMessage ? "mk-catalog-pdp-buy__cart is-added" : "mk-catalog-pdp-buy__cart"
               }
-              onClick={() => setAddedToCart(true)}
+              onClick={handleAddToCart}
               aria-live="polite"
             >
-              {addedToCart ? "Added to cart" : "Add to cart"}
+              {cartMessage ? "Added to cart" : "Add to cart"}
             </button>
           </div>
 
