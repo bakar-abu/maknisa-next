@@ -1,0 +1,21 @@
+node_modules
+.next
+.git
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+tsconfig.tsbuildinfo
+README.md
+
+# HTTrack mirror — not needed in production image (~6GB)
+public/www.scavolini.com
+public/fondazione.scavolini.com
+public/fonts.googleapis.com
+public/fonts.gstatic.com
+public/hts-cache
+public/scavolini-cdn.thron.com
+public/www.utilitysystem.scavolini.com
+public/www.youtube.com
+public/img

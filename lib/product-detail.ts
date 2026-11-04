@@ -22,6 +22,7 @@ import {
   serviceProductDetailHref,
   serviceRouteSlug,
   type ServicePageConfig,
+  isServiceCollectionPage,
 } from "./services";
 
 export type ProductDesignerBlock = {
@@ -275,6 +276,8 @@ async function getCmsServiceProductDetail(
   service: ServicePageConfig,
   productId: string,
 ): Promise<ProductDetailView | null> {
+  if (!isServiceCollectionPage(service)) return null;
+
   const bundle = await fetchPublicServiceBundle(service.slug);
   if (!bundle) return null;
 

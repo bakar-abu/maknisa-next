@@ -1,0 +1,20 @@
+# fly.toml — Maknisa Frontend (Next.js)
+app = "maknisa-fe-sb"
+primary_region = "sin"
+
+[build]
+  [build.args]
+    MAKNISA_API_URL = "https://maknisa-be-sb.fly.dev"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1
