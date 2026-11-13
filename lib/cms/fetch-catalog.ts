@@ -1,6 +1,6 @@
-import { getApiBaseUrl } from "@/lib/api-config";
 import type { CollectionGridData } from "@/lib/collection-types";
 import type { GridCollectionSlug } from "@/lib/collections";
+import { fetchPublicJson } from "@/lib/cms/public-fetch";
 
 export type CatalogServiceRecord = {
   id: string;
@@ -68,19 +68,9 @@ export type CatalogPublicProductRecord = {
 };
 
 const REVALIDATE = 3600;
-const FETCH_TIMEOUT_MS = 30000;
 
 async function fetchJson<T>(path: string): Promise<T | null> {
-  try {
-    const response = await fetch(`${getApiBaseUrl()}${path}`, {
-      next: { revalidate: REVALIDATE },
-      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
-    });
-    if (!response.ok) return null;
-    return (await response.json()) as T;
-  } catch {
-    return null;
-  }
+  return fetchPublicJson<T>(path, { revalidate: REVALIDATE });
 }
 
 export async function fetchPublicCollectionGrid(
