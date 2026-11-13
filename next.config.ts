@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Fly/Docker needs standalone; Vercel uses its own output pipeline.
+  ...(process.env.VERCEL ? {} : { output: "standalone" as const }),
   async redirects() {
     return [
       {
